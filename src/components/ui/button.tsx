@@ -11,6 +11,9 @@ export interface ButtonProps
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = 'default', size = 'default', asChild = false, ...props }, ref) => {
     if (asChild) {
+      // Filter out button-specific props for div
+      const { disabled, form, formAction, formEncType, formMethod, formNoValidate, formTarget, name, type, value, ...divProps } = props;
+      
       return (
         <div
           className={cn(
@@ -31,7 +34,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             },
             className
           )}
-          {...props}
+          {...divProps}
         />
       );
     }

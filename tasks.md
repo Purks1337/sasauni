@@ -57,6 +57,7 @@
 - [x] Fix Vercel deployment: ESLint rules and Next.js link
 - [x] Create ESLint config to fix TypeScript rules
 - [x] Fix ESLint config and button component TypeScript error
+- [x] Fix button component props filtering for asChild div
 
 ## Deleted
 
