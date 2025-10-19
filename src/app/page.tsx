@@ -3,9 +3,21 @@ import { MobileHeaderMenu } from '@/components/mobile-header-menu';
 
 export default function SaunaPage() {
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative bg-black">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      {/* Mobile: clipped background image 446px with bottom gradient */}
+      <div className="absolute inset-x-0 top-0 z-0 sm:hidden h-[446px] overflow-hidden">
+        <Image
+          src="/images/background-image.png"
+          alt="Sauna background"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
+      </div>
+      {/* Desktop/Tablet: full-viewport background with horizontal gradient */}
+      <div className="hidden sm:block absolute inset-0 z-0">
         <Image
           src="/images/background-image.png"
           alt="Sauna background"
@@ -17,7 +29,7 @@ export default function SaunaPage() {
       </div>
 
       {/* Single Full-Viewport Section */}
-      <section className="relative z-10 w-screen min-h-screen flex flex-col justify-between p-4 sm:p-6">
+      <section className="relative z-10 w-screen min-h-screen flex flex-col justify-between px-2 py-3 sm:p-6">
         {/* Top Section: Header + Navigation */}
         <div className="max-w-7xl mx-auto w-full">
           <div className="flex flex-col gap-6">
@@ -68,8 +80,8 @@ export default function SaunaPage() {
           </div>
         </div>
 
-        {/* Content Area fills remaining height */}
-        <div className="max-w-7xl mx-auto w-full flex items-start pt-0">
+        {/* Content Area fills remaining height (mobile top gap 240px below header) */}
+        <div className="max-w-7xl mx-auto w-full flex items-start pt-0 mt-[240px] sm:mt-0">
           <div className="w-full max-w-2xl">
             {/* Main Content Block - NO background, NO border, NO blur */}
             <div className="space-y-6 sm:space-y-8">
