@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export default function AboutPage() {
   return (
@@ -78,7 +79,7 @@ export default function AboutPage() {
 
           <div className="text-center">
             <Button asChild>
-              <a href="/">Back to Home</a>
+              <Link href="/">Back to Home</Link>
             </Button>
           </div>
         </div>

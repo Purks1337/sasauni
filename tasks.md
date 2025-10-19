@@ -54,6 +54,7 @@
 - [x] Swap booking button and phone number order
 - [x] Add 60% dark overlay to animated background
 - [x] Increase background overlay transparency
+- [x] Fix Vercel deployment: ESLint rules and Next.js link
 
 ## Deleted
 
