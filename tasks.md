@@ -46,6 +46,14 @@
 - [x] Refactor burger menu into client component to fix module error
 - [x] Render mobile menu via portal and lock body scroll
 - [x] Restyle mobile burger button: square, filled accent, black icon
+- [x] Add centered zoom and image switching for mobile background
+- [x] Create unified slideshow with smooth zoom-out transitions for all devices
+- [x] Make images continuously zoom out during display time
+- [x] Fix desktop logo visibility with animated background
+- [x] Add centered logo to desktop header
+- [x] Swap booking button and phone number order
+- [x] Add 60% dark overlay to animated background
+- [x] Increase background overlay transparency
 
 ## Deleted
 

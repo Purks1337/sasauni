@@ -36,3 +36,17 @@ body {
 .font-system {
   font-family: 'inglobal', system-ui, sans-serif;
 }
+
+/* Custom zoom-out animation for background slideshow */
+@keyframes zoom-out {
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1.0);
+  }
+}
+
+.animate-zoom-out {
+  animation: zoom-out 5s ease-out forwards;
+}
