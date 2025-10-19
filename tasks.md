@@ -37,3 +37,16 @@
 - [x] Удалить боковую навигацию и лишние контейнеры
 - [x] Проверить рендер 100% через curl и размеры классов
 - [x] Синхронизировать текстовый блок 1в1 с Figma node 64:52
+- [x] Make features pills 2 columns on mobile
+- [x] Swap phone after booking button on mobile
+- [x] Show only text logo in hero on mobile
+- [x] Add mobile burger menu with halls, contacts, booking
+- [x] Fix Next.js viewport export to resolve warning/error
+- [x] Mobile: hide halls nav and align header logo+burger in one row
+- [x] Refactor burger menu into client component to fix module error
+- [x] Render mobile menu via portal and lock body scroll
+- [x] Restyle mobile burger button: square, filled accent, black icon
+
+## Deleted
+
+- [ ] Move social buttons to bottom on mobile

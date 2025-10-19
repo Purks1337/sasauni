@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { MobileHeaderMenu } from '@/components/mobile-header-menu';
 
 export default function SaunaPage() {
   return (
@@ -21,29 +22,36 @@ export default function SaunaPage() {
         <div className="max-w-7xl mx-auto w-full">
           <div className="flex flex-col gap-6">
             {/* Header (Hero) */}
-            <div className="bg-black/30 backdrop-blur-md border border-[#2E2D1F] rounded-full px-[24px] py-3 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <Image
-                  src="/images/logo.svg"
-                  alt="Sauna Logo"
-                  width={156}
-                  height={24}
-                  className="h-6"
-                />
-                <div className="text-center">
-                  <p className="text-xs text-[#9B9A89] uppercase tracking-[0.22em] font-system">
-                    банный комплекс
-                  </p>
-                  <h1 className="text-2xl sm:text-[32px] text-[#F8F8EC] font-decorative leading-[1.2] tracking-[0.02em]">
-                    1000 и 1 ночь
-                  </h1>
+            <div className="bg-black/30 backdrop-blur-md border border-[#2E2D1F] rounded-full px-[24px] py-3 flex items-center justify-between gap-4">
+                {/* Text logo only on mobile; SVG logo only on desktop */}
+                <div className="flex items-center gap-3">
+                  <Image
+                    src="/images/logo.svg"
+                    alt="Sauna Logo"
+                    width={156}
+                    height={24}
+                    className="h-6 hidden sm:block"
+                  />
+                  <div className="sm:hidden">
+                    <p className="text-xs text-[#9B9A89] uppercase tracking-[0.22em] font-system">
+                      банный комплекс
+                    </p>
+                    <h1 className="text-2xl text-[#F8F8EC] font-decorative leading-[1.2] tracking-[0.02em]">
+                      1000 и 1 ночь
+                    </h1>
+                  </div>
                 </div>
-              <button className="border border-[#EBE9C6]/50 rounded-xl px-6 py-3 text-[#EBE9C6] text-sm font-system hover:bg-[#EBE9C6]/10 transition-colors">
+
+              {/* Desktop book button */}
+              <button className="border border-[#EBE9C6]/50 rounded-xl px-6 py-3 text-[#EBE9C6] text-sm font-system hover:bg-[#EBE9C6]/10 transition-colors hidden sm:block">
                 Забронировать
               </button>
+              {/* Mobile burger button */}
+              <MobileHeaderMenu />
             </div>
 
             {/* Navigation Menu */}
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-24">
+            <div className="hidden sm:flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-24">
               <button className="text-[#EBE9C6] text-xl font-normal hover:text-[#F8F8EC] transition-colors" style={{textShadow: '2px 2px 2px rgba(0,0,0,0.6)'}}>
                 Финский зал
               </button>
@@ -108,7 +116,7 @@ export default function SaunaPage() {
                 <p className="text-[#D9D5A6] text-xl">Особенности:</p>
 
                 {/* Services Grid (Pills) */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
                   <div className="flex items-center gap-1 border border-[#EBE9C6] rounded-[30px] px-6 py-1.5">
                     <Image
                       src="/images/water-icon.svg"
@@ -198,7 +206,10 @@ export default function SaunaPage() {
 
               {/* Contact and Book Button */}
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
-                <div className="flex items-center gap-1">
+                <button className="bg-[#EBE9C6] text-[#131207] rounded-xl px-6 py-3 text-lg sm:text-xl font-normal hover:bg-[#EBE9C6]/90 transition-colors order-1 sm:order-2">
+                  Забронировать Зал
+                </button>
+                <div className="flex items-center gap-1 order-2 sm:order-1">
                   <Image
                     src="/images/phone-icon.svg"
                     alt="Phone"
@@ -210,14 +221,13 @@ export default function SaunaPage() {
                     +7 909 009 69 14
                   </span>
                 </div>
-                <button className="bg-[#EBE9C6] text-[#131207] rounded-xl px-6 py-3 text-lg sm:text-xl font-normal hover:bg-[#EBE9C6]/90 transition-colors">
-                  Забронировать Зал
-                </button>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Mobile slide-in menu moved into MobileHeaderMenu */}
     </div>
   );
 }
