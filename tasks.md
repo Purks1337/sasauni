@@ -58,6 +58,7 @@
 - [x] Create ESLint config to fix TypeScript rules
 - [x] Fix ESLint config and button component TypeScript error
 - [x] Fix button component props filtering for asChild div
+- [x] Completely rewrite Button component for successful deployment
 
 ## Deleted
 
