@@ -2,27 +2,13 @@
 
 /* Custom CSS variables for theming */
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --font-alegreya-sans: 'Alegreya Sans', sans-serif;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  font-family: var(--font-alegreya-sans);
+  background-color: #02040D;
+  color: #EBE9C6;
 }
 
 /* Custom utility classes using @utility API for v4 */
@@ -35,9 +21,18 @@ body {
 }
 
 @utility btn-primary {
-  @apply bg-blue-600 text-white hover:bg-blue-700;
+  @apply bg-[#EBE9C6] text-[#131207] hover:bg-[#EBE9C6]/90;
 }
 
 @utility btn-secondary {
-  @apply bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600;
+  @apply bg-black/30 text-[#EBE9C6] border border-[#2E2D1F] hover:bg-[#EBE9C6]/10;
+}
+
+/* Custom font classes */
+.font-decorative {
+  font-family: 'Literature Decor', serif;
+}
+
+.font-system {
+  font-family: 'inglobal', system-ui, sans-serif;
 }

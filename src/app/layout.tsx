@@ -1,14 +1,18 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Alegreya_Sans } from 'next/font/google';
 import '../styles/globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const alegreyaSans = Alegreya_Sans({ 
+  subsets: ['latin', 'cyrillic'],
+  weight: ['300', '400', '500', '700', '800'],
+  variable: '--font-alegreya-sans'
+});
 
 export const metadata: Metadata = {
-  title: 'Sasauni Next.js Template',
-  description: 'A modern Next.js template with React 19, TypeScript, and Tailwind CSS v4',
-  keywords: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Template'],
-  authors: [{ name: 'Sasauni Team' }],
+  title: '1000 и 1 ночь - Банный комплекс',
+  description: 'Идеальный выбор для ценителей финской парной. Большой Финский зал с бассейном, бильярдом и караоке.',
+  keywords: ['сауна', 'баня', 'финская парная', 'бассейн', 'Екатеринбург', 'отдых'],
+  authors: [{ name: '1000 и 1 ночь' }],
   viewport: 'width=device-width, initial-scale=1',
 };
 
@@ -18,8 +22,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full">
-      <body className={`${inter.className} h-full antialiased`}>
+    <html lang="ru" className="h-full">
+      <body className={`${alegreyaSans.variable} h-full antialiased font-sans`}>
         <div className="min-h-full">
           {children}
         </div>
