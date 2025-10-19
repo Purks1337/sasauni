@@ -55,6 +55,7 @@
 - [x] Add 60% dark overlay to animated background
 - [x] Increase background overlay transparency
 - [x] Fix Vercel deployment: ESLint rules and Next.js link
+- [x] Create ESLint config to fix TypeScript rules
 
 ## Deleted
 
