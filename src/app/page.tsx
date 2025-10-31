@@ -65,7 +65,7 @@ export default function SaunaPage() {
                 Турецкий зал
               </button>
               <button className="text-[#EBE9C6] text-xl font-normal hover:text-[#F8F8EC] transition-colors" style={{textShadow: '2px 2px 2px rgba(0,0,0,0.6)'}}>
-                аппартаменты
+                Аппартаменты
               </button>
             </div>
           </div>
