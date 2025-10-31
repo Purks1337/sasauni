@@ -3,6 +3,7 @@
 /* Custom CSS variables for theming */
 :root {
   --font-alegreya-sans: 'Alegreya Sans', sans-serif;
+  --accent: #EBE047;
 }
 
 body {
