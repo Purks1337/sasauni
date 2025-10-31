@@ -55,3 +55,15 @@ body {
   animation-timing-function: var(--zoom-ease, ease-out);
   animation-fill-mode: forwards;
 }
+
+/* Default fade-in for all Next.js images */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Next/Image renders <img> with data-nimg attribute */
+img[data-nimg] {
+  opacity: 0;
+  animation: fade-in 400ms ease-out forwards;
+}
