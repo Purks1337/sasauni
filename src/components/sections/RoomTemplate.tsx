@@ -1,19 +1,27 @@
+"use client";
 import Image from 'next/image';
 import Link from 'next/link';
 import { FeaturePill } from '@/components/FeaturePill';
-import { AnimatedBackground } from '@/components/mobile-background';
-import { MobileHeaderMenu } from '@/components/mobile-header-menu';
+import { RoomSlideshow } from '@/components/background/RoomSlideshow';
+import { MobileMenu } from '@/components/header/MobileMenu';
+import { AnimatePresence, motion } from 'framer-motion';
 import { featuresById, type RoomInfo } from '@/data/room-info';
+import { SLIDESHOW_INTERVAL_MS } from '@/config/ui';
 
 interface RoomTemplateProps {
   room: RoomInfo;
+  slug: string;
 }
 
-export function RoomTemplate({ room }: RoomTemplateProps) {
+export function RoomTemplate({ room, slug }: RoomTemplateProps) {
   return (
     <div className="min-h-screen relative bg-black">
-      {/* Animated background slideshow for all devices */}
-      <AnimatedBackground />
+      {/* Animated background per room (duration set in src/config/ui.ts) */}
+      <AnimatePresence mode="wait">
+        <motion.div key={`bg-${slug}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} className="absolute inset-0 z-0">
+          <RoomSlideshow images={room.imagePaths} intervalMs={SLIDESHOW_INTERVAL_MS} />
+        </motion.div>
+      </AnimatePresence>
 
       {/* Single Full-Viewport Section */}
       <section className="relative z-10 w-screen min-h-screen flex flex-col justify-between px-2 py-3 sm:p-6">
@@ -57,17 +65,10 @@ export function RoomTemplate({ room }: RoomTemplateProps) {
 
                 {/* Right side: Book button on desktop, burger on mobile */}
                 <div className="flex items-center gap-3">
-                  {/* Phone with icon on the right side of header */}
-                  <div className="hidden sm:flex items-center gap-2">
-                    <Image src="/images/phone-icon.svg" alt="Phone" width={18} height={18} className="text-white" />
-                    <a href={room.phone} className="text-[#EBE9C6] text-sm hover:text-[color:var(--accent)] transition-colors">
-                      +7 908 908 67 55
-                    </a>
-                  </div>
                   <a href={room.phone} className="border border-[#EBE9C6]/50 rounded-xl px-6 py-3 text-[#EBE9C6] text-sm font-system hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] transition-colors hidden sm:block">
                     Забронировать
                   </a>
-                  <MobileHeaderMenu />
+                  <MobileMenu />
                 </div>
             </div>
 
@@ -89,23 +90,31 @@ export function RoomTemplate({ room }: RoomTemplateProps) {
           </div>
         </div>
 
-        {/* Content Area fills remaining height (mobile top gap 240px below header) */}
+        {/* Content Area (animated, excludes header) */}
         <div className="max-w-7xl mx-auto w-full flex items-start pt-0 mt-[240px] sm:mt-0">
           <div className="w-full max-w-2xl">
-            {/* Main Content Block */}
-            <div className="space-y-6 sm:space-y-8">
-              {/* Title and Description */}
-              <div className="space-y-3">
-                <h2 className="text-2xl sm:text-3xl lg:text-[36px] font-bold text-[#EBE9C6] leading-[1.2]">
-                  {room.title}
-                </h2>
-                <p className="text-lg sm:text-xl text-[#C2C0A4] leading-[1.5] tracking-[0.006em]">
-                  {room.description}
-                </p>
-              </div>
+            {/* Main Content Block with per-slug enter animation */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`content-${slug}`}
+                initial="hidden"
+                animate="show"
+                exit="hidden"
+                variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0, transition: { staggerChildren: 0.08 } } }}
+                className="space-y-6 sm:space-y-8"
+              >
+                {/* Title and Description */}
+                <motion.div variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }} className="space-y-3">
+                  <h2 className="text-2xl sm:text-3xl lg:text-[36px] font-bold text-[#EBE9C6] leading-[1.2]">
+                    {room.title}
+                  </h2>
+                  <p className="text-lg sm:text-xl text-[#C2C0A4] leading-[1.5] tracking-[0.006em]">
+                    {room.description}
+                  </p>
+                </motion.div>
 
               {/* Location and Capacity */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <motion.div variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }} className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div className="flex items-center gap-1">
                   <Image src="/images/location-icon.svg" alt="Location" width={18} height={18} className="text-white" />
                   <span className="text-[#D9D5A6] text-sm sm:text-base ml-1">{room.address}</span>
@@ -114,10 +123,10 @@ export function RoomTemplate({ room }: RoomTemplateProps) {
                   <Image src="/images/user-icon.svg" alt="Users" width={18} height={18} className="text-white" />
                   <span className="text-[#D9D5A6] text-sm sm:text-base ml-1">Вместимость: {room.capacity} человек</span>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Features */}
-              <div className="space-y-3">
+              <motion.div variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }} className="space-y-3">
                 <p className="text-[#D9D5A6] text-xl">Особенности:</p>
                 <div className="grid grid-cols-2 gap-3 sm:gap-4">
                   {room.featureIds.map((fid) => {
@@ -127,10 +136,10 @@ export function RoomTemplate({ room }: RoomTemplateProps) {
                     );
                   })}
                 </div>
-              </div>
+              </motion.div>
 
               {/* Contact and Book Button */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+              <motion.div variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }} className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
                 <a href={room.phone} className="bg-[#EBE9C6] hover:bg-[color:var(--accent)] text-[#131207] rounded-xl px-6 py-3 text-lg sm:text-xl font-normal transition-colors">
                   Забронировать Зал
                 </a>
@@ -140,8 +149,9 @@ export function RoomTemplate({ room }: RoomTemplateProps) {
                     +7 908 908 67 55
                   </a>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </section>

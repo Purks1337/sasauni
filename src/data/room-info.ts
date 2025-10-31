@@ -38,11 +38,40 @@ export const featuresById: Record<FeatureId, FeatureSpec> = {
   karaoke: { label: 'Караоке', iconPath: '/images/microphone-icon.svg' },
 };
 
-// Helper: resolve existing demo images for fin sauna
-const finSaunaImages = [
-  '/images/fin-sauna/DSC03884.JPG',
-  '/images/fin-sauna/DSC03943.JPG',
-  '/images/fin-sauna/DSC03972.JPG',
+// Room-specific image sets
+const finImages: string[] = [
+  '/images/fin/DSC03663.JPG',
+  '/images/fin/DSC03715.JPG',
+  '/images/fin/DSC03729.JPG',
+  '/images/fin/DSC03731.JPG',
+  '/images/fin/DSC03739.JPG',
+  '/images/fin/DSC03748.JPG',
+  '/images/fin/DSC03751.JPG',
+  '/images/fin/DSC03757.JPG',
+  '/images/fin/DSC03760.JPG',
+  '/images/fin/DSC03763.JPG',
+  '/images/fin/DSC03766.JPG',
+];
+
+const finSmallImages: string[] = [
+  '/images/fin-small/DSC03884.JPG',
+  '/images/fin-small/DSC03943.JPG',
+  '/images/fin-small/DSC03972.JPG',
+];
+
+const turkeyImages: string[] = [
+  '/images/turkey/DSC03328.JPG',
+  '/images/turkey/DSC03352.JPG',
+  '/images/turkey/DSC03366.JPG',
+  '/images/turkey/DSC03373.JPG',
+];
+
+const appsImages: string[] = [
+  '/images/apps/DSC03490.JPG',
+  '/images/apps/DSC03510.JPG',
+  '/images/apps/DSC03522.JPG',
+  '/images/apps/DSC03537.JPG',
+  '/images/apps/DSC03552.JPG',
 ];
 
 export const roomsBySlug: Record<RoomSlug, RoomInfo> = {
@@ -54,7 +83,7 @@ export const roomsBySlug: Record<RoomSlug, RoomInfo> = {
     capacity: 10,
     phone: 'tel:+79089086755',
     featureIds: ['finnishSauna', 'pool', 'billiard', 'karaoke', 'tv', 'wifi', 'fireplace'],
-    imagePaths: finSaunaImages,
+    imagePaths: finImages,
   },
   'fin-small': {
     title: 'Малый Финский зал',
@@ -64,7 +93,7 @@ export const roomsBySlug: Record<RoomSlug, RoomInfo> = {
     capacity: 6,
     phone: 'tel:+79089086755',
     featureIds: ['finnishSauna', 'tv', 'wifi'],
-    imagePaths: finSaunaImages, // временно используем те же изображения
+    imagePaths: finSmallImages,
   },
   'turkey': {
     title: 'Турецкий зал',
@@ -74,7 +103,7 @@ export const roomsBySlug: Record<RoomSlug, RoomInfo> = {
     capacity: 8,
     phone: 'tel:+79089086755',
     featureIds: ['water', 'tv', 'wifi'],
-    imagePaths: finSaunaImages, // заменить на реальные фото турецкого зала
+    imagePaths: turkeyImages,
   },
   'apps': {
     title: 'Апартаменты',
@@ -84,7 +113,7 @@ export const roomsBySlug: Record<RoomSlug, RoomInfo> = {
     capacity: 4,
     phone: 'tel:+79089086755',
     featureIds: ['tv', 'wifi'],
-    imagePaths: finSaunaImages, // заменить на реальные фото апартаментов
+    imagePaths: appsImages,
   },
 };
 

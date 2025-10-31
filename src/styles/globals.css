@@ -41,13 +41,17 @@ body {
 /* Custom zoom-out animation for background slideshow */
 @keyframes zoom-out {
   from {
-    transform: scale(1.1);
+    transform: scale(var(--zoom-from, 1.1));
   }
   to {
-    transform: scale(1.0);
+    transform: scale(var(--zoom-to, 1.0));
   }
 }
 
-.animate-zoom-out {
-  animation: zoom-out 5s ease-out forwards;
+/* Generic zoom animation driven by CSS variables */
+.zoom-animate {
+  animation-name: zoom-out;
+  animation-duration: var(--zoom-duration, 5000ms);
+  animation-timing-function: var(--zoom-ease, ease-out);
+  animation-fill-mode: forwards;
 }

@@ -41,3 +41,15 @@ next-env.d.ts
 
 # OS
 Thumbs.db
+
+# User files
+userflow.md
+tasks.md
+project_info.md
+getting_started.md
+figma_layout_analysis.md
+README.md
+LICENSE
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+SECURITY.md

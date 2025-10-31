@@ -1,5 +1,6 @@
 "use client";
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
@@ -60,29 +61,35 @@ export function MobileHeaderMenu() {
             <div className="space-y-4">
               <p className="text-[#D9D5A6] text-sm">Залы</p>
               <div className="flex flex-col gap-3">
-                <button className="text-left text-[#EBE9C6] text-base hover:text-[#F8F8EC]">Финский зал</button>
-                <button className="text-left text-[#EBE9C6] text-base hover:text-[#F8F8EC]">Малый финский зал</button>
-                <button className="text-left text-[#EBE9C6] text-base hover:text-[#F8F8EC]">Турецкий зал</button>
-                <button className="text-left text-[#EBE9C6] text-base hover:text-[#F8F8EC]">Аппартаменты</button>
+                <Link href="/rooms/fin" className="text-left text-[#EBE9C6] text-base hover:text-[color:var(--accent)]" onClick={() => setIsMenuOpen(false)}>Финский зал</Link>
+                <Link href="/rooms/fin-small" className="text-left text-[#EBE9C6] text-base hover:text-[color:var(--accent)]" onClick={() => setIsMenuOpen(false)}>Малый финский зал</Link>
+                <Link href="/rooms/turkey" className="text-left text-[#EBE9C6] text-base hover:text-[color:var(--accent)]" onClick={() => setIsMenuOpen(false)}>Турецкий зал</Link>
+                <Link href="/rooms/apps" className="text-left text-[#EBE9C6] text-base hover:text-[color:var(--accent)]" onClick={() => setIsMenuOpen(false)}>Аппартаменты</Link>
               </div>
             </div>
 
             <div className="space-y-3">
               <p className="text-[#D9D5A6] text-sm">Контакты</p>
               <div className="flex items-center gap-3">
-                <Image src="/images/phone-icon.svg" alt="Phone" width={18} height={18} />
-                <span className="text-[#D9D5A6] text-base">+7 909 009 69 14</span>
+                <a href="tel:+79089086755" className="flex items-center gap-2 text-[#D9D5A6] text-base hover:text-[color:var(--accent)]" onClick={() => setIsMenuOpen(false)}>
+                  <Image src="/images/phone-icon.svg" alt="Phone" width={18} height={18} />
+                  <span>+7 908 908 67 55</span>
+                </a>
               </div>
               <div className="flex items-center gap-3">
-                <Image src="/images/location-icon.svg" alt="Location" width={18} height={18} />
-                <span className="text-[#D9D5A6] text-base">Екатеринбург, Готвальда 12а</span>
+                <a href="https://wa.me/79089086755" className="inline-flex p-2 rounded-lg hover:bg-[#EBE9C6]/10" onClick={() => setIsMenuOpen(false)} aria-label="WhatsApp">
+                  <Image src="/images/header-icons/whatsapp.svg" alt="WhatsApp" width={20} height={20} />
+                </a>
+                <a href="https://t.me/79089086755" className="inline-flex p-2 rounded-lg hover:bg-[#EBE9C6]/10" onClick={() => setIsMenuOpen(false)} aria-label="Telegram">
+                  <Image src="/images/header-icons/telegram.svg" alt="Telegram" width={20} height={20} />
+                </a>
               </div>
             </div>
 
             <div className="mt-auto">
-              <button className="w-full bg-[#EBE9C6] text-[#131207] rounded-xl px-6 py-3 text-lg font-normal hover:bg-[#EBE9C6]/90 transition-colors">
+              <a href="tel:+79089086755" className="w-full inline-flex items-center justify-center bg-[#EBE9C6] hover:bg-[color:var(--accent)] text-[#131207] rounded-xl px-6 py-3 text-lg font-normal transition-colors">
                 Забронировать
-              </button>
+              </a>
             </div>
           </div>
         </>,
