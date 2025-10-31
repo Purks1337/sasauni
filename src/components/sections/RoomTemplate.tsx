@@ -1,5 +1,8 @@
 "use client";
 import Image from 'next/image';
+import { WhatsappIcon } from '@/components/icons/WhatsappIcon';
+import { TelegramIcon } from '@/components/icons/TelegramIcon';
+import { PhoneIcon } from '@/components/icons/PhoneIcon';
 import Link from 'next/link';
 import { FeaturePill } from '@/components/FeaturePill';
 import { RoomSlideshow } from '@/components/background/RoomSlideshow';
@@ -34,13 +37,13 @@ export function RoomTemplate({ room, slug }: RoomTemplateProps) {
                 <div className="flex items-center gap-3">
                   <div className="hidden sm:flex items-center gap-3">
                     <a href="https://wa.me/79089086755" aria-label="WhatsApp" className="inline-flex p-2 rounded-lg hover:bg-[#EBE9C6]/10 transition-colors">
-                      <Image src="/images/header-icons/whatsapp.svg" alt="WhatsApp" width={20} height={20} />
+                      <WhatsappIcon className="w-5 h-5 text-[#EBE9C6]" />
                     </a>
                     <a href="https://t.me/79089086755" aria-label="Telegram" className="inline-flex p-2 rounded-lg hover:bg-[#EBE9C6]/10 transition-colors">
-                      <Image src="/images/header-icons/telegram.svg" alt="Telegram" width={20} height={20} />
+                      <TelegramIcon className="w-5 h-5 text-[#EBE9C6]" />
                     </a>
                     <a href="tel:+79089086755" aria-label="Телефон" className="inline-flex p-2 rounded-lg hover:bg-[#EBE9C6]/10 transition-colors">
-                      <Image src="/images/header-icons/phone.svg" alt="Телефон" width={20} height={20} />
+                      <PhoneIcon className="w-5 h-5 text-[#EBE9C6]" />
                     </a>
                   </div>
                   <div className="sm:hidden">
@@ -144,7 +147,7 @@ export function RoomTemplate({ room, slug }: RoomTemplateProps) {
                   Забронировать Зал
                 </a>
                 <div className="flex items-center gap-1">
-                  <Image src="/images/phone-icon.svg" alt="Phone" width={18} height={18} className="text-white" />
+                  <PhoneIcon className="w-[18px] h-[18px] text-white" />
                   <a href={room.phone} className="text-[#D9D5A6] text-sm sm:text-base ml-1">
                     +7 908 908 67 55
                   </a>

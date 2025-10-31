@@ -40,38 +40,37 @@ export const featuresById: Record<FeatureId, FeatureSpec> = {
 
 // Room-specific image sets
 const finImages: string[] = [
-  '/images/fin/DSC03663.JPG',
-  '/images/fin/DSC03715.JPG',
-  '/images/fin/DSC03729.JPG',
-  '/images/fin/DSC03731.JPG',
-  '/images/fin/DSC03739.JPG',
-  '/images/fin/DSC03748.JPG',
-  '/images/fin/DSC03751.JPG',
-  '/images/fin/DSC03757.JPG',
-  '/images/fin/DSC03760.JPG',
-  '/images/fin/DSC03763.JPG',
-  '/images/fin/DSC03766.JPG',
+  '/images/fin/DSC03663.webp',
+  '/images/fin/DSC03715.webp',
+  '/images/fin/DSC03729.webp',
+  '/images/fin/DSC03731.webp',
+  '/images/fin/DSC03739.webp',
+  '/images/fin/DSC03748.webp',
+  '/images/fin/DSC03751.webp',
+  '/images/fin/DSC03757.webp',
+  '/images/fin/DSC03760.webp',
+  '/images/fin/DSC03763.webp',
 ];
 
 const finSmallImages: string[] = [
-  '/images/fin-small/DSC03884.JPG',
-  '/images/fin-small/DSC03943.JPG',
-  '/images/fin-small/DSC03972.JPG',
+  '/images/fin-small/DSC03884.webp',
+  '/images/fin-small/DSC03943.webp',
+  '/images/fin-small/DSC03972.webp',
 ];
 
 const turkeyImages: string[] = [
-  '/images/turkey/DSC03328.JPG',
-  '/images/turkey/DSC03352.JPG',
-  '/images/turkey/DSC03366.JPG',
-  '/images/turkey/DSC03373.JPG',
+  '/images/turkey/DSC03328.webp',
+  '/images/turkey/DSC03352.webp',
+  '/images/turkey/DSC03366.webp',
+  '/images/turkey/DSC03373.webp',
 ];
 
 const appsImages: string[] = [
-  '/images/apps/DSC03490.JPG',
-  '/images/apps/DSC03510.JPG',
-  '/images/apps/DSC03522.JPG',
-  '/images/apps/DSC03537.JPG',
-  '/images/apps/DSC03552.JPG',
+  '/images/apps/DSC03490.webp',
+  '/images/apps/DSC03510.webp',
+  '/images/apps/DSC03522.webp',
+  '/images/apps/DSC03537.webp',
+  '/images/apps/DSC03552.webp',
 ];
 
 export const roomsBySlug: Record<RoomSlug, RoomInfo> = {

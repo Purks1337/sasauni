@@ -1,81 +1,83 @@
 "use client";
 import Image from 'next/image';
-import { CSSProperties, useEffect, useRef, useState } from 'react';
+import { CSSProperties, useEffect, useState } from 'react';
 import { SLIDESHOW_CONFIG } from '@/config/ui';
 
 /**
  * RoomSlideshow
  * Cross-fading background slideshow for room pages.
+ * Uses CSS Transitions for crossfade and CSS Animations for zoom for optimal performance.
  *
  * Props:
  * - images: string[] absolute public paths to images under /public
  * - intervalMs: number duration each image stays visible before crossfade starts
  */
 export function RoomSlideshow({ images, intervalMs = 5000 }: { images: string[]; intervalMs?: number }) {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [firstLoaded, setFirstLoaded] = useState(false);
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const startRef = useRef<number>(performance.now());
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Reset state when images list changes
+  // Preload images to avoid decode jank during crossfade
   useEffect(() => {
-    setCurrentImageIndex(0);
-    setFirstLoaded(false);
-    startRef.current = performance.now();
+    setCurrentIndex(0);
+    images?.forEach((src) => {
+      const img = new window.Image();
+      img.src = src;
+      // decode() is supported in modern browsers; ignore errors
+      img.decode?.().catch(() => {});
+    });
   }, [images]);
 
+  // Set up an interval to cycle through images.
+  // This just updates the state, CSS handles the actual animation.
   useEffect(() => {
-    if (!firstLoaded || images.length === 0) return;
-    const id = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % images.length);
-    }, intervalMs);
-    return () => clearInterval(id);
-  }, [firstLoaded, images, intervalMs]);
+    if (!images || images.length < 2) return;
 
-  // Shared zoom value driven by RAF so both layers have identical scale at any moment (continuous loop)
-  useEffect(() => {
-    let raf = 0;
-    const easeInOut = (t: number) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t); // easeInOutQuad
-    const tick = () => {
-      const elapsed = performance.now() - startRef.current;
-      const loop = SLIDESHOW_CONFIG.zoomMs;
-      const progress = ((elapsed % loop) / loop);
-      const eased = easeInOut(progress);
-      const scale = SLIDESHOW_CONFIG.zoomFrom + (SLIDESHOW_CONFIG.zoomTo - SLIDESHOW_CONFIG.zoomFrom) * eased;
-      if (containerRef.current) {
-        containerRef.current.style.setProperty('--zoom-current', String(scale));
-      }
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, []);
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, intervalMs);
+
+    return () => clearInterval(timer);
+  }, [images, intervalMs]);
+
+  if (!images || images.length === 0) {
+    return null;
+  }
 
   return (
-    <div ref={containerRef} className="absolute inset-0 z-0 overflow-hidden">
+    <div className="absolute inset-0 z-0 overflow-hidden">
       <div className="relative w-full h-full">
         {images.map((src, index) => {
-          const layerStyle: CSSProperties = {
-            transitionProperty: 'opacity',
-            transitionDuration: `${SLIDESHOW_CONFIG.crossfadeMs}ms`,
-            transitionTimingFunction: SLIDESHOW_CONFIG.fadeEase,
-          };
-          const isActive = index === currentImageIndex;
+          const isActive = index === currentIndex;
           return (
             <div
               key={src}
-              className={`absolute inset-0 will-change-[opacity] ${isActive ? 'opacity-100' : 'opacity-0'}`}
-              style={layerStyle}
+              className="absolute inset-0 transition-opacity"
+              style={{
+                opacity: isActive ? 1 : 0,
+                transitionDuration: `${SLIDESHOW_CONFIG.crossfadeMs}ms`,
+                transitionTimingFunction: SLIDESHOW_CONFIG.fadeEase,
+                willChange: 'opacity',
+              }}
             >
-              <div style={{ transform: 'scale(var(--zoom-current, 1))', willChange: 'transform' }} className="absolute inset-0">
+              <div
+                // The zoom animation is only applied to the active slide.
+                className={`absolute inset-0 ${isActive ? 'zoom-animate' : ''}`}
+                style={
+                  {
+                    '--zoom-from': SLIDESHOW_CONFIG.zoomFrom,
+                    '--zoom-to': SLIDESHOW_CONFIG.zoomTo,
+                    '--zoom-duration': `${intervalMs}ms`, // Zoom lasts the full interval
+                    '--zoom-ease': SLIDESHOW_CONFIG.zoomEase,
+                    willChange: 'transform',
+                  } as CSSProperties
+                }
+              >
                 <Image
                   src={src}
                   alt="Room background"
                   fill
                   sizes="100vw"
                   priority={index === 0}
-                  loading="eager"
-                  onLoad={() => { if (index === 0) setFirstLoaded(true); }}
+                  quality={70}
                   className="object-cover object-center"
                 />
               </div>
@@ -89,5 +91,3 @@ export function RoomSlideshow({ images, intervalMs = 5000 }: { images: string[];
     </div>
   );
 }
-
-
