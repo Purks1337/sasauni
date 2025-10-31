@@ -14,10 +14,12 @@ import { SLIDESHOW_CONFIG } from '@/config/ui';
  */
 export function RoomSlideshow({ images, intervalMs = 5000 }: { images: string[]; intervalMs?: number }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [loadedMap, setLoadedMap] = useState<Record<string, boolean>>({});
 
   // Preload images to avoid decode jank during crossfade
   useEffect(() => {
     setCurrentIndex(0);
+    setLoadedMap({});
     images?.forEach((src) => {
       const img = new window.Image();
       img.src = src;
@@ -47,12 +49,14 @@ export function RoomSlideshow({ images, intervalMs = 5000 }: { images: string[];
       <div className="relative w-full h-full">
         {images.map((src, index) => {
           const isActive = index === currentIndex;
+          const isLoaded = !!loadedMap[src];
           return (
             <div
               key={src}
               className="absolute inset-0 transition-opacity"
               style={{
-                opacity: isActive ? 1 : 0,
+                // Prevent initial pop-in: do not show the active slide until its image has loaded
+                opacity: isActive && isLoaded ? 1 : 0,
                 transitionDuration: `${SLIDESHOW_CONFIG.crossfadeMs}ms`,
                 transitionTimingFunction: SLIDESHOW_CONFIG.fadeEase,
                 willChange: 'opacity',
@@ -79,6 +83,9 @@ export function RoomSlideshow({ images, intervalMs = 5000 }: { images: string[];
                   priority={index === 0}
                   quality={70}
                   className="object-cover object-center"
+                  onLoadingComplete={() => {
+                    setLoadedMap((prev) => ({ ...prev, [src]: true }));
+                  }}
                 />
               </div>
             </div>
