@@ -54,3 +54,6 @@ CODE_OF_CONDUCT.md
 SECURITY.md
 icons.md
 info.md
+context.py
+prepare_context.py
+context.md

@@ -10,6 +10,7 @@ import { MobileMenu } from '@/components/header/MobileMenu';
 import { AnimatePresence, motion } from 'framer-motion';
 import { featuresById, type RoomInfo } from '@/data/room-info';
 import { SLIDESHOW_INTERVAL_MS } from '@/config/ui';
+import { Logo } from '@/components/Logo';
 
 interface RoomTemplateProps {
   room: RoomInfo;
@@ -33,7 +34,7 @@ export function RoomTemplate({ room, slug }: RoomTemplateProps) {
           <div className="flex flex-col gap-6">
             {/* Header (Hero) */}
             <div className="bg-black/30 backdrop-blur-md border border-[#2E2D1F] rounded-full px-[24px] py-3 flex items-center justify-between gap-4 relative z-20">
-                {/* Left side: Social/phone icons on desktop, text on mobile */}
+                {/* Left side: Social/phone icons on desktop, logo on mobile */}
                 <div className="flex items-center gap-3">
                   <div className="hidden sm:flex items-center gap-3">
                     <a href="https://wa.me/79089086755" aria-label="WhatsApp" className="inline-flex p-2 rounded-lg hover:bg-[#EBE9C6]/10 transition-colors">
@@ -47,23 +48,13 @@ export function RoomTemplate({ room, slug }: RoomTemplateProps) {
                     </a>
                   </div>
                   <div className="sm:hidden">
-                    <p className="text-xs text-[#9B9A89] uppercase tracking-[0.22em] font-system">
-                      банный комплекс
-                    </p>
-                    <h1 className="text-2xl text-[#F8F8EC] font-decorative leading-[1.2] tracking-[0.02em]">
-                      1000 и 1 ночь
-                    </h1>
+                    <Logo className="w-40 h-auto" />
                   </div>
                 </div>
 
-                {/* Center: Desktop logo and title */}
+                {/* Center: Desktop logo */}
                 <div className="hidden sm:flex flex-col items-center">
-                  <p className="text-xs text-[#9B9A89] uppercase tracking-[0.22em] font-system">
-                    банный комплекс
-                  </p>
-                  <h1 className="text-2xl text-[#F8F8EC] font-decorative leading-[1.2] tracking-[0.02em]">
-                    1000 и 1 ночь
-                  </h1>
+                  <Logo className="w-48 h-auto" />
                 </div>
 
                 {/* Right side: Book button on desktop, burger on mobile */}
@@ -161,5 +152,3 @@ export function RoomTemplate({ room, slug }: RoomTemplateProps) {
     </div>
   );
 }
-
-

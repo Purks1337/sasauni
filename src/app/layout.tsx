@@ -1,12 +1,19 @@
 import type { Metadata, Viewport } from 'next';
-import { Alegreya_Sans } from 'next/font/google';
+import localFont from 'next/font/local';
 import '../styles/globals.css';
 
-const alegreyaSans = Alegreya_Sans({ 
-  subsets: ['latin', 'cyrillic'],
-  weight: ['300', '400', '500', '700', '800'],
-  variable: '--font-alegreya-sans'
+const alegreyaSans = localFont({
+  src: [
+    {
+      path: '../../public/fonts/AlegreyaSans-Regular.woff',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-alegreya-sans',
+  display: 'swap', // Рекомендуется для локальных шрифтов
 });
+
 
 export const metadata: Metadata = {
   title: '1000 и 1 ночь - Банный комплекс',
