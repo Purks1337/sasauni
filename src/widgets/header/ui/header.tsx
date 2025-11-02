@@ -15,7 +15,7 @@ interface HeaderProps {
 export function Header({ bookingPhone = 'tel:+79089086755' }: HeaderProps) {
   return (
     <div className="sticky top-0 z-30 py-3 sm:py-6">
-      <div className="max-w-7xl mx-auto w-full flex flex-col gap-6 px-2 sm:px-6">
+      <div className="max-w-7xl mx-auto w-full px-2 sm:px-6">
         {/* Header Bar */}
         <div className="bg-black/30 backdrop-blur-md border border-[#2E2D1F] rounded-full px-4 sm:px-[24px] py-3 flex items-center justify-between gap-4 relative z-20">
           {/* Left side: Social/phone icons on desktop, logo on mobile */}
@@ -36,9 +36,25 @@ export function Header({ bookingPhone = 'tel:+79089086755' }: HeaderProps) {
             </div>
           </div>
 
-          {/* Center: Desktop logo */}
-          <div className="hidden sm:flex flex-col items-center">
+          {/* Center: Desktop Navigation & Logo */}
+          <div className="hidden sm:flex items-center gap-x-10">
+            <div className="flex items-center gap-x-6">
+              <Link href="/rooms/fin" className="text-[#EBE9C6] text-sm font-system hover:text-[color:var(--accent)] transition-colors">
+                Финский зал
+              </Link>
+              <Link href="/rooms/fin-small" className="text-[#EBE9C6] text-sm font-system hover:text-[color:var(--accent)] transition-colors">
+                Малый финский зал
+              </Link>
+            </div>
             <Logo className="w-48 h-auto" />
+            <div className="flex items-center gap-x-6">
+              <Link href="/rooms/turkey" className="text-[#EBE9C6] text-sm font-system hover:text-[color:var(--accent)] transition-colors">
+                Турецкий зал
+              </Link>
+              <Link href="/rooms/apps" className="text-[#EBE9C6] text-sm font-system hover:text-[color:var(--accent)] transition-colors">
+                Аппартаменты
+              </Link>
+            </div>
           </div>
 
           {/* Right side: Book button on desktop, burger on mobile */}
@@ -48,22 +64,6 @@ export function Header({ bookingPhone = 'tel:+79089086755' }: HeaderProps) {
             </a>
             <MobileMenu />
           </div>
-        </div>
-
-        {/* Navigation Menu */}
-        <div className="hidden sm:flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-24">
-          <Link href="/rooms/fin" className="text-[#EBE9C6] text-xl font-normal hover:text-[color:var(--accent)] transition-colors" style={{textShadow: '2px 2px 2px rgba(0,0,0,0.6)'}}>
-            Финский зал
-          </Link>
-          <Link href="/rooms/fin-small" className="text-[#EBE9C6] text-xl font-normal hover:text-[color:var(--accent)] transition-colors" style={{textShadow: '2px 2px 2px rgba(0,0,0,0.6)'}}>
-            Малый финский зал
-          </Link>
-          <Link href="/rooms/turkey" className="text-[#EBE9C6] text-xl font-normal hover:text-[color:var(--accent)] transition-colors" style={{textShadow: '2px 2px 2px rgba(0,0,0,0.6)'}}>
-            Турецкий зал
-          </Link>
-          <Link href="/rooms/apps" className="text-[#EBE9C6] text-xl font-normal hover:text-[color:var(--accent)] transition-colors" style={{textShadow: '2px 2px 2px rgba(0,0,0,0.6)'}}>
-            Аппартаменты
-          </Link>
         </div>
       </div>
     </div>
