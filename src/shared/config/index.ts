@@ -1,0 +1,2 @@
+export { SLIDESHOW_INTERVAL_MS, SLIDESHOW_CONFIG } from './ui';
+

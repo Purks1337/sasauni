@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { roomSlugs, roomsBySlug, type RoomSlug } from '@/data/room-info';
-import { RoomTemplate } from '@/components/sections/RoomTemplate';
+import { roomSlugs, roomsBySlug, type RoomSlug } from '@/entities/room';
+import { RoomDisplay } from '@/widgets/room-display';
 
 type PageParams = { params: Promise<{ slug: RoomSlug }> };
 
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
 export default async function RoomPage({ params }: PageParams) {
   const { slug } = await params;
   const room = roomsBySlug[slug];
-  return <RoomTemplate slug={slug} room={room} />;
+  return <RoomDisplay slug={slug} room={room} />;
 }
 
 

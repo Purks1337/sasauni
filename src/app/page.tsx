@@ -1,6 +1,6 @@
-import { RoomTemplate } from '@/components/sections/RoomTemplate';
-import { roomsBySlug } from '@/data/room-info';
+import { RoomDisplay } from '@/widgets/room-display';
+import { roomsBySlug } from '@/entities/room';
 
 export default function SaunaPage() {
-  return <RoomTemplate slug="fin" room={roomsBySlug['fin']} />;
+  return <RoomDisplay slug="fin" room={roomsBySlug['fin']} />;
 }
