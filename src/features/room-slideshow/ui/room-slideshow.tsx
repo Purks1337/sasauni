@@ -22,7 +22,7 @@ export function RoomSlideshow({ images, intervalMs = 5000 }: RoomSlideshowProps)
   }
 
   return (
-    <div className="absolute inset-x-0 top-0 z-0 h-[480px] overflow-hidden sm:h-full">
+    <div className="absolute inset-x-0 top-0 h-[480px] sm:h-full overflow-hidden sm:fixed sm:inset-0 z-0">
       <div className="relative w-full h-full">
         {images.map((src, index) => {
           const isActive = index === currentIndex;
@@ -71,4 +71,3 @@ export function RoomSlideshow({ images, intervalMs = 5000 }: RoomSlideshowProps)
     </div>
   );
 }
-

@@ -1,6 +1,5 @@
 "use client";
 import Image from 'next/image';
-import { PhoneIcon } from '@/shared/ui/icons';
 import { FeaturePill } from '@/shared/ui/feature-pill';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { RoomInfo } from '@/entities/room';
@@ -17,7 +16,7 @@ interface RoomViewProps {
  */
 export function RoomView({ room, slug }: RoomViewProps) {
   return (
-    <div className="max-w-7xl mx-auto w-full flex items-start pt-0 mt-[240px] sm:mt-0">
+    <div className="max-w-7xl mx-auto w-full flex items-start pt-0 mt-[240px] sm:mt-[128px] pb-12">
       <div className="w-full max-w-2xl">
         {/* Main Content Block with per-slug enter animation */}
         <AnimatePresence mode="wait">
@@ -60,12 +59,12 @@ export function RoomView({ room, slug }: RoomViewProps) {
             {/* Features */}
             <motion.div variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }} className="space-y-3">
               <p className="text-[#D9D5A6] text-xl">Особенности:</p>
-              <div className="grid grid-cols-2 gap-3 sm:gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 {room.featureIds.map((fid) => {
                   const spec = featuresById[fid];
                   if (!spec) return null;
                   return (
-                    <FeaturePill key={fid} iconPath={spec.iconPath} label={spec.label} />
+                    <FeaturePill key={fid} icon={spec.icon} label={spec.label} />
                   );
                 })}
               </div>

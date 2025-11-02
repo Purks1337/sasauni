@@ -1,3 +1,5 @@
+import type { FC, SVGProps } from 'react';
+
 export type FeatureId =
   | 'finnishSauna'
   | 'pool'
@@ -17,6 +19,5 @@ export type FeatureId =
 
 export interface FeatureSpec {
   label: string;
-  iconPath: string; // path under /public/images
+  icon: FC<SVGProps<SVGSVGElement>>;
 }
-

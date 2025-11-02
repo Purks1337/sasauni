@@ -32,19 +32,14 @@ export function RoomDisplay({ room, slug }: RoomDisplayProps) {
         </motion.div>
       </AnimatePresence>
 
-      {/* Main Content Section */}
-      <section className="relative z-10 w-screen min-h-screen flex flex-col justify-between px-2 py-3 sm:p-6">
-        {/* Header + Navigation */}
-        <div className="max-w-7xl mx-auto w-full">
-          <div className="flex flex-col gap-6">
-            <Header bookingPhone={room.phone} />
-          </div>
-        </div>
+      {/* Header + Navigation */}
+      <Header bookingPhone={room.phone} />
 
+      {/* Main Content Section */}
+      <section className="relative z-10 w-full px-2 sm:px-6">
         {/* Room Content */}
         <RoomView room={room} slug={slug} />
       </section>
     </div>
   );
 }
-
