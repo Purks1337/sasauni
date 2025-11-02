@@ -16,7 +16,7 @@ interface RoomViewProps {
  */
 export function RoomView({ room, slug }: RoomViewProps) {
   return (
-    <div className="max-w-7xl mx-auto w-full flex items-start pt-0 mt-[240px] sm:mt-[128px] pb-12">
+    <div className="max-w-7xl mx-auto w-full flex items-start mt-auto">
       <div className="w-full max-w-2xl">
         {/* Main Content Block with per-slug enter animation */}
         <AnimatePresence mode="wait">

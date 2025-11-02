@@ -17,7 +17,7 @@ interface RoomDisplayProps {
  */
 export function RoomDisplay({ room, slug }: RoomDisplayProps) {
   return (
-    <div className="min-h-screen relative bg-black">
+    <div className="min-h-screen relative bg-black flex flex-col">
       {/* Animated background per room */}
       <AnimatePresence mode="wait">
         <motion.div 
@@ -36,7 +36,7 @@ export function RoomDisplay({ room, slug }: RoomDisplayProps) {
       <Header bookingPhone={room.phone} />
 
       {/* Main Content Section */}
-      <section className="relative z-10 w-full px-2 sm:px-6">
+      <section className="relative z-10 w-full flex-grow flex flex-col px-2 sm:px-6 pb-2 sm:pb-6">
         {/* Room Content */}
         <RoomView room={room} slug={slug} />
       </section>
