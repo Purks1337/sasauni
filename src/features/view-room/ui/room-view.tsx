@@ -29,6 +29,24 @@ export function RoomView({ room, slug }: RoomViewProps) {
             variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0, transition: { staggerChildren: 0.08 } } }}
             className="space-y-6 sm:space-y-8"
           >
+            {/* Location, Capacity, and Phone */}
+            <motion.div variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }} className="flex flex-col sm:flex-row items-start sm:items-center flex-wrap gap-y-3 gap-x-6">
+              <div className="flex items-center gap-1">
+                <Image src="/images/location-icon.svg" alt="Location" width={18} height={18} />
+                <span className="text-[#D9D5A6] text-sm sm:text-base ml-1">{room.address}</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <Image src="/images/user-icon.svg" alt="Users" width={18} height={18} />
+                <span className="text-[#D9D5A6] text-sm sm:text-base ml-1">Вместимость: {room.capacity} человек</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <Image src="/images/phone-icon.svg" alt="Телефон" width={18} height={18} />
+                <a href={room.phone} className="text-[#D9D5A6] text-sm sm:text-base ml-1">
+                  +7 908 908 67 55
+                </a>
+              </div>
+            </motion.div>
+
             {/* Title and Description */}
             <motion.div variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }} className="space-y-3">
               <h2 className="text-2xl sm:text-3xl lg:text-[36px] font-bold text-[#EBE9C6] leading-[1.2]">
@@ -37,18 +55,6 @@ export function RoomView({ room, slug }: RoomViewProps) {
               <p className="text-lg sm:text-xl text-[#C2C0A4] leading-[1.5] tracking-[0.006em]">
                 {room.description}
               </p>
-            </motion.div>
-
-            {/* Location and Capacity */}
-            <motion.div variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }} className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <div className="flex items-center gap-1">
-                <Image src="/images/location-icon.svg" alt="Location" width={18} height={18} className="text-white" />
-                <span className="text-[#D9D5A6] text-sm sm:text-base ml-1">{room.address}</span>
-              </div>
-              <div className="flex items-center gap-1">
-                <Image src="/images/user-icon.svg" alt="Users" width={18} height={18} className="text-white" />
-                <span className="text-[#D9D5A6] text-sm sm:text-base ml-1">Вместимость: {room.capacity} человек</span>
-              </div>
             </motion.div>
 
             {/* Features */}
@@ -70,12 +76,6 @@ export function RoomView({ room, slug }: RoomViewProps) {
               <a href={room.phone} className="bg-[#EBE9C6] hover:bg-[color:var(--accent)] text-[#131207] rounded-xl px-6 py-3 text-lg sm:text-xl font-normal transition-colors">
                 Забронировать Зал
               </a>
-              <div className="flex items-center gap-1">
-                <PhoneIcon className="w-[18px] h-[18px] text-white" />
-                <a href={room.phone} className="text-[#D9D5A6] text-sm sm:text-base ml-1">
-                  +7 908 908 67 55
-                </a>
-              </div>
             </motion.div>
           </motion.div>
         </AnimatePresence>
@@ -83,4 +83,3 @@ export function RoomView({ room, slug }: RoomViewProps) {
     </div>
   );
 }
-

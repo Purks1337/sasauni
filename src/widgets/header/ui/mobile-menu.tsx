@@ -65,9 +65,9 @@ export function MobileMenu() {
                 </a>
               </div>
               <div className="flex items-center gap-3">
-                <a href="https://wa.me/79089086755" className="inline-flex p-2 rounded-lg hover:bg-[#EBE9C6]/10" onClick={closeMenu} aria-label="WhatsApp">
+                {/* <a href="https://wa.me/79089086755" className="inline-flex p-2 rounded-lg hover:bg-[#EBE9C6]/10" onClick={closeMenu} aria-label="WhatsApp">
                   <Image src="/images/header-icons/whatsapp.svg" alt="WhatsApp" width={20} height={20} />
-                </a>
+                </a> */}
                 <a href="https://t.me/79089086755" className="inline-flex p-2 rounded-lg hover:bg-[#EBE9C6]/10" onClick={closeMenu} aria-label="Telegram">
                   <Image src="/images/header-icons/telegram.svg" alt="Telegram" width={20} height={20} />
                 </a>

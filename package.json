@@ -1,6 +1,6 @@
 {
-  "name": "sasauni",
-  "version": "0.1.0",
+  "name": "1000-and-1-night",
+  "version": "0.1.7",
   "private": true,
   "scripts": {
     "dev": "next dev",

@@ -20,9 +20,9 @@ export function Header({ bookingPhone = 'tel:+79089086755' }: HeaderProps) {
         {/* Left side: Social/phone icons on desktop, logo on mobile */}
         <div className="flex items-center gap-3">
           <div className="hidden sm:flex items-center gap-3">
-            <a href="https://wa.me/79089086755" aria-label="WhatsApp" className="inline-flex p-2 rounded-lg hover:bg-[#EBE9C6]/10 transition-colors">
+            {/* <a href="https://wa.me/79089086755" aria-label="WhatsApp" className="inline-flex p-2 rounded-lg hover:bg-[#EBE9C6]/10 transition-colors">
               <WhatsappIcon className="w-5 h-5 text-[#EBE9C6]" />
-            </a>
+            </a> */}
             <a href="https://t.me/79089086755" aria-label="Telegram" className="inline-flex p-2 rounded-lg hover:bg-[#EBE9C6]/10 transition-colors">
               <TelegramIcon className="w-5 h-5 text-[#EBE9C6]" />
             </a>
