@@ -32,7 +32,14 @@ export function RoomView({ room, slug }: RoomViewProps) {
             <motion.div variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }} className="flex flex-col sm:flex-row items-start sm:items-center flex-wrap gap-y-3 gap-x-6">
               <div className="flex items-center gap-1">
                 <Image src="/images/location-icon.svg" alt="Location" width={18} height={18} />
-                <span className="text-[#D9D5A6] text-sm sm:text-base ml-1">{room.address}</span>
+                <a
+                  href="https://yandex.ru/maps/-/CLrLJE2Y"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#D9D5A6] text-sm sm:text-base ml-1 hover:text-[color:var(--accent)] transition-colors"
+                >
+                  {room.address}
+                </a>
               </div>
               <div className="flex items-center gap-1">
                 <Image src="/images/user-icon.svg" alt="Users" width={18} height={18} />
