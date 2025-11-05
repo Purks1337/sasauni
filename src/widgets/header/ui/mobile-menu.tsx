@@ -50,7 +50,7 @@ export function MobileMenu() {
               <p className="text-[#D9D5A6] text-sm">Залы</p>
               <div className="flex flex-col gap-3">
                 <Link href="/rooms/fin" className="text-left text-[#EBE9C6] text-base hover:text-[color:var(--accent)]" onClick={closeMenu}>Финский зал</Link>
-                <Link href="/rooms/fin-small" className="text-left text-[#EBE9C6] text-base hover:text-[color:var(--accent)]" onClick={closeMenu}>Малый финский зал</Link>
+                <Link href="/rooms/fin-small" className="text-left text-[#EBE9C6] text-base hover:text-[color:var(--accent)]" onClick={closeMenu}>Зал «Оазис»</Link>
                 <Link href="/rooms/turkey" className="text-left text-[#EBE9C6] text-base hover:text-[color:var(--accent)]" onClick={closeMenu}>Турецкий зал</Link>
                 <Link href="/rooms/apps" className="text-left text-[#EBE9C6] text-base hover:text-[color:var(--accent)]" onClick={closeMenu}>Аппартаменты</Link>
               </div>

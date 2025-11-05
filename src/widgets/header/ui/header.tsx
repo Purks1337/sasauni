@@ -43,7 +43,7 @@ export function Header({ bookingPhone = 'tel:+79089086755' }: HeaderProps) {
                 Финский зал
               </Link>
               <Link href="/rooms/fin-small" className="text-[#EBE9C6] text-sm font-system hover:text-[color:var(--accent)] transition-colors">
-                Малый финский зал
+                Зал «Оазис»
               </Link>
             </div>
             <Logo className="w-48 h-auto" />
