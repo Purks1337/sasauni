@@ -64,7 +64,7 @@ export const roomsBySlug: Record<RoomSlug, RoomInfo> = {
     address: 'Екатеринбург, Готвальда 12а',
     capacity: 8, // max capacity from info.md
     phone: 'tel:+79089086755',
-    featureIds: ['turkeySauna', 'uziSpa', 'hydroMassage', 'bucket', 'relaxZone', 'billiard', 'tv', 'wifi', 'karaoke', 'massageApparatus', 'massage'],
+    featureIds: ['turkeySauna', 'finnishSauna', 'uziSpa', 'hydroMassage', 'bucket', 'relaxZone', 'billiard', 'tv', 'wifi', 'karaoke', 'massageApparatus', 'massage'],
     imagePaths: turkeyImages,
   },
   'apps': {
