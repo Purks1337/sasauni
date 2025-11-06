@@ -1,20 +1,79 @@
 "use client";
 import Image from 'next/image';
 import { FeaturePill } from '@/shared/ui/feature-pill';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, PanInfo } from 'framer-motion';
 import type { RoomInfo } from '@/entities/room';
 import { featuresById } from '@/entities/feature';
+import { useState, useRef } from 'react';
 
 interface RoomViewProps {
   room: RoomInfo;
   slug: string;
 }
 
+const swipeConfidenceThreshold = 5000; // Adjusted for a good balance
+const swipePower = (offset: number, velocity: number) => {
+  return Math.abs(offset) * velocity;
+};
+
 /**
  * RoomView
  * Component for displaying room information (title, description, features, etc.)
  */
 export function RoomView({ room, slug }: RoomViewProps) {
+  const { imagePaths: images } = room;
+  const [[page, direction], setPage] = useState([0, 0]);
+  const lastWheelTime = useRef(0);
+
+  const imageIndex = (page % images.length + images.length) % images.length;
+
+  const paginate = (newDirection: number) => {
+    setPage([page + newDirection, newDirection]);
+  };
+
+  const handleDragEnd = (e: MouseEvent | TouchEvent | PointerEvent, { offset, velocity }: PanInfo) => {
+    const swipe = swipePower(offset.x, velocity.x);
+
+    if (swipe < -swipeConfidenceThreshold) {
+      paginate(1);
+    } else if (swipe > swipeConfidenceThreshold) {
+      paginate(-1);
+    }
+  };
+
+  const handleWheel = (e: React.WheelEvent) => {
+    // Primarily for horizontal scroll on trackpads
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && Math.abs(e.deltaX) > 1) {
+      e.preventDefault();
+      const now = Date.now();
+      if (now - lastWheelTime.current < 400) return; // Throttle wheel events
+
+      if (e.deltaX > 1) {
+        paginate(1);
+      } else if (e.deltaX < -1) {
+        paginate(-1);
+      }
+      lastWheelTime.current = now;
+    }
+  };
+
+  const variants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? '100%' : '-100%',
+      opacity: 0,
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? '100%' : '-100%',
+      opacity: 0,
+    }),
+  };
+
   return (
     <div className="max-w-7xl mx-auto w-full flex items-start mt-auto">
       <div className="w-full max-w-2xl">
@@ -62,6 +121,76 @@ export function RoomView({ room, slug }: RoomViewProps) {
                 {room.description}
               </p>
             </motion.div>
+
+            {/* Gallery */}
+            {images && images.length > 0 && (
+              <motion.div variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}>
+                <div 
+                  className="relative aspect-video w-full overflow-hidden rounded-xl flex items-center justify-center"
+                  onWheel={handleWheel}
+                >
+                  <AnimatePresence initial={false} custom={direction}>
+                    <motion.div
+                      key={page}
+                      className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing"
+                      custom={direction}
+                      variants={variants}
+                      initial="enter"
+                      animate="center"
+                      exit="exit"
+                      transition={{
+                        x: { type: "spring", stiffness: 300, damping: 30 },
+                        opacity: { duration: 0.2 }
+                      }}
+                      drag="x"
+                      dragConstraints={{ left: 0, right: 0 }}
+                      dragElastic={1}
+                      onDragEnd={handleDragEnd}
+                      style={{ touchAction: 'pan-y' }}
+                    >
+                      <Image
+                        src={images[imageIndex]}
+                        alt={`Фото зала ${room.title} #${imageIndex + 1}`}
+                        fill
+                        sizes="(max-width: 640px) 100vw, 672px"
+                        quality={80}
+                        className="object-cover pointer-events-none"
+                        draggable="false"
+                      />
+                    </motion.div>
+                  </AnimatePresence>
+                  
+                  {images.length > 1 && (
+                    <>
+                      {/* THIS IS THE FIX: pointer-events-none on container, pointer-events-auto on buttons */}
+                      <div className="absolute inset-0 z-10 flex items-center justify-between p-2 pointer-events-none">
+                        <button
+                          onClick={() => paginate(-1)}
+                          className="size-10 sm:size-12 rounded-full bg-black/40 text-white/80 hover:bg-black/60 hover:text-white transition-all backdrop-blur-sm flex items-center justify-center active:scale-95 pointer-events-auto"
+                          aria-label="Предыдущее фото"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" className="size-5 sm:size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                          </svg>
+                        </button>
+                        <button
+                          onClick={() => paginate(1)}
+                          className="size-10 sm:size-12 rounded-full bg-black/40 text-white/80 hover:bg-black/60 hover:text-white transition-all backdrop-blur-sm flex items-center justify-center active:scale-95 pointer-events-auto"
+                          aria-label="Следующее фото"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" className="size-5 sm:size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                          </svg>
+                        </button>
+                      </div>
+                      <div className="absolute z-10 bottom-2 right-2 rounded-full bg-black/50 px-3 py-1 text-xs text-white/90 backdrop-blur-sm">
+                        {imageIndex + 1} / {images.length}
+                      </div>
+                    </>
+                  )}
+                </div>
+              </motion.div>
+            )}
 
             {/* Features */}
             <motion.div variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }} className="space-y-3">

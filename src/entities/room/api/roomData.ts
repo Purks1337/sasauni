@@ -16,9 +16,30 @@ const finImages: string[] = [
 ];
 
 const finSmallImages: string[] = [
-  '/images/fin-small/DSC03884.webp',
-  '/images/fin-small/DSC03943.webp',
-  '/images/fin-small/DSC03972.webp',
+  '/images/fin-small/1.webp',
+  '/images/fin-small/7.webp',
+  '/images/fin-small/8.webp',
+  '/images/fin-small/10.webp',
+  '/images/fin-small/14.webp',
+  '/images/fin-small/16.webp',
+  '/images/fin-small/17.webp',
+  '/images/fin-small/18.webp',
+  '/images/fin-small/20.webp',
+  '/images/fin-small/22.webp',
+  '/images/fin-small/25.webp',
+  '/images/fin-small/30.webp',
+  '/images/fin-small/32.webp',
+  '/images/fin-small/33.webp',
+  '/images/fin-small/35.webp',
+  '/images/fin-small/37.webp',
+  '/images/fin-small/39.webp',
+  '/images/fin-small/40.webp',
+  '/images/fin-small/47.webp',
+  '/images/fin-small/49.webp',
+  '/images/fin-small/55.webp',
+  '/images/fin-small/56.webp',
+  '/images/fin-small/57.webp',
+  '/images/fin-small/68.webp',
 ];
 
 const turkeyImages: string[] = [
