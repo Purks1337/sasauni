@@ -27,7 +27,7 @@ export function RoomDisplay({ room, slug }: RoomDisplayProps) {
             animate={{ opacity: 1 }} 
             exit={{ opacity: 0 }} 
             transition={{ duration: 0.3 }} 
-            className="absolute inset-0"
+            className="absolute inset-0 lg:blur-xl"
           >
             <RoomSlideshow images={room.imagePaths} intervalMs={SLIDESHOW_INTERVAL_MS} />
           </motion.div>
