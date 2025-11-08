@@ -8,9 +8,9 @@ interface FeaturePillProps {
 
 export function FeaturePill({ icon: IconComponent, label, className }: FeaturePillProps) {
   return (
-    <div className={`flex items-center gap-1 border rounded-lg px-3 py-2 border-[#EBE9C6] ${className ?? ''}`}>
-      <IconComponent width={18} height={18} className="text-[#D9D5A6] flex-shrink-0" />
-      <span className="text-[#D9D5A6] text-sm sm:text-base ml-1">{label}</span>
+    <div className={`flex items-center gap-2 border rounded-lg px-3 py-2 bg-[#31312C] border-[#201F1A] ${className ?? ''}`}>
+      <IconComponent width={24} height={24} className="text-[#D9D5A6] flex-shrink-0" />
+      <span className="text-[#D9D5A6] text-base">{label}</span>
     </div>
   );
 }
