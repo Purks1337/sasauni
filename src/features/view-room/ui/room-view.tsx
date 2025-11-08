@@ -205,9 +205,6 @@ export function RoomView({ room, slug }: RoomViewProps) {
                             </svg>
                           </button>
                         </div>
-                        <div className="absolute z-10 bottom-2 right-2 rounded-full bg-black/50 px-3 py-1 text-xs text-white/90 backdrop-blur-sm">
-                          {imageIndex + 1} / {images.length}
-                        </div>
                       </>
                     )}
                   </div>

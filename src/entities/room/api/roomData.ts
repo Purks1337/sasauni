@@ -51,6 +51,17 @@ const turkeyImages: string[] = [
   '/images/turkey/DSC03328.webp',
   '/images/turkey/DSC03352.webp',
   '/images/turkey/DSC03373.webp',
+  '/images/turkey/turk-1.webp',
+  '/images/turkey/turk-2.webp',
+  '/images/turkey/turk-3.webp',
+  '/images/turkey/turk-4.webp',
+  '/images/turkey/turk-5.webp',
+  '/images/turkey/turk-6.webp',
+  '/images/turkey/turk-7.webp',
+  '/images/turkey/turk-8.webp',
+  '/images/turkey/turk-9.webp',
+  '/images/turkey/turk-10.webp',
+  '/images/turkey/turk-11.webp',
 ];
 
 const appsImages: string[] = [
@@ -59,6 +70,10 @@ const appsImages: string[] = [
   '/images/apps/DSC03510.webp',
   '/images/apps/DSC03522.webp',
   '/images/apps/DSC03552.webp',
+  '/images/apps/apps-1.webp',
+  '/images/apps/apps-2.webp',
+  '/images/apps/apps-3.webp',
+  '/images/apps/apps-4.webp',
 ];
 
 const commonData = {
