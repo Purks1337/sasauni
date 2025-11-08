@@ -26,9 +26,9 @@ const PhoneIcon = (props: SVGProps<SVGSVGElement>) => (
 
 // --- Yandex Map Component ---
 const YandexMap = () => (
-  <div className="aspect-video w-full rounded-xl overflow-hidden relative bg-[#1A1A1A]">
+  <div className="aspect-video w-full rounded-xl overflow-hidden relative bg-[#1A1A1A] invert hue-rotate-180">
     <iframe
-      src="https://yandex.ru/map-widget/v1/?um=constructor%3A7c0a68c951fefc429aad64e044daf8463ba15f4dd89626c2768301938452440b&amp;source=constructor"
+      src="https://yandex.ru/map-widget/v1/?um=constructor%3A7c0a68c951fefc429aad64e044daf8463ba15f4dd89626c2768301938452440b&source=constructor"
       className="w-full h-full border-0"
       loading="lazy"
       title="Яндекс Карта с расположением сауны"
