@@ -171,7 +171,7 @@ export function RoomView({ room, slug }: RoomViewProps) {
               <p className="px-2 sm:px-0 text-xl font-medium text-[#F7F3C4]">Фотографии зала</p>
               {images && images.length > 0 && (
                 <div className="sticky top-28">
-                  <div className="relative aspect-video w-full overflow-hidden rounded-xl flex items-center justify-center">
+                  <div className="relative aspect-video w-full overflow-hidden rounded-xl flex items-center justify-center bg-[#1A1A1A]">
                     <AnimatePresence initial={false} custom={direction}>
                       <motion.div
                         key={page}
@@ -216,7 +216,7 @@ export function RoomView({ room, slug }: RoomViewProps) {
                           key={imgSrc}
                           onClick={() => goToPage(index)}
                           aria-label={`Переключить на фото ${index + 1}`}
-                          className={`relative aspect-square w-16 h-16 rounded-lg overflow-hidden transition-all duration-200 focus:outline-none flex-shrink-0 ${
+                          className={`relative aspect-square w-16 h-16 rounded-lg overflow-hidden transition-all duration-200 focus:outline-none flex-shrink-0 bg-[#1A1A1A] ${
                             imageIndex === index
                               ? 'opacity-100'
                               : 'opacity-60 hover:opacity-100'
