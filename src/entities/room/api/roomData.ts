@@ -12,9 +12,6 @@ const finImages: string[] = [
   '/images/fin/DSC03757.webp',
   '/images/fin/DSC03760.webp',
   '/images/fin/DSC03763.webp',
-];
-
-const finSmallImages: string[] = [
   '/images/fin-small/1.webp',
   '/images/fin-small/7.webp',
   '/images/fin-small/8.webp',
@@ -24,6 +21,12 @@ const finSmallImages: string[] = [
   '/images/fin-small/17.webp',
   '/images/fin-small/18.webp',
   '/images/fin-small/20.webp',
+  '/images/fin-small/55.webp',
+  '/images/fin-small/57.webp',
+];
+
+const finSmallImages: string[] = [
+
   '/images/fin-small/22.webp',
   '/images/fin-small/25.webp',
   '/images/fin-small/30.webp',
@@ -35,9 +38,7 @@ const finSmallImages: string[] = [
   '/images/fin-small/40.webp',
   '/images/fin-small/47.webp',
   '/images/fin-small/49.webp',
-  '/images/fin-small/55.webp',
   '/images/fin-small/56.webp',
-  '/images/fin-small/57.webp',
   '/images/fin-small/68.webp',
 ];
 
@@ -73,8 +74,8 @@ export const roomsBySlug: Record<RoomSlug, RoomInfo> = {
     capacity: 8,
     price: '1800-2500₽/час',
     steamType: 'Финская',
-    capacityText: '6 чел. (макс. 8 чел., доплата 200₽/час за чел. свыше 6)',
-    featureIds: ['finnishSauna', 'pool', 'karaoke', 'tv', 'waterfall', 'bucket', 'relaxZone', 'billiard', 'wifi'],
+    capacityText: '10 человек (макс. 20 человек, доплата 600₽/час за человека свыше 6)',
+    featureIds: ['finnishSauna', 'pool', 'karaoke', 'tv', 'waterfall', 'bucket', 'relaxZone', 'billiard'],
     imagePaths: finImages,
   },
   'fin-small': {
@@ -85,8 +86,8 @@ export const roomsBySlug: Record<RoomSlug, RoomInfo> = {
     capacity: 10,
     price: '2500₽/час',
     steamType: 'Финская',
-    capacityText: '6 чел. (макс. 10 чел., доплата 300₽/час за чел. свыше 6)',
-    featureIds: ['finnishSauna', 'pool', 'tv', 'karaoke', 'massage', 'bucket', 'relaxZone', 'wifi', 'massageApparatus'],
+    capacityText: '6 человек (макс. 10 человек, доплата 300₽/час за человека свыше 6)',
+    featureIds: ['finnishSauna', 'pool', 'tv', 'karaoke', 'massage', 'bucket', 'relaxZone', 'massageApparatus'],
     imagePaths: finSmallImages,
   },
   'turkey': {
@@ -97,7 +98,7 @@ export const roomsBySlug: Record<RoomSlug, RoomInfo> = {
     capacity: 8,
     price: '1800-2000₽/час',
     steamType: 'Турецкая (Хаммам), Финская',
-    capacityText: '6 чел. (макс. 8 чел., доплата 300₽/час за чел. свыше 6)',
+    capacityText: '10 человек (макс. 20 человек, доплата 300₽/час за человека свыше 6)',
     featureIds: ['finnishSauna', 'tv', 'karaoke', 'massage', 'massageApparatus', 'wifi', 'turkeySauna', 'uziSpa', 'hydroMassage', 'bucket', 'relaxZone', 'billiard'],
     imagePaths: turkeyImages,
   },
@@ -109,8 +110,8 @@ export const roomsBySlug: Record<RoomSlug, RoomInfo> = {
     capacity: 2,
     price: '800-1000₽/час',
     steamType: 'Финская',
-    capacityText: '2 чел. (макс. 2 чел.)',
-    featureIds: ['finnishSauna', 'tv', 'karaoke'],
+    capacityText: '2 человека',
+    featureIds: ['finnishSauna', 'tv', 'karaoke', `privateSetting` ],
     imagePaths: appsImages,
   },
 };

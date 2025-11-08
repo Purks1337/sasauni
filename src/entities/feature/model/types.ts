@@ -15,7 +15,8 @@ export type FeatureId =
   | 'bucket'
   | 'relaxZone'
   | 'hydroMassage'
-  | 'turkeySauna';
+  | 'turkeySauna'
+  | 'privateSetting';
 
 export interface FeatureSpec {
   label: string;
