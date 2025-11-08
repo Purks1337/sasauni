@@ -32,7 +32,7 @@ export function Header({ bookingPhone = 'tel:+79089086755' }: HeaderProps) {
               </a>
             </div>
             <div className="min-[1140px]:hidden">
-              <Logo className="w-40 h-auto" />
+              <Logo href="/" className="w-40 h-auto" />
             </div>
           </div>
 
@@ -46,7 +46,7 @@ export function Header({ bookingPhone = 'tel:+79089086755' }: HeaderProps) {
                 Зал «Оазис»
               </Link>
             </div>
-            <Logo className="w-48 h-auto" />
+            <Logo href="/" className="w-48 h-auto" />
             <div className="flex items-center gap-x-6">
               <Link href="/rooms/turkey" className="text-[#EBE9C6] text-sm font-system hover:text-[color:var(--accent)] transition-colors">
                 Турецкий зал

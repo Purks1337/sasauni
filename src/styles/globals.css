@@ -6,6 +6,10 @@
   --accent: #EBE047;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-alegreya-sans);
   background-color: #02040D;

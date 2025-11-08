@@ -2,11 +2,11 @@ import type { RoomInfo, RoomSlug } from '../model/types';
 
 // Room-specific image sets
 const finImages: string[] = [
+  '/images/fin/DSC03739.webp',
   '/images/fin/DSC03663.webp',
   '/images/fin/DSC03715.webp',
   '/images/fin/DSC03729.webp',
   '/images/fin/DSC03731.webp',
-  '/images/fin/DSC03739.webp',
   '/images/fin/DSC03748.webp',
   '/images/fin/DSC03751.webp',
   '/images/fin/DSC03757.webp',
@@ -27,12 +27,12 @@ const finImages: string[] = [
 
 const finSmallImages: string[] = [
 
+  '/images/fin-small/35.webp',
   '/images/fin-small/22.webp',
   '/images/fin-small/25.webp',
   '/images/fin-small/30.webp',
   '/images/fin-small/32.webp',
   '/images/fin-small/33.webp',
-  '/images/fin-small/35.webp',
   '/images/fin-small/37.webp',
   '/images/fin-small/39.webp',
   '/images/fin-small/40.webp',
@@ -43,17 +43,17 @@ const finSmallImages: string[] = [
 ];
 
 const turkeyImages: string[] = [
+  '/images/turkey/DSC03366.webp',
   '/images/turkey/DSC03328.webp',
   '/images/turkey/DSC03352.webp',
-  '/images/turkey/DSC03366.webp',
   '/images/turkey/DSC03373.webp',
 ];
 
 const appsImages: string[] = [
+  '/images/apps/DSC03537.webp',
   '/images/apps/DSC03490.webp',
   '/images/apps/DSC03510.webp',
   '/images/apps/DSC03522.webp',
-  '/images/apps/DSC03537.webp',
   '/images/apps/DSC03552.webp',
 ];
 

@@ -35,7 +35,7 @@ export function RoomDisplay({ room, slug }: RoomDisplayProps) {
       </div>
 
       {/* Foreground Content Layer */}
-      <div className="relative z-10 flex flex-col min-h-screen">
+      <div className="relative z-10 flex flex-col">
         <Header bookingPhone={room.phone} />
         
         <main className="w-full max-w-7xl mx-auto flex-grow flex flex-col px-2 sm:px-6 lg:px-8 pb-16 pt-24">
