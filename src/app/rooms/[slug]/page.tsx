@@ -28,7 +28,6 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
 export default async function RoomPage({ params }: PageParams) {
   const { slug } = await params;
   const room = roomsBySlug[slug];
-  return <RoomDisplay slug={slug} room={room} />;
+  // FIX: Added key={slug} to force re-mounting the component on navigation
+  return <RoomDisplay key={slug} slug={slug} room={room} />;
 }
-
-
