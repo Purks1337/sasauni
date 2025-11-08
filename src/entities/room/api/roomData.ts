@@ -3,6 +3,15 @@ import type { RoomInfo, RoomSlug } from '../model/types';
 // Room-specific image sets
 const finImages: string[] = [
   '/images/fin/DSC03739.webp',
+  '/images/fin/1.webp',
+  '/images/fin/7.webp',
+  '/images/fin/8.webp',
+  '/images/fin/10.webp',
+  '/images/fin/14.webp',
+  '/images/fin/16.webp',
+  '/images/fin/17.webp',
+  '/images/fin/18.webp',
+  '/images/fin/20.webp',
   '/images/fin/DSC03663.webp',
   '/images/fin/DSC03715.webp',
   '/images/fin/DSC03729.webp',
@@ -12,17 +21,7 @@ const finImages: string[] = [
   '/images/fin/DSC03757.webp',
   '/images/fin/DSC03760.webp',
   '/images/fin/DSC03763.webp',
-  '/images/fin-small/1.webp',
-  '/images/fin-small/7.webp',
-  '/images/fin-small/8.webp',
-  '/images/fin-small/10.webp',
-  '/images/fin-small/14.webp',
-  '/images/fin-small/16.webp',
-  '/images/fin-small/17.webp',
-  '/images/fin-small/18.webp',
-  '/images/fin-small/20.webp',
-  '/images/fin-small/55.webp',
-  '/images/fin-small/57.webp',
+
 ];
 
 const finSmallImages: string[] = [
@@ -38,8 +37,13 @@ const finSmallImages: string[] = [
   '/images/fin-small/40.webp',
   '/images/fin-small/47.webp',
   '/images/fin-small/49.webp',
+  '/images/fin-small/55.webp',
   '/images/fin-small/56.webp',
-  '/images/fin-small/68.webp',
+  '/images/fin-small/57.webp',
+  '/images/fin-small/58.webp',
+  '/images/fin-small/DSC03884.webp',
+  '/images/fin-small/DSC03943.webp',
+  '/images/fin-small/DSC03972.webp',
 ];
 
 const turkeyImages: string[] = [
