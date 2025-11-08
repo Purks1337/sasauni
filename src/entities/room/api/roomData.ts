@@ -69,12 +69,12 @@ export const roomsBySlug: Record<RoomSlug, RoomInfo> = {
     ...commonData,
     title: 'Финский зал',
     description:
-      'Большой финский зал — это идеальное пространство для отдыха с друзьями, где жаркая парная сочетается с азартной игрой в бильярд. Окунитесь в прохладный бассейн с водопадом и подсветкой или соберитесь у настоящего дровяного камина для душевных разговоров. Возможность принести свою еду и напитки делает этот зал превосходным выбором для организации любого праздника.',
+      'Финский зал — это идеальное пространство для отдыха с друзьями, где жаркая парная сочетается с азартной игрой в бильярд. Окунитесь в прохладный бассейн с водопадом и подсветкой или соберитесь у настоящего дровяного камина для душевных разговоров. Возможность принести свою еду и напитки делает этот зал превосходным выбором для организации любого праздника.',
     capacity: 8,
     price: '1800-2500₽/час',
     steamType: 'Финская',
     capacityText: '6 чел. (макс. 8 чел., доплата 200₽/час за чел. свыше 6)',
-    featureIds: ['finnishSauna', 'pool', 'waterfall', 'bucket', 'relaxZone', 'billiard', 'karaoke', 'tv', 'wifi'],
+    featureIds: ['finnishSauna', 'pool', 'karaoke', 'tv', 'waterfall', 'bucket', 'relaxZone', 'billiard', 'wifi'],
     imagePaths: finImages,
   },
   'fin-small': {
@@ -86,7 +86,7 @@ export const roomsBySlug: Record<RoomSlug, RoomInfo> = {
     price: '2500₽/час',
     steamType: 'Финская',
     capacityText: '6 чел. (макс. 10 чел., доплата 300₽/час за чел. свыше 6)',
-    featureIds: ['finnishSauna', 'pool', 'bucket', 'relaxZone', 'tv', 'wifi', 'karaoke', 'massageApparatus', 'massage'],
+    featureIds: ['finnishSauna', 'pool', 'tv', 'karaoke', 'massage', 'bucket', 'relaxZone', 'wifi', 'massageApparatus'],
     imagePaths: finSmallImages,
   },
   'turkey': {
@@ -96,9 +96,9 @@ export const roomsBySlug: Record<RoomSlug, RoomInfo> = {
       'Погрузитесь в атмосферу восточной неги в нашем Турецком зале, созданном для мягкого семейного отдыха и полного релакса. Вместо традиционной парной вас ждет влажный и комфортный хаммам, а после него — расслабляющее джакузи с гидромассажем на четверых. Разнообразить досуг помогут партия в бильярд, настольные игры или кальян, превращая ваш визит в незабываемое событие.',
     capacity: 8,
     price: '1800-2000₽/час',
-    steamType: 'Турецкая (Хаммам)',
+    steamType: 'Турецкая (Хаммам), Финская',
     capacityText: '6 чел. (макс. 8 чел., доплата 300₽/час за чел. свыше 6)',
-    featureIds: ['turkeySauna', 'finnishSauna', 'uziSpa', 'hydroMassage', 'bucket', 'relaxZone', 'billiard', 'tv', 'wifi', 'karaoke', 'massageApparatus', 'massage'],
+    featureIds: ['finnishSauna', 'tv', 'karaoke', 'massage', 'massageApparatus', 'wifi', 'turkeySauna', 'uziSpa', 'hydroMassage', 'bucket', 'relaxZone', 'billiard'],
     imagePaths: turkeyImages,
   },
   'apps': {

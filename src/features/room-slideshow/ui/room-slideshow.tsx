@@ -62,9 +62,9 @@ export function RoomSlideshow({ images, intervalMs = 5000 }: RoomSlideshowProps)
             </div>
           );
         })}
-        {/* Overlays */}
-        <div className="absolute inset-0 bg-black/40 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none" />
+        {/* Overlays as per Figma specs */}
+        <div className="absolute inset-0 bg-black/60 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent pointer-events-none" />
       </div>
     </div>
   );

@@ -84,7 +84,7 @@ export function RoomView({ room, slug }: RoomViewProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }}
         exit={{ opacity: 0, y: -20, transition: { duration: 0.3, ease: "easeIn" } }}
-        className="bg-black/40 backdrop-blur-lg border border-[#2E2D1F] rounded-2xl p-4 sm:p-6 lg:p-8"
+        className="px-6"
       >
         <div className="flex w-full flex-col lg:flex-row lg:gap-x-12 xl:gap-x-16">
           {/* Left Column */}

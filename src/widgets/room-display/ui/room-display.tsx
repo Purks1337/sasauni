@@ -17,9 +17,9 @@ interface RoomDisplayProps {
  */
 export function RoomDisplay({ room, slug }: RoomDisplayProps) {
   return (
-    <div className="relative min-h-screen bg-black">
+    <div className="relative bg-black">
       {/* Background Slideshow Layer */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute top-0 left-0 right-0 h-[774px] z-0">
         <AnimatePresence mode="wait">
           <motion.div 
             key={`bg-${slug}`} 
@@ -38,7 +38,7 @@ export function RoomDisplay({ room, slug }: RoomDisplayProps) {
       <div className="relative z-10 flex flex-col min-h-screen">
         <Header bookingPhone={room.phone} />
         
-        <main className="w-full flex-grow flex flex-col px-2 sm:px-6 lg:px-8 pb-16 pt-8 sm:pt-16">
+        <main className="w-full max-w-7xl mx-auto flex-grow flex flex-col px-2 sm:px-6 lg:px-8 pb-16 pt-24">
           <RoomView room={room} slug={slug} />
         </main>
       </div>
