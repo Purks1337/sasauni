@@ -18,7 +18,7 @@ export function MobileMenu() {
         aria-label="Открыть меню"
         aria-expanded={isMenuOpen}
         onClick={openMenu}
-        className="sm:hidden rounded-lg w-10 h-10 bg-[#EBE9C6] flex flex-col items-center justify-center active:scale-[0.98] transition-transform"
+        className="min-[1140px]:hidden rounded-lg w-10 h-10 bg-[#EBE9C6] flex flex-col items-center justify-center active:scale-[0.98] transition-transform"
       >
         <span className="block w-6 h-[2px] bg-black" />
         <span className="block w-6 h-[2px] bg-black mt-1.5" />
@@ -30,9 +30,9 @@ export function MobileMenu() {
           <button
             aria-label="Закрыть меню"
             onClick={closeMenu}
-            className="sm:hidden fixed inset-0 z-[100] bg-black/60"
+            className="min-[1140px]:hidden fixed inset-0 z-[100] bg-black/60"
           />
-          <div className="sm:hidden fixed right-0 top-0 z-[110] h-full w-80 max-w-[80%] bg-[#11100A] border-l border-[#2E2D1F] p-5 flex flex-col gap-6">
+          <div className="min-[1140px]:hidden fixed right-0 top-0 z-[110] h-full w-80 max-w-[80%] bg-[#11100A] border-l border-[#2E2D1F] p-5 flex flex-col gap-6">
             <div className="flex items-center justify-between">
               <span className="text-[#F8F8EC] text-lg">Меню</span>
               <button
@@ -86,4 +86,3 @@ export function MobileMenu() {
     </>
   );
 }
-

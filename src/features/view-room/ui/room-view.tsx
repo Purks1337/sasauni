@@ -55,6 +55,17 @@ export function RoomView({ room, slug }: RoomViewProps) {
   const nextIndex = ((page + 1) % images.length + images.length) % images.length;
 
   const paginate = (newDirection: number) => setPage([page + newDirection, newDirection]);
+
+  const goToPage = (newPageIndex: number) => {
+    const currentImageIndex = (page % images.length + images.length) % images.length;
+    if (newPageIndex === currentImageIndex) return;
+    const pageDiff = newPageIndex - currentImageIndex;
+    const potentialPage1 = page + pageDiff;
+    const potentialPage2 = pageDiff > 0 ? potentialPage1 - images.length : potentialPage1 + images.length;
+    const newPage = Math.abs(page - potentialPage1) < Math.abs(page - potentialPage2) ? potentialPage1 : potentialPage2;
+    setPage([newPage, newPage > page ? 1 : -1]);
+  };
+  
   const handleDragEnd = (e: MouseEvent | TouchEvent | PointerEvent, { offset, velocity }: PanInfo) => {
     const swipe = swipePower(offset.x, velocity.x);
     if (swipe < -swipeConfidenceThreshold) paginate(1);
@@ -84,11 +95,10 @@ export function RoomView({ room, slug }: RoomViewProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }}
         exit={{ opacity: 0, y: -20, transition: { duration: 0.3, ease: "easeIn" } }}
-        className="px-6"
       >
-        <div className="flex w-full flex-col lg:flex-row lg:gap-x-12 xl:gap-x-16">
+        <div className="flex w-full flex-col min-[1140px]:flex-row min-[1140px]:gap-x-12 xl:gap-x-16">
           {/* Left Column */}
-          <div className="lg:w-[40%] xl:w-[426px] flex-shrink-0 space-y-8">
+          <div className="px-2 sm:px-0 min-[1140px]:w-[40%] xl:w-[426px] flex-shrink-0 space-y-8">
             <div className="space-y-3">
               <h1 className="text-4xl sm:text-5xl lg:text-[64px] font-medium text-[#EBE9C6] leading-none">
                 {room.title}
@@ -133,23 +143,23 @@ export function RoomView({ room, slug }: RoomViewProps) {
               </div>
             </div>
             
-            <div className="space-y-2">
-              <a href={room.phone} className="w-full inline-flex items-center justify-center bg-[#EBE9C6] hover:bg-[color:var(--accent)] text-[#131207] rounded-lg px-6 py-3 text-xl font-medium transition-colors">
+            <div className="flex flex-col sm:flex-row gap-2">
+              <a href={room.phone} className="flex-1 whitespace-nowrap inline-flex items-center justify-center bg-[#EBE9C6] hover:bg-[color:var(--accent)] text-[#131207] rounded-lg px-3 sm:px-6 py-3 text-xl font-medium transition-colors">
                 Забронировать Зал
               </a>
-              <a href={room.mapLink} target="_blank" rel="noopener noreferrer" className="w-full inline-flex items-center justify-center border border-[#EBE9C6]/60 hover:border-[color:var(--accent)] text-[#D9D5A6] hover:text-[color:var(--accent)] rounded-lg px-6 py-3 text-xl font-normal transition-colors">
+              <a href={room.mapLink} target="_blank" rel="noopener noreferrer" className="flex-1 whitespace-nowrap inline-flex items-center justify-center border border-[#EBE9C6]/60 hover:border-[color:var(--accent)] text-[#D9D5A6] hover:text-[color:var(--accent)] rounded-lg px-3 sm:px-6 py-3 text-xl font-normal transition-colors">
                 Проложить маршрут
               </a>
             </div>
           </div>
 
           {/* Right Column */}
-          <div className="mt-8 lg:mt-0 lg:flex-1 space-y-8">
+          <div className="mt-8 min-[1140px]:mt-0 min-[1140px]:flex-1 space-y-8 min-w-0">
             <div className="space-y-3">
-              <p className="text-xl font-medium text-[#F7F3C4]">Фотографии зала</p>
+              <p className="px-2 sm:px-0 text-xl font-medium text-[#F7F3C4]">Фотографии зала</p>
               {images && images.length > 0 && (
                 <div className="sticky top-28">
-                  <div className="relative aspect-video w-full overflow-hidden rounded-xl flex items-center justify-center" onWheel={handleWheel}>
+                  <div className="relative aspect-video w-full overflow-hidden rounded-xl flex items-center justify-center">
                     <AnimatePresence initial={false} custom={direction}>
                       <motion.div
                         key={page}
@@ -189,6 +199,32 @@ export function RoomView({ room, slug }: RoomViewProps) {
                       </>
                     )}
                   </div>
+                  
+                  {images.length > 1 && (
+                    <div className="mt-4 flex gap-2 overflow-x-auto hide-scrollbar px-2 sm:px-0">
+                      {images.map((imgSrc, index) => (
+                        <button
+                          key={imgSrc}
+                          onClick={() => goToPage(index)}
+                          aria-label={`Переключить на фото ${index + 1}`}
+                          className={`relative aspect-square w-16 h-16 rounded-lg overflow-hidden transition-all duration-200 focus:outline-none flex-shrink-0 ${
+                            imageIndex === index
+                              ? 'opacity-100'
+                              : 'opacity-60 hover:opacity-100'
+                          }`}
+                        >
+                          <Image
+                            src={imgSrc}
+                            alt={`Миниатюра фото ${index + 1}`}
+                            fill
+                            sizes="64px"
+                            className="object-cover"
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
                   {images.length > 2 && (
                      <div style={{ position: 'absolute', width: 1, height: 1, top: -9999, left: -9999, pointerEvents: 'none', opacity: 0, visibility: 'hidden' }}>
                         <Image src={images[nextIndex]} alt="" width={1} height={1} priority={false} />
@@ -199,14 +235,14 @@ export function RoomView({ room, slug }: RoomViewProps) {
               )}
             </div>
             
-            <div className="space-y-3">
+            <div className="px-2 sm:px-0 space-y-3">
               <p className="text-xl font-medium text-[#F7F3C4]">Описание:</p>
               <p className="text-lg text-[#CECCB4] leading-relaxed">
                 {room.description}
               </p>
             </div>
 
-            <div className="space-y-3">
+            <div className="px-2 sm:px-0 space-y-3">
               <p className="text-xl font-medium text-[#F7F3C4]">Как добраться:</p>
               <YandexMap />
             </div>
