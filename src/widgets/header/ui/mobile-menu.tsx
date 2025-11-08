@@ -47,8 +47,9 @@ export function MobileMenu() {
             </div>
 
             <div className="space-y-4">
-              <p className="text-[#D9D5A6] text-sm">Залы</p>
+              <p className="text-[#D9D5A6] text-sm">Навигация</p>
               <div className="flex flex-col gap-3">
+                <Link href="/" className="text-left text-[#EBE9C6] text-base hover:text-[color:var(--accent)]" onClick={closeMenu}>Главная</Link>
                 <Link href="/rooms/fin" className="text-left text-[#EBE9C6] text-base hover:text-[color:var(--accent)]" onClick={closeMenu}>Финский зал</Link>
                 <Link href="/rooms/fin-small" className="text-left text-[#EBE9C6] text-base hover:text-[color:var(--accent)]" onClick={closeMenu}>Зал «Оазис»</Link>
                 <Link href="/rooms/turkey" className="text-left text-[#EBE9C6] text-base hover:text-[color:var(--accent)]" onClick={closeMenu}>Турецкий зал</Link>
