@@ -12,20 +12,9 @@ const finImages: string[] = [
   '/images/fin/17.webp',
   '/images/fin/18.webp',
   '/images/fin/20.webp',
-  '/images/fin/DSC03663.webp',
-  '/images/fin/DSC03715.webp',
-  '/images/fin/DSC03729.webp',
-  '/images/fin/DSC03731.webp',
-  '/images/fin/DSC03748.webp',
-  '/images/fin/DSC03751.webp',
-  '/images/fin/DSC03757.webp',
-  '/images/fin/DSC03760.webp',
-  '/images/fin/DSC03763.webp',
-
 ];
 
 const finSmallImages: string[] = [
-
   '/images/fin-small/35.webp',
   '/images/fin-small/22.webp',
   '/images/fin-small/25.webp',
@@ -65,11 +54,6 @@ const turkeyImages: string[] = [
 ];
 
 const appsImages: string[] = [
-  '/images/apps/DSC03537.webp',
-  '/images/apps/DSC03490.webp',
-  '/images/apps/DSC03510.webp',
-  '/images/apps/DSC03522.webp',
-  '/images/apps/DSC03552.webp',
   '/images/apps/apps-1.webp',
   '/images/apps/apps-2.webp',
   '/images/apps/apps-3.webp',
