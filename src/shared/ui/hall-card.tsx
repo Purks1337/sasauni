@@ -75,10 +75,10 @@ export function HallCard({ room, slug }: HallCardProps) {
         
         {/* Layer 4: hall-heading-wrapper - Title and price (z-index above filters, below header) */}
         <div className="relative flex flex-col self-stretch" style={{ zIndex: 10, position: 'relative' }}>
-          <h3 className="text-[36px] font-medium text-[#F7F3C4] leading-[1.2] tracking-[0.006em]">
+          <h3 className="text-2xl sm:text-3xl lg:text-[36px] font-medium text-[#F7F3C4] leading-[1.2] tracking-[0.006em]">
             {room.title}
           </h3>
-          <p className="text-[24px] font-normal text-[#F7F3C4] leading-[1.2] tracking-[0.006em] mt-0">
+          <p className="text-lg sm:text-xl lg:text-[24px] font-normal text-[#F7F3C4] leading-[1.2] tracking-[0.006em] mt-0">
             {room.price}
           </p>
         </div>

@@ -106,20 +106,20 @@ export default function HomePage() {
             <Header />
 
             {/* Main Content - Hero Section */}
-            <div className="flex flex-col items-center justify-center text-center flex-grow" style={{ paddingTop: '256px', paddingBottom: '232px', paddingLeft: '64px', paddingRight: '64px', gap: '48px' }}>
+            <div className="flex flex-col items-center justify-center text-center flex-grow px-4 sm:px-8 lg:px-16" style={{ paddingTop: '120px', paddingBottom: '80px', gap: '32px' }}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="flex flex-col items-center"
+                className="flex flex-col items-center w-full"
                 style={{ gap: '10px' }}
               >
                 {/* Heading Container */}
-                <div className="flex flex-col items-center" style={{ gap: '24px' }}>
-                  <h1 className="text-[32px] font-light text-[#626155] leading-[1.2] tracking-[0.006em]">
+                <div className="flex flex-col items-center w-full" style={{ gap: '16px' }}>
+                  <h1 className="text-2xl sm:text-3xl lg:text-[32px] font-light text-[#626155] leading-[1.2] tracking-[0.006em]">
                     Оздоровительный центр
                   </h1>
-                  <div className="relative" style={{ width: '500px', height: '46px', maxWidth: '100%' }}>
+                  <div className="relative w-full lg:w-[500px] aspect-[500/46]">
                     <Image
                       src="/images/1001.svg"
                       alt="1000 и 1 ночь"
@@ -128,11 +128,10 @@ export default function HomePage() {
                       priority
                     />
                   </div>
-                  <p className="w-[408px] max-w-full text-[20px] font-normal text-[#59584D] leading-[1.5] tracking-[0.006em]">
-                  Погрузитесь в атмосферу спокойствия и роскоши в банном комплексе «1000 и 1 ночь».
+                  <p className="w-full max-w-[408px] text-base sm:text-lg lg:text-[20px] font-normal text-[#59584D] leading-[1.5] tracking-[0.006em] px-4">
+                    Погрузитесь в атмосферу спокойствия и роскоши в банном комплексе «1000 и 1 ночь».
                   </p>
                 </div>
-                {/* Description */}
               </motion.div>
 
               {/* Buttons Wrapper */}
@@ -140,25 +139,24 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
-                className="flex flex-row items-center justify-center flex-wrap"
-                style={{ gap: '10px' }}
+                className="flex flex-col sm:flex-row items-center justify-center w-full gap-2 sm:gap-[10px] px-4"
               >
                 <a 
                   href="tel:+79089086755" 
-                  className="inline-flex items-center justify-center bg-[#323B12] text-[#D9D5A6] rounded-lg px-6 py-[18px] text-[20px] font-medium leading-[1.2] transition-colors" 
+                  className="w-full sm:w-auto inline-flex items-center justify-center bg-[#323B12] text-[#D9D5A6] rounded-lg px-4 sm:px-6 py-3 sm:py-[18px] text-base sm:text-lg lg:text-[20px] font-medium leading-[1.2] transition-colors" 
                   style={{ gap: '8px' }}
                 >
-                  <LocalPhoneIcon className="w-6 h-6 flex-shrink-0" style={{ fill: '#FFFFFF' }} />
+                  <LocalPhoneIcon className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" style={{ fill: '#FFFFFF' }} />
                   <span>+7 908 908 67 55</span>
                 </a>
                 <a 
                   href="#map"
                   onClick={handleScrollToMap}
-                  className="inline-flex items-center justify-center bg-[#E1B45D] text-[#323B12] rounded-lg px-6 py-[18px] text-[20px] font-medium leading-[1.2] transition-colors cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center bg-[#E1B45D] text-[#323B12] rounded-lg px-4 sm:px-6 py-3 sm:py-[18px] text-base sm:text-lg lg:text-[20px] font-medium leading-[1.2] transition-colors cursor-pointer"
                   style={{ gap: '8px' }}
                 >
-                  <LocalLocationIcon className="w-6 h-6 flex-shrink-0" style={{ fill: '#FFFFFF' }} />
-                  <span>Екатеринбург, ул. Готвальда, 12а</span>
+                  <LocalLocationIcon className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" style={{ fill: '#FFFFFF' }} />
+                  <span className="text-center">Екатеринбург, ул. Готвальда, 12а</span>
                 </a>
               </motion.div>
             </div>
@@ -168,16 +166,14 @@ export default function HomePage() {
         {/* Halls Container Section */}
         <section id="rooms" className="relative bg-[#F8F3D7] w-full" style={{ zIndex: 1 }}>
           <div 
-            className="flex flex-col rounded-xl w-full"
+            className="flex flex-col rounded-xl w-full px-4 sm:px-8 lg:px-16 py-8 sm:py-12"
             style={{ 
               gap: '8px', 
-              padding: '0px 64px', 
-              minHeight: '553px', 
-              height: '553px' 
+              minHeight: 'auto'
             }}
           >
             {/* First row: fin, oasis, turkey (3 cards equal width) */}
-            <div className="flex flex-row flex-1 w-full" style={{ gap: '8px' }}>
+            <div className="flex flex-col sm:flex-row flex-1 w-full" style={{ gap: '8px', minHeight: '273px' }}>
               {(['fin', 'fin-small', 'turkey'] as RoomSlug[]).map((slug) => (
                 <div key={slug} className="flex-1 min-w-0">
                   <HallCard slug={slug} room={roomsBySlug[slug]} />
@@ -185,7 +181,7 @@ export default function HomePage() {
               ))}
             </div>
             {/* Second row: apparts and new (50/50 width) */}
-            <div className="flex flex-row flex-1 w-full" style={{ gap: '8px' }}>
+            <div className="flex flex-col sm:flex-row flex-1 w-full" style={{ gap: '8px', minHeight: '273px' }}>
               <div className="flex-1 min-w-0">
                 <HallCard slug="apps" room={roomsBySlug['apps']} />
               </div>

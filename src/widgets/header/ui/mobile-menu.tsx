@@ -18,7 +18,7 @@ export function MobileMenu() {
         aria-label="Открыть меню"
         aria-expanded={isMenuOpen}
         onClick={openMenu}
-        className="min-[1140px]:hidden rounded-lg w-10 h-10 bg-[#e1b45d] flex flex-col items-center justify-center active:scale-[0.98] transition-transform"
+        className="lg:hidden rounded-lg w-9 h-9 sm:w-10 sm:h-10 bg-[#e1b45d] flex flex-col items-center justify-center active:scale-[0.98] transition-transform"
       >
         <span className="block w-6 h-[2px] bg-[#1A1E08]" />
         <span className="block w-6 h-[2px] bg-[#1A1E08] mt-1.5" />
@@ -30,9 +30,9 @@ export function MobileMenu() {
           <button
             aria-label="Закрыть меню"
             onClick={closeMenu}
-            className="min-[1140px]:hidden fixed inset-0 z-[100] bg-[#1A1E08]/40"
+            className="lg:hidden fixed inset-0 z-[100] bg-[#1A1E08]/40"
           />
-          <div className="min-[1140px]:hidden fixed right-0 top-0 z-[110] h-full w-80 max-w-[80%] bg-[#F8F3D7] border-l border-[#E2D2A9] p-5 flex flex-col gap-6 shadow-lg">
+          <div className="lg:hidden fixed right-0 top-0 z-[110] h-full w-80 max-w-[85%] sm:max-w-[80%] bg-[#F8F3D7] border-l border-[#E2D2A9] p-4 sm:p-5 flex flex-col gap-4 sm:gap-6 shadow-lg">
             <div className="flex items-center justify-between">
               <span className="text-[#1A1E08] text-lg">Меню</span>
               <button

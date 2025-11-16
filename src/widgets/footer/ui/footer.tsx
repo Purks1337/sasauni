@@ -19,15 +19,15 @@ export function Footer() {
 
   return (
     <footer className="bg-[#F8F3D7] text-[#323b12] border-t border-[#E2D2A9]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="py-12 md:py-16 grid grid-cols-1 md:grid-cols-12 gap-8">
+      <div className="w-full px-4 sm:px-8 lg:px-16">
+        <div className="py-8 sm:py-12 md:py-16 grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8">
           {/* Logo and description */}
           <div className="md:col-span-12 lg:col-span-4 text-center lg:text-left">
             <div className="inline-block">
-              <Logo href="/" className="h-auto w-48" />
+              <Logo href="/" className="h-auto w-32 sm:w-40 lg:w-48" />
             </div>
-            <p className="mt-4 text-sm max-w-xs mx-auto lg:mx-0">
-              Оздоровительный центр в Екатеринбурге. Отдых для души и тела в атмосфере восточной сказки.
+            <p className="mt-3 sm:mt-4 text-xs sm:text-sm max-w-xs mx-auto lg:mx-0">
+              Оздоровительный центр в Екатеринбурге. Отдых для души и тела в атмосфере восточной сказки.
             </p>
           </div>
 
@@ -85,7 +85,7 @@ export function Footer() {
         </div>
         
         {/* Bottom bar */}
-        <div className="border-t border-[#E2D2A9] py-6 text-center text-xs text-[#323b12]">
+        <div className="border-t border-[#E2D2A9] py-4 sm:py-6 text-center text-xs text-[#323b12]">
           <p>&copy; {currentYear} 1001 ночь. Все права защищены.</p>
         </div>
       </div>

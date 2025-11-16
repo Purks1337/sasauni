@@ -110,43 +110,43 @@ export function RoomView({ room, slug }: RoomViewProps) {
       >
         <div className="flex w-full flex-col min-[1140px]:flex-row min-[1140px]:gap-x-12 xl:gap-x-16">
           {/* Left Column */}
-          <div className="min-[1140px]:w-[40%] xl:w-[426px] flex-shrink-0 space-y-8">
+          <div className="min-[1140px]:w-[40%] xl:w-[426px] flex-shrink-0 space-y-6 sm:space-y-8">
             <div className="space-y-3">
-              <h1 className="text-4xl sm:text-5xl lg:text-[64px] font-medium text-[#1A1E08] leading-none">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[64px] font-medium text-[#1A1E08] leading-tight">
                 {room.title}
               </h1>
               <div className="space-y-1">
-                <p className="text-xl font-medium text-[#1A1E08]">О зале:</p>
-                <p className="text-2xl sm:text-3xl lg:text-4xl text-[#323b12]">{room.price}</p>
+                <p className="text-lg sm:text-xl font-medium text-[#1A1E08]">О зале:</p>
+                <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#323b12]">{room.price}</p>
               </div>
             </div>
             
-            <div className="space-y-4 text-base text-[#323b12]">
+            <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-[#323b12]">
               <div className="flex items-start gap-2">
-                <SteamTypeIcon className="mt-1 flex-shrink-0 text-[#1A1E08]" fill="#1A1E08" />
+                <SteamTypeIcon className="mt-0.5 sm:mt-1 flex-shrink-0 text-[#1A1E08] w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="#1A1E08" />
                 <span>Тип парной: {room.steamType}</span>
               </div>
               <div className="flex items-start gap-2">
-                <WorkHoursIcon className="mt-1 flex-shrink-0 text-[#1A1E08]" fill="#1A1E08" />
+                <WorkHoursIcon className="mt-0.5 sm:mt-1 flex-shrink-0 text-[#1A1E08] w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="#1A1E08" />
                 <span>График работы: {room.workHours}</span>
               </div>
               <div className="flex items-start gap-2">
-                <LocationIcon className="mt-1 flex-shrink-0 text-[#1A1E08]" />
+                <LocationIcon className="mt-0.5 sm:mt-1 flex-shrink-0 text-[#1A1E08] w-4 h-4 sm:w-[18px] sm:h-[18px]" />
                 <span>{room.fullAddress}</span>
               </div>
               <div className="flex items-start gap-2">
-                <UserIcon className="mt-1 flex-shrink-0 text-[#1A1E08]" />
+                <UserIcon className="mt-0.5 sm:mt-1 flex-shrink-0 text-[#1A1E08] w-4 h-4 sm:w-[18px] sm:h-[18px]" />
                 <span>Вместимость: {room.capacityText}</span>
               </div>
               <div className="flex items-start gap-2">
-                <PhoneIcon className="mt-1 flex-shrink-0 text-[#1A1E08]" />
-                <a href={room.phone} className="hover:text-[color:var(--accent)] transition-colors">{formattedPhone}</a>
+                <PhoneIcon className="mt-0.5 sm:mt-1 flex-shrink-0 text-[#1A1E08] w-4 h-4 sm:w-[18px] sm:h-[18px]" />
+                <a href={room.phone} className="hover:text-[color:var(--accent)] transition-colors break-all">{formattedPhone}</a>
               </div>
             </div>
 
             <div className="space-y-3">
-              <p className="text-xl font-medium text-[#1A1E08]">Особенности:</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <p className="text-lg sm:text-xl font-medium text-[#1A1E08]">Особенности:</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
                 {room.featureIds.map((fid) => {
                   const spec = featuresById[fid];
                   if (!spec) return null;
@@ -155,22 +155,22 @@ export function RoomView({ room, slug }: RoomViewProps) {
               </div>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-2">
-              <a href={room.phone} className="flex-1 whitespace-nowrap inline-flex items-center justify-center bg-[#e1b45d] hover:bg-[#d4a04a] text-[#1a1e08] rounded-lg px-3 sm:px-6 py-3 text-xl font-medium transition-colors">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+              <a href={room.phone} className="flex-1 whitespace-nowrap inline-flex items-center justify-center bg-[#e1b45d] hover:bg-[#d4a04a] text-[#1a1e08] rounded-lg px-4 sm:px-6 py-2.5 sm:py-3 text-base sm:text-lg lg:text-xl font-medium transition-colors">
                 Забронировать Зал
               </a>
-              <a href={room.mapLink} target="_blank" rel="noopener noreferrer" className="flex-1 whitespace-nowrap inline-flex items-center justify-center border border-[#E2D2A9] hover:border-[color:var(--accent)] text-[#1A1E08] hover:text-[color:var(--accent)] rounded-lg px-3 sm:px-6 py-3 text-xl font-normal transition-colors">
+              <a href={room.mapLink} target="_blank" rel="noopener noreferrer" className="flex-1 whitespace-nowrap inline-flex items-center justify-center border border-[#E2D2A9] hover:border-[color:var(--accent)] text-[#1A1E08] hover:text-[color:var(--accent)] rounded-lg px-4 sm:px-6 py-2.5 sm:py-3 text-base sm:text-lg lg:text-xl font-normal transition-colors">
                 Проложить маршрут
               </a>
             </div>
           </div>
 
           {/* Right Column */}
-          <div className="mt-8 min-[1140px]:mt-0 min-[1140px]:flex-1 space-y-8 min-w-0">
+          <div className="mt-6 sm:mt-8 min-[1140px]:mt-0 min-[1140px]:flex-1 space-y-6 sm:space-y-8 min-w-0">
             <div className="space-y-3">
-              <p className="px-2 sm:px-0 text-xl font-medium text-[#1A1E08]">Фотографии зала</p>
+              <p className="text-lg sm:text-xl font-medium text-[#1A1E08]">Фотографии зала</p>
               {images && images.length > 0 ? (
-                    <div className="sticky top-28">
+                    <div className="sticky top-20 sm:top-24 lg:top-28">
                   <div className="relative aspect-video w-full overflow-hidden rounded-xl flex items-center justify-center bg-[#E2D2A9]">
                     <AnimatePresence initial={false} custom={direction}>
                       <motion.div
@@ -266,15 +266,15 @@ export function RoomView({ room, slug }: RoomViewProps) {
               )}
             </div>
             
-            <div className="px-2 sm:px-0 space-y-3">
-              <p className="text-xl font-medium text-[#1A1E08]">Описание:</p>
-              <p className="text-lg text-[#323b12] leading-relaxed">
+            <div className="space-y-3">
+              <p className="text-lg sm:text-xl font-medium text-[#1A1E08]">Описание:</p>
+              <p className="text-base sm:text-lg text-[#323b12] leading-relaxed">
                 {room.description}
               </p>
             </div>
 
-            <div id="map" className="px-2 sm:px-0 space-y-3">
-              <p className="text-xl font-medium text-[#1A1E08]">Как добраться:</p>
+            <div id="map" className="space-y-3">
+              <p className="text-lg sm:text-xl font-medium text-[#1A1E08]">Как добраться:</p>
               <YandexMap />
             </div>
           </div>
