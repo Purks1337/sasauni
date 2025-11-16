@@ -130,7 +130,7 @@ export default function HomePage() {
               >
                 <a 
                   href="tel:+79089086755" 
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#323B12] text-[#D9D5A6] rounded-lg px-4 sm:px-6 py-3 sm:py-[18px] text-base sm:text-lg lg:text-[20px] font-medium leading-[1.2] transition-colors"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#323B12] text-[#D9D5A6] rounded-lg px-4 sm:px-6 py-3 sm:py-[18px] text-base sm:text-lg lg:text-[20px] font-medium leading-[1.2] transition-all duration-300 ease-out hover:bg-[#3d4720] hover:shadow-lg hover:scale-105 active:scale-100"
                 >
                   <LocalPhoneIcon className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" style={{ fill: '#FFFFFF' }} />
                   <span>+7 908 908 67 55</span>
@@ -138,7 +138,7 @@ export default function HomePage() {
                 <a 
                   href="#map"
                   onClick={handleScrollToMap}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#E1B45D] text-[#323B12] rounded-lg px-4 sm:px-6 py-3 sm:py-[18px] text-base sm:text-lg lg:text-[20px] font-medium leading-[1.2] transition-colors cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#E1B45D] text-[#323B12] rounded-lg px-4 sm:px-6 py-3 sm:py-[18px] text-base sm:text-lg lg:text-[20px] font-medium leading-[1.2] transition-all duration-300 ease-out hover:bg-[#d4a04a] hover:shadow-lg hover:scale-105 active:scale-100 cursor-pointer"
                 >
                   <LocalLocationIcon className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" style={{ fill: '#FFFFFF' }} />
                   <span className="text-center">Екатеринбург, ул. Готвальда, 12а</span>

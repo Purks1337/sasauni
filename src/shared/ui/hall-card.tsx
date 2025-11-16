@@ -24,32 +24,32 @@ export function HallCard({ room, slug }: HallCardProps) {
   return (
     <Link 
       href={`/rooms/${slug}`} 
-      className="group relative block overflow-hidden rounded-lg text-[#F7F3C4] no-underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#F8F3D7] focus:ring-[color:var(--accent)] h-full w-full"
+      className="group relative block overflow-hidden rounded-lg text-[#F7F3C4] no-underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#F8F3D7] focus:ring-[color:var(--accent)] h-full w-full transition-transform duration-300 ease-out hover:scale-[1.02] active:scale-[0.98]"
     >
       <div className="relative w-full h-full flex flex-col justify-end p-6 min-h-[200px] sm:min-h-[250px] lg:min-h-[273px] gap-6">
         {hasCoverImage ? (
           <>
             {/* Layer 1: hall-cover-{name} - Cover image (always 100% for X and Y) */}
-            <div className="absolute inset-0 z-[1]">
+            <div className="absolute inset-0 z-[1] overflow-hidden">
               <Image
                 src={room.coverImage!}
                 alt={`Обложка зала ${room.title}`}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover"
+                className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                 priority={false}
               />
             </div>
             
             {/* Layer 2: hall-filter-{name}-gradient - Gradient overlay (always 100% for X and Y) */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-[2]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-[2] transition-opacity duration-500 ease-out group-hover:opacity-75" />
             
             {/* Layer 3: hall-filter-{name}-color - Color overlay (always 100% for X and Y) */}
-            <div className="absolute inset-0 bg-[rgba(245,240,153,0.5)] z-[3]" />
+            <div className="absolute inset-0 bg-[rgba(245,240,153,0.5)] z-[3] transition-opacity duration-500 ease-out group-hover:opacity-70" />
           </>
         ) : (
           /* For coming-soon halls without cover image - only solid color #807D52 */
-          <div className="absolute inset-0 bg-[#807D52] z-[1]" />
+          <div className="absolute inset-0 bg-[#807D52] z-[1] transition-opacity duration-300 ease-out group-hover:opacity-90" />
         )}
         
         {/* Layer 4: hall-heading-wrapper - Title and price (z-index above filters, below header) */}
