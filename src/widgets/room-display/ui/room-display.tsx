@@ -1,10 +1,7 @@
 "use client";
-import { RoomSlideshow } from '@/features/room-slideshow';
 import { RoomView } from '@/features/view-room';
 import { Header } from '@/widgets/header';
-import { AnimatePresence, motion } from 'framer-motion';
 import type { RoomInfo } from '@/entities/room';
-import { SLIDESHOW_INTERVAL_MS } from '@/shared/config/ui';
 
 interface RoomDisplayProps {
   room: RoomInfo;
@@ -17,28 +14,12 @@ interface RoomDisplayProps {
  */
 export function RoomDisplay({ room, slug }: RoomDisplayProps) {
   return (
-    <div className="relative bg-black">
-      {/* Background Slideshow Layer */}
-      <div className="absolute top-0 left-0 right-0 h-[774px] z-0">
-        <AnimatePresence mode="wait">
-          <motion.div 
-            key={`bg-${slug}`} 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            exit={{ opacity: 0 }} 
-            transition={{ duration: 0.3 }} 
-            className="absolute inset-0 lg:blur-xl"
-          >
-            <RoomSlideshow images={room.imagePaths} intervalMs={SLIDESHOW_INTERVAL_MS} />
-          </motion.div>
-        </AnimatePresence>
-      </div>
-
+    <div className="relative bg-[#F8F3D7]">
       {/* Foreground Content Layer */}
       <div className="relative z-10 flex flex-col">
         <Header bookingPhone={room.phone} />
         
-        <main className="w-full max-w-7xl mx-auto flex-grow flex flex-col px-2 sm:px-6 lg:px-8 pb-16 pt-24">
+        <main className="w-full flex-grow flex flex-col pb-16 pt-38" style={{ paddingLeft: '64px', paddingRight: '64px' }}>
           <RoomView room={room} slug={slug} />
         </main>
       </div>

@@ -14,54 +14,51 @@ interface HeaderProps {
  */
 export function Header({ bookingPhone = 'tel:+79089086755' }: HeaderProps) {
   return (
-    <div className="sticky top-0 z-30 py-3 sm:py-6">
-      <div className="max-w-7xl mx-auto w-full px-2 sm:px-6 lg:px-8">
+    <div className="fixed top-0 left-0 right-0" style={{ padding: '24px 64px', zIndex: 2147483647 }}>
+      <div className="w-full">
         {/* Header Bar */}
-        <div className="bg-black/30 backdrop-blur-md border border-[#2E2D1F] rounded-xl px-4 sm:px-[24px] py-3 flex items-center justify-between gap-4 relative z-20">
-          {/* Left side: Social/phone icons on desktop, logo on mobile */}
-          <div className="flex items-center gap-3">
-            <div className="hidden min-[1140px]:flex items-center gap-3">
-              <a href="https://wa.me/79089086755" aria-label="WhatsApp" className="inline-flex p-2 rounded-lg hover:bg-[#EBE9C6]/10 transition-colors">
-                <WhatsappIcon className="w-5 h-5 text-[#EBE9C6]" />
-              </a>
-              <a href="https://t.me/79089086755" aria-label="Telegram" className="inline-flex p-2 rounded-lg hover:bg-[#EBE9C6]/10 transition-colors">
-                <TelegramIcon className="w-5 h-5 text-[#EBE9C6]" />
-              </a>
-              <a href="tel:+79089086755" aria-label="Телефон" className="inline-flex p-2 rounded-lg hover:bg-[#EBE9C6]/10 transition-colors">
-                <PhoneIcon className="w-5 h-5 text-[#EBE9C6]" />
-              </a>
-            </div>
-            <div className="min-[1140px]:hidden">
-              <Logo href="/" className="w-40 h-auto" />
-            </div>
+        <div className="bg-[rgba(50,59,18,0.7)] backdrop-blur-[10px] rounded-xl px-6 py-3 flex items-center justify-between relative" style={{ gap: '42px' }}>
+          {/* Logo - always on the left */}
+          <div className="flex items-center flex-shrink-0">
+            <Logo href="/" className="w-40 min-[1140px]:w-48 h-auto" />
           </div>
 
-          {/* Center: Desktop Navigation & Logo */}
-          <div className="hidden min-[1140px]:flex items-center gap-x-10">
-            <div className="flex items-center gap-x-6">
-              <Link href="/rooms/fin" className="text-[#EBE9C6] text-sm font-system hover:text-[color:var(--accent)] transition-colors">
-                Финский зал
-              </Link>
-              <Link href="/rooms/fin-small" className="text-[#EBE9C6] text-sm font-system hover:text-[color:var(--accent)] transition-colors">
-                Зал «Оазис»
-              </Link>
-            </div>
-            <Logo href="/" className="w-48 h-auto" />
-            <div className="flex items-center gap-x-6">
-              <Link href="/rooms/turkey" className="text-[#EBE9C6] text-sm font-system hover:text-[color:var(--accent)] transition-colors">
-                Турецкий зал
-              </Link>
-              <Link href="/rooms/apps" className="text-[#EBE9C6] text-sm font-system hover:text-[color:var(--accent)] transition-colors">
-                Аппартаменты
-              </Link>
-            </div>
+          {/* Navigation - rooms links */}
+          <div className="hidden min-[1140px]:flex items-center flex-shrink-0" style={{ gap: '48px' }}>
+            <Link href="/rooms/fin" className="text-[#F8F3D7] text-[14px] font-normal leading-[1.2] hover:text-[color:var(--accent)] transition-colors">
+              Финский зал
+            </Link>
+            <Link href="/rooms/fin-small" className="text-[#F8F3D7] text-[14px] font-normal leading-[1.2] hover:text-[color:var(--accent)] transition-colors">
+              Зал «Оазис»
+            </Link>
+            <Link href="/rooms/turkey" className="text-[#F8F3D7] text-[14px] font-normal leading-[1.2] hover:text-[color:var(--accent)] transition-colors">
+              Турецкий зал
+            </Link>
+            <Link href="/rooms/apps" className="text-[#F8F3D7] text-[14px] font-normal leading-[1.2] hover:text-[color:var(--accent)] transition-colors">
+              Аппартаменты
+            </Link>
+            <Link href="/rooms/new-hall" className="text-[#F8F3D7] text-[14px] font-normal leading-[1.2] hover:text-[color:var(--accent)] transition-colors">
+              Новый зал
+            </Link>
           </div>
 
-          {/* Right side: Book button on desktop, burger on mobile */}
-          <div className="flex items-center gap-3">
-            <a href={bookingPhone} className="border border-[#EBE9C6]/50 rounded-xl px-6 py-3 text-[#EBE9C6] text-sm font-system hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] transition-colors hidden min-[1140px]:block">
+          {/* Right side: Social icons and Book button */}
+          <div className="hidden min-[1140px]:flex items-center flex-shrink-0" style={{ gap: '48px' }}>
+            <div className="flex items-center" style={{ gap: '24px' }}>
+              <a href="https://wa.me/79089086755" aria-label="WhatsApp" className="inline-flex p-2 rounded-lg hover:bg-[rgba(248,243,215,0.2)] transition-colors">
+                <WhatsappIcon className="w-5 h-5 text-[#F8F3D7]" />
+              </a>
+              <a href="https://t.me/79089086755" aria-label="Telegram" className="inline-flex p-2 rounded-lg hover:bg-[rgba(248,243,215,0.2)] transition-colors">
+                <TelegramIcon className="w-5 h-5 text-[#F8F3D7]" />
+              </a>
+            </div>
+            <a href={bookingPhone} className="bg-[#F8F3D7] text-[#323B12] rounded-xl px-6 py-3 text-[14px] font-medium uppercase tracking-[0.02em] w-[156px] text-center hover:opacity-90 transition-opacity">
               Забронировать
             </a>
+          </div>
+
+          {/* Mobile menu */}
+          <div className="min-[1140px]:hidden flex-shrink-0 ml-auto">
             <MobileMenu />
           </div>
         </div>

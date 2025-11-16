@@ -1,6 +1,6 @@
 import type { FeatureId } from '@/entities/feature';
 
-export type RoomSlug = 'fin' | 'fin-small' | 'turkey' | 'apps';
+export type RoomSlug = 'fin' | 'fin-small' | 'turkey' | 'apps' | 'new-hall';
 
 export interface RoomInfo {
   title: string;
@@ -18,4 +18,7 @@ export interface RoomInfo {
   fullAddress: string; // Detailed address for main content
   capacityText: string; // Detailed capacity info
   mapLink: string; // URL for Yandex Maps
+  coverImage?: string; // Cover image from hall-covers/ folder for main page cards
+  width?: 'normal' | 'wide'; // Card width on main page (for apparts)
+  status?: 'active' | 'coming-soon'; // For "Новый зал"
 }

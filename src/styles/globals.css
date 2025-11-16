@@ -1,9 +1,27 @@
 @import "tailwindcss";
 
+/* Literature Decor font face */
+@font-face {
+  font-family: 'Literature Decor';
+  src: local('Literature Decor'),
+       url('/fonts/Literature-Decor.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Custom CSS variables for theming */
 :root {
   --font-alegreya-sans: 'Alegreya Sans', sans-serif;
-  --accent: #EBE047;
+  --font-literature-decor: 'Literature Decor', serif;
+  --accent: #e1b45d; /* hunyadi-yellow */
+  --accent-hover: #d4a04a; /* hunyadi-yellow darker */
+  --bg-primary: #f8f3d7; /* cornsilk */
+  --bg-secondary: #e2d2a9; /* dutch-white */
+  --text-primary: #1a1e08; /* eerie-black */
+  --text-secondary: #323b12; /* drab-dark-brown */
+  --border: #e2d2a9; /* dutch-white */
+  --border-light: #f8f3d7; /* cornsilk */
 }
 
 html {
@@ -12,8 +30,8 @@ html {
 
 body {
   font-family: var(--font-alegreya-sans);
-  background-color: #02040D;
-  color: #EBE9C6;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 /* Custom utility classes using @utility API for v4 */
@@ -26,16 +44,25 @@ body {
 }
 
 @utility btn-primary {
-  @apply bg-[#EBE9C6] text-[#131207] hover:bg-[#EBE9C6]/90;
+  @apply bg-[#e1b45d] text-[#1a1e08] hover:bg-[#d4a04a] transition-colors;
 }
 
 @utility btn-secondary {
-  @apply bg-black/30 text-[#EBE9C6] border border-[#2E2D1F] hover:bg-[#EBE9C6]/10;
+  @apply bg-[#F8F3D7]/80 text-[#1A1E08] border border-[#E2D2A9] hover:bg-[#F8F3D7]/90 shadow-sm;
 }
 
 /* Custom font classes */
 .font-decorative {
-  font-family: 'Literature Decor', serif;
+  font-family: 'Literature Decor', 'LiteratureDecor', serif !important;
+  font-variant-numeric: lining-nums;
+  font-feature-settings: "liga" on, "kern" on, "lnum" on;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+  vertical-align: baseline;
+  line-height: 1.2;
 }
 
 .font-system {
