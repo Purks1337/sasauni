@@ -14,7 +14,7 @@ interface HeaderProps {
  */
 export function Header({ bookingPhone = 'tel:+79089086755' }: HeaderProps) {
   return (
-    <div className="fixed top-0 left-0 right-0 px-4 sm:px-8 lg:px-16 pt-4 sm:pt-6" style={{ zIndex: 2147483647 }}>
+    <div className="fixed top-0 left-0 right-0 px-4 sm:px-8 lg:px-16 pt-4 sm:pt-6 z-[2147483647]">
       <div className="w-full">
         {/* Header Bar */}
         <div className="bg-[rgba(50,59,18,0.7)] backdrop-blur-[10px] rounded-xl px-3 sm:px-6 py-2 sm:py-3 flex items-center justify-between relative gap-2 sm:gap-4 lg:gap-[42px]">

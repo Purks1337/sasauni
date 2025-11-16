@@ -13,8 +13,8 @@ export function Logo({ href = '/', className }: LogoProps) {
       alt="Логотип 1001 ночь"
       height={44}
       width={200}
-      style={{ width: 'auto', height: '44px' }}
       className={className}
+      style={{ width: 'auto', height: '44px' }}
       priority
       quality={100}
       unoptimized

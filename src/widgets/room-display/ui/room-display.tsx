@@ -19,7 +19,7 @@ export function RoomDisplay({ room, slug }: RoomDisplayProps) {
       <div className="relative z-10 flex flex-col">
         <Header bookingPhone={room.phone} />
         
-        <main className="w-full flex-grow flex flex-col pb-8 sm:pb-12 lg:pb-16 pt-20 sm:pt-24 lg:pt-32 px-4 sm:px-8 lg:px-16">
+        <main className="w-full flex-grow flex flex-col pb-8 sm:pb-12 lg:pb-16 pt-28 sm:pt-24 lg:pt-32 px-4 sm:px-8 lg:px-16">
           <RoomView room={room} slug={slug} />
         </main>
       </div>

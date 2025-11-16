@@ -26,14 +26,11 @@ export function HallCard({ room, slug }: HallCardProps) {
       href={`/rooms/${slug}`} 
       className="group relative block overflow-hidden rounded-lg text-[#F7F3C4] no-underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#F8F3D7] focus:ring-[color:var(--accent)] h-full w-full"
     >
-      <div 
-        className="relative w-full h-full flex flex-col justify-end p-6 min-h-[200px] sm:min-h-[250px] lg:min-h-[273px]"
-        style={{ gap: '24px' }}
-      >
+      <div className="relative w-full h-full flex flex-col justify-end p-6 min-h-[200px] sm:min-h-[250px] lg:min-h-[273px] gap-6">
         {hasCoverImage ? (
           <>
             {/* Layer 1: hall-cover-{name} - Cover image (always 100% for X and Y) */}
-            <div className="absolute inset-0" style={{ zIndex: 1 }}>
+            <div className="absolute inset-0 z-[1]">
               <Image
                 src={room.coverImage!}
                 alt={`Обложка зала ${room.title}`}
@@ -45,36 +42,18 @@ export function HallCard({ room, slug }: HallCardProps) {
             </div>
             
             {/* Layer 2: hall-filter-{name}-gradient - Gradient overlay (always 100% for X and Y) */}
-            <div 
-              className="absolute inset-0"
-              style={{
-                backgroundImage: 'linear-gradient(0deg, rgba(0, 0, 0, 0.8) 25%, rgba(0, 0, 0, 0) 50%)',
-                zIndex: 2,
-              }}
-            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-[2]" />
             
             {/* Layer 3: hall-filter-{name}-color - Color overlay (always 100% for X and Y) */}
-            <div 
-              className="absolute inset-0"
-              style={{
-                backgroundColor: 'rgba(245, 240, 153, 0.5)',
-                zIndex: 3,
-              }}
-            />
+            <div className="absolute inset-0 bg-[rgba(245,240,153,0.5)] z-[3]" />
           </>
         ) : (
           /* For coming-soon halls without cover image - only solid color #807D52 */
-          <div 
-            className="absolute inset-0"
-            style={{
-              backgroundColor: '#807D52',
-              zIndex: 1,
-            }}
-          />
+          <div className="absolute inset-0 bg-[#807D52] z-[1]" />
         )}
         
         {/* Layer 4: hall-heading-wrapper - Title and price (z-index above filters, below header) */}
-        <div className="relative flex flex-col self-stretch" style={{ zIndex: 10, position: 'relative' }}>
+        <div className="relative flex flex-col self-stretch z-10">
           <h3 className="text-2xl sm:text-3xl lg:text-[36px] font-medium text-[#F7F3C4] leading-[1.2] tracking-[0.006em]">
             {room.title}
           </h3>

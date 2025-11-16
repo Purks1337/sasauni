@@ -42,7 +42,7 @@ export default function HomePage() {
         {/* Hero Section */}
         <div className="relative min-h-screen">
           {/* Background Slideshow - always 100% X and Y, always behind Hero */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
+          <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
             <div className="relative w-full h-full">
               {heroSlideshowImages.map((src, index) => {
                 const isActive = index === currentIndex;
@@ -86,36 +86,23 @@ export default function HomePage() {
           </div>
           
           {/* Overlay filters */}
-          <div 
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              backgroundColor: 'rgba(249, 243, 212, 0.8)',
-              zIndex: 1,
-            }}
-          />
-          <div 
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              backgroundImage: 'linear-gradient(180deg, rgba(249, 243, 212, 0) 0%, #F9F3D4 100%)',
-              zIndex: 2,
-            }}
-          />
+          <div className="absolute inset-0 pointer-events-none bg-[rgba(249,243,212,0.8)] z-[1]" />
+          <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-[rgba(249,243,212,0)] to-[#F9F3D4] z-[2]" />
           
           {/* Foreground Content Layer */}
-          <div className="relative flex flex-col min-h-screen" style={{ zIndex: 10 }}>
+          <div className="relative flex flex-col min-h-screen z-10">
             <Header />
 
             {/* Main Content - Hero Section */}
-            <div className="flex flex-col items-center justify-center text-center flex-grow px-4 sm:px-8 lg:px-16" style={{ paddingTop: '120px', paddingBottom: '80px', gap: '32px' }}>
+            <div className="flex flex-col items-center justify-center text-center flex-grow px-4 sm:px-8 lg:px-16 pt-[120px] pb-20 gap-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="flex flex-col items-center w-full"
-                style={{ gap: '10px' }}
+                className="flex flex-col items-center w-full gap-2.5"
               >
                 {/* Heading Container */}
-                <div className="flex flex-col items-center w-full" style={{ gap: '16px' }}>
+                <div className="flex flex-col items-center w-full gap-4">
                   <h1 className="text-2xl sm:text-3xl lg:text-[32px] font-light text-[#626155] leading-[1.2] tracking-[0.006em]">
                     Оздоровительный центр
                   </h1>
@@ -139,12 +126,11 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
-                className="flex flex-col sm:flex-row items-center justify-center w-full gap-2 sm:gap-[10px] px-4"
+                className="flex flex-col sm:flex-row items-center justify-center w-full gap-2 sm:gap-2.5 px-4"
               >
                 <a 
                   href="tel:+79089086755" 
-                  className="w-full sm:w-auto inline-flex items-center justify-center bg-[#323B12] text-[#D9D5A6] rounded-lg px-4 sm:px-6 py-3 sm:py-[18px] text-base sm:text-lg lg:text-[20px] font-medium leading-[1.2] transition-colors" 
-                  style={{ gap: '8px' }}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#323B12] text-[#D9D5A6] rounded-lg px-4 sm:px-6 py-3 sm:py-[18px] text-base sm:text-lg lg:text-[20px] font-medium leading-[1.2] transition-colors"
                 >
                   <LocalPhoneIcon className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" style={{ fill: '#FFFFFF' }} />
                   <span>+7 908 908 67 55</span>
@@ -152,8 +138,7 @@ export default function HomePage() {
                 <a 
                   href="#map"
                   onClick={handleScrollToMap}
-                  className="w-full sm:w-auto inline-flex items-center justify-center bg-[#E1B45D] text-[#323B12] rounded-lg px-4 sm:px-6 py-3 sm:py-[18px] text-base sm:text-lg lg:text-[20px] font-medium leading-[1.2] transition-colors cursor-pointer"
-                  style={{ gap: '8px' }}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#E1B45D] text-[#323B12] rounded-lg px-4 sm:px-6 py-3 sm:py-[18px] text-base sm:text-lg lg:text-[20px] font-medium leading-[1.2] transition-colors cursor-pointer"
                 >
                   <LocalLocationIcon className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" style={{ fill: '#FFFFFF' }} />
                   <span className="text-center">Екатеринбург, ул. Готвальда, 12а</span>
@@ -164,16 +149,10 @@ export default function HomePage() {
         </div>
 
         {/* Halls Container Section */}
-        <section id="rooms" className="relative bg-[#F8F3D7] w-full" style={{ zIndex: 1 }}>
-          <div 
-            className="flex flex-col rounded-xl w-full px-4 sm:px-8 lg:px-16 py-8 sm:py-12"
-            style={{ 
-              gap: '8px', 
-              minHeight: 'auto'
-            }}
-          >
+        <section id="rooms" className="relative bg-[#F8F3D7] w-full z-[1]">
+          <div className="flex flex-col rounded-xl w-full px-4 sm:px-8 lg:px-16 py-8 sm:py-12 gap-2">
             {/* First row: fin, oasis, turkey (3 cards equal width) */}
-            <div className="flex flex-col sm:flex-row flex-1 w-full" style={{ gap: '8px', minHeight: '273px' }}>
+            <div className="flex flex-col sm:flex-row flex-1 w-full gap-2 min-h-[273px]">
               {(['fin', 'fin-small', 'turkey'] as RoomSlug[]).map((slug) => (
                 <div key={slug} className="flex-1 min-w-0">
                   <HallCard slug={slug} room={roomsBySlug[slug]} />
@@ -181,7 +160,7 @@ export default function HomePage() {
               ))}
             </div>
             {/* Second row: apparts and new (50/50 width) */}
-            <div className="flex flex-col sm:flex-row flex-1 w-full" style={{ gap: '8px', minHeight: '273px' }}>
+            <div className="flex flex-col sm:flex-row flex-1 w-full gap-2 min-h-[273px]">
               <div className="flex-1 min-w-0">
                 <HallCard slug="apps" room={roomsBySlug['apps']} />
               </div>

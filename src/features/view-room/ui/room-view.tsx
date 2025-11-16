@@ -110,72 +110,23 @@ export function RoomView({ room, slug }: RoomViewProps) {
       >
         <div className="flex w-full flex-col min-[1140px]:flex-row min-[1140px]:gap-x-12 xl:gap-x-16">
           {/* Left Column */}
-          <div className="min-[1140px]:w-[40%] xl:w-[426px] flex-shrink-0 space-y-6 sm:space-y-8">
-            <div className="space-y-3">
+          <div className="min-[1140px]:w-[40%] xl:w-[426px] flex-shrink-0 space-y-6 sm:space-y-8 flex flex-col order-1 min-[1140px]:order-none">
+            <div className="space-y-3 order-1">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[64px] font-medium text-[#1A1E08] leading-tight">
                 {room.title}
               </h1>
-              <div className="space-y-1">
-                <p className="text-lg sm:text-xl font-medium text-[#1A1E08]">О зале:</p>
-                <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#323b12]">{room.price}</p>
-              </div>
             </div>
             
-            <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-[#323b12]">
-              <div className="flex items-start gap-2">
-                <SteamTypeIcon className="mt-0.5 sm:mt-1 flex-shrink-0 text-[#1A1E08] w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="#1A1E08" />
-                <span>Тип парной: {room.steamType}</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <WorkHoursIcon className="mt-0.5 sm:mt-1 flex-shrink-0 text-[#1A1E08] w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="#1A1E08" />
-                <span>График работы: {room.workHours}</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <LocationIcon className="mt-0.5 sm:mt-1 flex-shrink-0 text-[#1A1E08] w-4 h-4 sm:w-[18px] sm:h-[18px]" />
-                <span>{room.fullAddress}</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <UserIcon className="mt-0.5 sm:mt-1 flex-shrink-0 text-[#1A1E08] w-4 h-4 sm:w-[18px] sm:h-[18px]" />
-                <span>Вместимость: {room.capacityText}</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <PhoneIcon className="mt-0.5 sm:mt-1 flex-shrink-0 text-[#1A1E08] w-4 h-4 sm:w-[18px] sm:h-[18px]" />
-                <a href={room.phone} className="hover:text-[color:var(--accent)] transition-colors break-all">{formattedPhone}</a>
-              </div>
-            </div>
-
-            <div className="space-y-3">
-              <p className="text-lg sm:text-xl font-medium text-[#1A1E08]">Особенности:</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
-                {room.featureIds.map((fid) => {
-                  const spec = featuresById[fid];
-                  if (!spec) return null;
-                  return <FeaturePill key={fid} icon={spec.icon} label={spec.label} />;
-                })}
-              </div>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
-              <a href={room.phone} className="flex-1 whitespace-nowrap inline-flex items-center justify-center bg-[#e1b45d] hover:bg-[#d4a04a] text-[#1a1e08] rounded-lg px-4 sm:px-6 py-2.5 sm:py-3 text-base sm:text-lg lg:text-xl font-medium transition-colors">
-                Забронировать Зал
-              </a>
-              <a href={room.mapLink} target="_blank" rel="noopener noreferrer" className="flex-1 whitespace-nowrap inline-flex items-center justify-center border border-[#E2D2A9] hover:border-[color:var(--accent)] text-[#1A1E08] hover:text-[color:var(--accent)] rounded-lg px-4 sm:px-6 py-2.5 sm:py-3 text-base sm:text-lg lg:text-xl font-normal transition-colors">
-                Проложить маршрут
-              </a>
-            </div>
-          </div>
-
-          {/* Right Column */}
-          <div className="mt-6 sm:mt-8 min-[1140px]:mt-0 min-[1140px]:flex-1 space-y-6 sm:space-y-8 min-w-0">
-            <div className="space-y-3">
+            {/* Gallery on mobile - between title and "О зале" */}
+            <div className="min-[1140px]:hidden order-2 space-y-3">
               <p className="text-lg sm:text-xl font-medium text-[#1A1E08]">Фотографии зала</p>
               {images && images.length > 0 ? (
-                    <div className="sticky top-20 sm:top-24 lg:top-28">
+                <div>
                   <div className="relative aspect-video w-full overflow-hidden rounded-xl flex items-center justify-center bg-[#E2D2A9]">
                     <AnimatePresence initial={false} custom={direction}>
                       <motion.div
                         key={page}
-                        className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing"
+                        className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing touch-pan-y"
                         custom={direction}
                         variants={variants}
                         initial="enter"
@@ -186,21 +137,16 @@ export function RoomView({ room, slug }: RoomViewProps) {
                         dragConstraints={{ left: 0, right: 0 }}
                         dragElastic={1}
                         onDragEnd={handleDragEnd}
-                        style={{ touchAction: 'pan-y' }}
                       >
                         <Image 
                           priority={true} 
                           src={images[imageIndex]} 
                           alt={`Фото зала ${room.title} #${imageIndex + 1}`} 
                           fill 
-                          sizes="(max-width: 1024px) 100vw, 50vw" 
+                          sizes="100vw" 
                           quality={80} 
                           className="object-cover pointer-events-none" 
                           draggable="false"
-                          style={{ 
-                            objectFit: 'cover',
-                            imageOrientation: 'none'
-                          }}
                         />
                       </motion.div>
                     </AnimatePresence>
@@ -248,7 +194,150 @@ export function RoomView({ room, slug }: RoomViewProps) {
                   )}
 
                   {images.length > 2 && (
-                     <div style={{ position: 'absolute', width: 1, height: 1, top: -9999, left: -9999, pointerEvents: 'none', opacity: 0, visibility: 'hidden' }}>
+                    <div className="absolute w-px h-px -top-[9999px] -left-[9999px] pointer-events-none opacity-0 invisible">
+                      <Image src={images[nextIndex]} alt="" width={1} height={1} priority={false} />
+                      <Image src={images[prevIndex]} alt="" width={1} height={1} priority={false} />
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="relative aspect-video w-full overflow-hidden rounded-xl flex items-center justify-center bg-[#E2D2A9] border-2 border-dashed border-[#e1b45d]">
+                  <div className="text-center px-6">
+                    <p className="text-xl font-medium text-[#1A1E08] mb-2">Дорогие гости, этот зал скоро откроется абсолютно новым после капитального ремонта.</p>
+                    <p className="text-lg text-[#323b12]">Забронировать и занять своё время на новогодние праздники вы можете уже сейчас, позвонив нам</p>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="space-y-1 order-3">
+              <p className="text-lg sm:text-xl font-medium text-[#1A1E08]">О зале:</p>
+              <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#323b12]">{room.price}</p>
+            </div>
+            
+            <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-[#323b12] order-4">
+              <div className="flex items-start gap-2">
+                <SteamTypeIcon className="mt-0.5 sm:mt-1 flex-shrink-0 text-[#1A1E08] w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="#1A1E08" />
+                <span>Тип парной: {room.steamType}</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <WorkHoursIcon className="mt-0.5 sm:mt-1 flex-shrink-0 text-[#1A1E08] w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="#1A1E08" />
+                <span>График работы: {room.workHours}</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <LocationIcon className="mt-0.5 sm:mt-1 flex-shrink-0 text-[#1A1E08] w-4 h-4 sm:w-[18px] sm:h-[18px]" />
+                <span>{room.fullAddress}</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <UserIcon className="mt-0.5 sm:mt-1 flex-shrink-0 text-[#1A1E08] w-4 h-4 sm:w-[18px] sm:h-[18px]" />
+                <span>Вместимость: {room.capacityText}</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <PhoneIcon className="mt-0.5 sm:mt-1 flex-shrink-0 text-[#1A1E08] w-4 h-4 sm:w-[18px] sm:h-[18px]" />
+                <a href={room.phone} className="hover:text-[color:var(--accent)] transition-colors break-all">{formattedPhone}</a>
+              </div>
+            </div>
+
+            <div className="space-y-3 order-5">
+              <p className="text-lg sm:text-xl font-medium text-[#1A1E08]">Особенности:</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
+                {room.featureIds.map((fid) => {
+                  const spec = featuresById[fid];
+                  if (!spec) return null;
+                  return <FeaturePill key={fid} icon={spec.icon} label={spec.label} />;
+                })}
+              </div>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 order-6">
+              <a href={room.phone} className="flex-1 whitespace-nowrap inline-flex items-center justify-center bg-[#e1b45d] hover:bg-[#d4a04a] text-[#1a1e08] rounded-lg px-4 sm:px-6 py-2.5 sm:py-3 text-base sm:text-lg lg:text-xl font-medium transition-colors">
+                Забронировать Зал
+              </a>
+              <a href={room.mapLink} target="_blank" rel="noopener noreferrer" className="flex-1 whitespace-nowrap inline-flex items-center justify-center border border-[#E2D2A9] hover:border-[color:var(--accent)] text-[#1A1E08] hover:text-[color:var(--accent)] rounded-lg px-4 sm:px-6 py-2.5 sm:py-3 text-base sm:text-lg lg:text-xl font-normal transition-colors">
+                Проложить маршрут
+              </a>
+            </div>
+          </div>
+
+          {/* Right Column */}
+          <div className="mt-6 sm:mt-8 min-[1140px]:mt-0 min-[1140px]:flex-1 space-y-6 sm:space-y-8 min-w-0 hidden min-[1140px]:block">
+            <div className="space-y-3">
+              <p className="text-lg sm:text-xl font-medium text-[#1A1E08]">Фотографии зала</p>
+              {images && images.length > 0 ? (
+                    <div className="sticky top-20 sm:top-24 lg:top-28">
+                  <div className="relative aspect-video w-full overflow-hidden rounded-xl flex items-center justify-center bg-[#E2D2A9]">
+                    <AnimatePresence initial={false} custom={direction}>
+                      <motion.div
+                        key={page}
+                        className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing touch-pan-y"
+                        custom={direction}
+                        variants={variants}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        transition={{ x: { type: "spring", stiffness: 300, damping: 30 }, opacity: { duration: 0.2 } }}
+                        drag="x"
+                        dragConstraints={{ left: 0, right: 0 }}
+                        dragElastic={1}
+                        onDragEnd={handleDragEnd}
+                      >
+                        <Image 
+                          priority={true} 
+                          src={images[imageIndex]} 
+                          alt={`Фото зала ${room.title} #${imageIndex + 1}`} 
+                          fill 
+                          sizes="(max-width: 1024px) 100vw, 50vw" 
+                          quality={80} 
+                          className="object-cover pointer-events-none" 
+                          draggable="false"
+                        />
+                      </motion.div>
+                    </AnimatePresence>
+                    {images.length > 1 && (
+                      <>
+                        <div className="absolute inset-0 z-10 flex items-center justify-between p-2 pointer-events-none">
+                          <button onClick={() => paginate(-1)} className="size-10 sm:size-12 rounded-full bg-[#1A1E08]/40 text-[#F8F3D7]/80 hover:bg-[#1A1E08]/60 hover:text-[#F8F3D7] transition-all backdrop-blur-sm flex items-center justify-center active:scale-95 pointer-events-auto" aria-label="Предыдущее фото">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="size-5 sm:size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                            </svg>
+                          </button>
+                          <button onClick={() => paginate(1)} className="size-10 sm:size-12 rounded-full bg-[#1A1E08]/40 text-[#F8F3D7]/80 hover:bg-[#1A1E08]/60 hover:text-[#F8F3D7] transition-all backdrop-blur-sm flex items-center justify-center active:scale-95 pointer-events-auto" aria-label="Следующее фото">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="size-5 sm:size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                            </svg>
+                          </button>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                  
+                  {images.length > 1 && (
+                    <div className="mt-4 flex gap-2 overflow-x-auto hide-scrollbar px-2 sm:px-0">
+                      {images.map((imgSrc, index) => (
+                        <button
+                          key={imgSrc}
+                          onClick={() => goToPage(index)}
+                          aria-label={`Переключить на фото ${index + 1}`}
+                          className={`relative aspect-square w-16 h-16 rounded-lg overflow-hidden transition-all duration-200 focus:outline-none flex-shrink-0 bg-[#E2D2A9] ${
+                            imageIndex === index
+                              ? 'opacity-100 ring-2 ring-[color:var(--accent)]'
+                              : 'opacity-60 hover:opacity-100'
+                          }`}
+                        >
+                          <Image
+                            src={imgSrc}
+                            alt={`Миниатюра фото ${index + 1}`}
+                            fill
+                            sizes="64px"
+                            className="object-cover"
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
+                  {images.length > 2 && (
+                     <div className="absolute w-px h-px -top-[9999px] -left-[9999px] pointer-events-none opacity-0 invisible">
                         <Image src={images[nextIndex]} alt="" width={1} height={1} priority={false} />
                         <Image src={images[prevIndex]} alt="" width={1} height={1} priority={false} />
                      </div>
