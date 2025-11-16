@@ -26,63 +26,61 @@ export function MobileMenu() {
       </button>
 
       {mounted && isMenuOpen && createPortal(
-        <>
-          <button
-            aria-label="Закрыть меню"
-            onClick={closeMenu}
-            className="lg:hidden fixed inset-0 z-[100] bg-[#1A1E08]/40"
-          />
-          <div className="lg:hidden fixed right-0 top-0 z-[110] h-full w-80 max-w-[85%] sm:max-w-[80%] bg-[#F8F3D7] border-l border-[#E2D2A9] p-4 sm:p-5 flex flex-col gap-4 sm:gap-6 shadow-lg">
-            <div className="flex items-center justify-between">
-              <span className="text-[#1A1E08] text-lg">Меню</span>
-              <button
-                type="button"
-                aria-label="Закрыть меню"
-                onClick={closeMenu}
-                className="rounded-lg p-2 text-[#1A1E08] hover:bg-[#E2D2A9]/50"
-              >
-                <span className="block w-5 h-[2px] bg-[#1A1E08] rotate-45 translate-y-[2px]" />
-                <span className="block w-5 h-[2px] bg-[#1A1E08] -rotate-45 -translate-y-[2px]" />
-              </button>
-            </div>
+        <div className="lg:hidden fixed inset-0 z-[110] bg-[rgba(50,59,18,0.7)] backdrop-blur-[10px] flex items-center justify-center p-4">
+          <div className="flex flex-col items-center justify-center gap-8 sm:gap-10 w-full max-w-md">
+            {/* Close button */}
+            <button
+              type="button"
+              aria-label="Закрыть меню"
+              onClick={closeMenu}
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 rounded-lg p-2 text-[#F8F3D7] hover:bg-[rgba(248,243,215,0.2)] transition-colors"
+            >
+              <span className="block w-5 h-[2px] bg-[#F8F3D7] rotate-45 translate-y-[2px]" />
+              <span className="block w-5 h-[2px] bg-[#F8F3D7] -rotate-45 -translate-y-[2px]" />
+            </button>
 
-            <div className="space-y-4">
-              <p className="text-[#323b12] text-sm">Навигация</p>
-              <div className="flex flex-col gap-3">
-                <Link href="/" className="text-left text-[#1A1E08] text-base hover:text-[color:var(--accent)]" onClick={closeMenu}>Главная</Link>
-                <Link href="/rooms/fin" className="text-left text-[#1A1E08] text-base hover:text-[color:var(--accent)]" onClick={closeMenu}>Финский зал</Link>
-                <Link href="/rooms/fin-small" className="text-left text-[#1A1E08] text-base hover:text-[color:var(--accent)]" onClick={closeMenu}>Зал «Оазис»</Link>
-                <Link href="/rooms/turkey" className="text-left text-[#1A1E08] text-base hover:text-[color:var(--accent)]" onClick={closeMenu}>Турецкий зал</Link>
-                <Link href="/rooms/apps" className="text-left text-[#1A1E08] text-base hover:text-[color:var(--accent)]" onClick={closeMenu}>Аппартаменты</Link>
-                <Link href="/rooms/new-hall" className="text-left text-[#1A1E08] text-base hover:text-[color:var(--accent)]" onClick={closeMenu}>Новый зал</Link>
+            {/* Navigation */}
+            <div className="flex flex-col items-center gap-4 sm:gap-5">
+              <p className="text-[#F8F3D7] text-sm font-medium uppercase tracking-wider">Навигация</p>
+              <div className="flex flex-col items-center gap-3 sm:gap-4">
+                <Link href="/" className="text-[#F8F3D7] text-lg sm:text-xl hover:text-[color:var(--accent)] transition-colors" onClick={closeMenu}>Главная</Link>
+                <Link href="/rooms/fin" className="text-[#F8F3D7] text-lg sm:text-xl hover:text-[color:var(--accent)] transition-colors" onClick={closeMenu}>Финский зал</Link>
+                <Link href="/rooms/fin-small" className="text-[#F8F3D7] text-lg sm:text-xl hover:text-[color:var(--accent)] transition-colors" onClick={closeMenu}>Зал «Оазис»</Link>
+                <Link href="/rooms/turkey" className="text-[#F8F3D7] text-lg sm:text-xl hover:text-[color:var(--accent)] transition-colors" onClick={closeMenu}>Турецкий зал</Link>
+                <Link href="/rooms/apps" className="text-[#F8F3D7] text-lg sm:text-xl hover:text-[color:var(--accent)] transition-colors" onClick={closeMenu}>Аппартаменты</Link>
+                <Link href="/rooms/new-hall" className="text-[#F8F3D7] text-lg sm:text-xl hover:text-[color:var(--accent)] transition-colors" onClick={closeMenu}>Новый зал</Link>
               </div>
             </div>
 
-            <div className="space-y-3">
-              <p className="text-[#323b12] text-sm">Контакты</p>
-              <div className="flex items-center gap-3">
-                <a href="tel:+79089086755" className="flex items-center gap-2 text-[#1A1E08] text-base hover:text-[color:var(--accent)]" onClick={closeMenu}>
-                  <Image src="/images/phone-icon.svg" alt="Phone" width={18} height={18} />
+            {/* Contacts */}
+            <div className="flex flex-col items-center gap-4 sm:gap-5">
+              <p className="text-[#F8F3D7] text-sm font-medium uppercase tracking-wider">Контакты</p>
+              <div className="flex flex-col items-center gap-3 sm:gap-4">
+                <a href="tel:+79089086755" className="flex items-center gap-2 text-[#F8F3D7] text-lg sm:text-xl hover:text-[color:var(--accent)] transition-colors" onClick={closeMenu}>
+                  <Image src="/images/phone-icon.svg" alt="Phone" width={20} height={20} className="filter brightness-0 invert" />
                   <span>+7 908 908 67 55</span>
                 </a>
-              </div>
-              <div className="flex items-center gap-3">
-                <a href="https://wa.me/79089086755" className="inline-flex p-2 rounded-lg hover:bg-[#E2D2A9]/50" onClick={closeMenu} aria-label="WhatsApp">
-                  <Image src="/images/header-icons/whatsapp.svg" alt="WhatsApp" width={20} height={20} />
-                </a>
-                <a href="https://t.me/79089086755" className="inline-flex p-2 rounded-lg hover:bg-[#E2D2A9]/50" onClick={closeMenu} aria-label="Telegram">
-                  <Image src="/images/header-icons/telegram.svg" alt="Telegram" width={20} height={20} />
-                </a>
+                <div className="flex items-center gap-4">
+                  <a href="https://wa.me/79089086755" className="inline-flex p-3 rounded-lg bg-[rgba(248,243,215,0.2)] hover:bg-[rgba(248,243,215,0.3)] transition-colors" onClick={closeMenu} aria-label="WhatsApp">
+                    <Image src="/images/header-icons/whatsapp.svg" alt="WhatsApp" width={24} height={24} />
+                  </a>
+                  <a href="https://t.me/79089086755" className="inline-flex p-3 rounded-lg bg-[rgba(248,243,215,0.2)] hover:bg-[rgba(248,243,215,0.3)] transition-colors" onClick={closeMenu} aria-label="Telegram">
+                    <Image src="/images/header-icons/telegram.svg" alt="Telegram" width={24} height={24} />
+                  </a>
+                </div>
               </div>
             </div>
 
-            <div className="mt-auto">
-              <a href="tel:+79089086755" className="w-full inline-flex items-center justify-center bg-[#e1b45d] hover:bg-[#d4a04a] text-[#1a1e08] rounded-xl px-6 py-3 text-lg font-normal transition-colors">
-                Забронировать
-              </a>
-            </div>
+            {/* Book button */}
+            <a 
+              href="tel:+79089086755" 
+              className="w-full max-w-xs inline-flex items-center justify-center bg-[#F8F3D7] hover:bg-[#e8e3c7] text-[#323B12] rounded-xl px-6 py-4 text-lg font-medium transition-colors" 
+              onClick={closeMenu}
+            >
+              Забронировать
+            </a>
           </div>
-        </>,
+        </div>,
         document.body
       )}
     </>
