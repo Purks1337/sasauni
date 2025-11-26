@@ -97,34 +97,64 @@ export default function HomePage() {
             <Header />
 
             {/* Main Content - Hero Section */}
-            <div className="flex flex-col items-center justify-center text-center flex-grow px-4 sm:px-8 lg:px-16 pt-[120px] pb-20 gap-8">
+            <div className="flex flex-col items-center justify-center text-center flex-grow px-16 pt-32 pb-20 gap-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="flex flex-col items-center w-full gap-2.5 relative"
+                className="flex flex-col items-center w-full gap-[10px] relative"
               >
                 {/* Blurred Ellipse Background */}
-                <div 
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0"
+                <svg
+                  className="absolute pointer-events-none z-0"
                   style={{
-                    width: '922px',
-                    height: '362px',
-                    background: '#120D08',
-                    filter: 'blur(165px)',
+                    width: '1582px',
+                    height: '1022px',
+                    left: 'calc(50% - 1582px / 2)',
+                    top: 'calc(50% - 1022px / 2 + 0.5px)',
+                    opacity: 0.85,
                   }}
-                />
+                  viewBox="0 0 1582 1022"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g filter="url(#filter0_f_235_1098)">
+                    <ellipse cx="791" cy="511" rx="461" ry="181" fill="#120D08"/>
+                  </g>
+                  <defs>
+                    <filter id="filter0_f_235_1098" x="0" y="0" width="1582" height="1022" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                      <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                      <feGaussianBlur stdDeviation="165" result="effect1_foregroundBlur_235_1098"/>
+                    </filter>
+                  </defs>
+                </svg>
                 
                 {/* Heading Container */}
                 <div className="flex flex-col items-center w-full gap-4 relative z-10">
-                  <h1 className="text-[32px] font-light text-white leading-[1.2] tracking-[0.006em]">
-                    Оздоровительный центр
-                  </h1>
-                  <span className="text-[96px] font-normal text-white leading-[1.2] tracking-[0.006em] font-decorative">
-                    1000 и 1 ночь
-                  </span>
-                  <p className="w-full max-w-[408px] text-[32px] font-normal text-white leading-[1.5] tracking-[0.006em] px-4">
-                    Погрузитесь в атмосферу спокойствия и роскоши в банном комплексе «1000 и 1 ночь».
+                  {/* Heading Wrapper */}
+                  <div className="flex flex-col items-center gap-1">
+                    <h1 className="text-[32px] font-light text-white leading-[1.2] tracking-[0.006em]">
+                      Оздоровительный центр
+                    </h1>
+                    <div className="relative w-[750px] h-[115px]">
+                      <Image
+                        src="/images/1001.svg"
+                        alt="1000 и 1 ночь"
+                        fill
+                        className="object-contain"
+                        priority
+                      />
+                    </div>
+                  </div>
+                  <p 
+                    className="text-[32px] font-normal text-[#F9F3D4] leading-[150%] tracking-[0.006em] text-center"
+                    style={{
+                      zIndex: 2,
+                    }}
+                  >
+                    Погрузитесь в атмосферу спокойствия и роскоши<br />
+                    в банном комплексе «1000 и 1 ночь».
                   </p>
                 </div>
               </motion.div>
@@ -138,17 +168,17 @@ export default function HomePage() {
               >
                 <a 
                   href="tel:+79089086755" 
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#323B12] text-[#D9D5A6] rounded-lg px-4 sm:px-6 py-3 sm:py-[18px] text-[32px] font-medium leading-[1.2] transition-all duration-300 ease-out hover:bg-[#3d4720] hover:shadow-lg hover:scale-105 active:scale-100"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#F9F3D4] text-[#323B12] rounded-lg px-6 py-3 text-[32px] font-bold leading-[1.2] transition-all duration-300 ease-out hover:opacity-90 hover:shadow-lg hover:scale-105 active:scale-100 relative z-10"
                 >
-                  <LocalPhoneIcon className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" style={{ fill: '#FFFFFF' }} />
+                  <LocalPhoneIcon className="w-6 h-6 flex-shrink-0" style={{ fill: '#323B12' }} />
                   <span>+7 908 908 67 55</span>
                 </a>
                 <a 
                   href="#map"
                   onClick={handleScrollToMap}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#E1B45D] text-[#323B12] rounded-lg px-4 sm:px-6 py-3 sm:py-[18px] text-[32px] font-medium leading-[1.2] transition-all duration-300 ease-out hover:bg-[#d4a04a] hover:shadow-lg hover:scale-105 active:scale-100 cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#F9F3D4] text-[#323B12] rounded-lg px-6 py-3 text-[32px] font-bold leading-[1.2] transition-all duration-300 ease-out hover:opacity-90 hover:shadow-lg hover:scale-105 active:scale-100 cursor-pointer relative z-10"
                 >
-                  <LocalLocationIcon className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" style={{ fill: '#FFFFFF' }} />
+                  <LocalLocationIcon className="w-6 h-6 flex-shrink-0" style={{ fill: '#323B12' }} />
                   <span className="text-center">Екатеринбург, ул. Готвальда, 12а</span>
                 </a>
               </motion.div>
@@ -158,7 +188,7 @@ export default function HomePage() {
 
         {/* Halls Container Section */}
         <section id="rooms" className="relative bg-[#F8F3D7] w-full z-[1]">
-          <div className="flex flex-col rounded-xl w-full px-4 sm:px-8 lg:px-16 py-8 sm:py-12 gap-2">
+          <div className="flex flex-col rounded-xl w-full px-16 py-8 sm:py-12 gap-2">
             {/* First row: fin, oasis, turkey (3 cards equal width) */}
             <div className="flex flex-col sm:flex-row flex-1 w-full gap-2 min-h-[273px]">
               {(['fin', 'fin-small', 'turkey'] as RoomSlug[]).map((slug) => (

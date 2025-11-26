@@ -42,7 +42,12 @@ export function HallCard({ room, slug }: HallCardProps) {
             </div>
             
             {/* Layer 2: hall-filter-{name}-gradient - Gradient overlay (always 100% for X and Y) */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-[2] transition-opacity duration-500 ease-out group-hover:opacity-75" />
+            <div 
+              className="absolute inset-0 z-[2] transition-opacity duration-500 ease-out group-hover:opacity-75"
+              style={{
+                background: 'linear-gradient(0deg, rgba(0, 0, 0, 0.8) 25%, rgba(0, 0, 0, 0) 50%)',
+              }}
+            />
           </>
         ) : (
           /* For coming-soon halls without cover image - only solid color #807D52 */

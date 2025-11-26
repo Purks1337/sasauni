@@ -9,15 +9,13 @@ interface LogoProps {
 export function Logo({ href = '/', className }: LogoProps) {
   const logoImage = (
     <Image
-      src="/images/1001logo2.png"
+      src="/images/1001logo.svg"
       alt="Логотип 1001 ночь"
       height={44}
-      width={200}
+      width={75}
       className={className}
-      style={{ width: 'auto', height: '44px' }}
+      style={{ width: '75px', height: '44px' }}
       priority
-      quality={100}
-      unoptimized
     />
   );
 
