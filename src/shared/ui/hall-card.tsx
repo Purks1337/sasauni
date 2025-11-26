@@ -30,14 +30,15 @@ export function HallCard({ room, slug }: HallCardProps) {
         {hasCoverImage ? (
           <>
             {/* Layer 1: hall-cover-{name} - Cover image (always 100% for X and Y) */}
-            <div className="absolute inset-0 z-[1] overflow-hidden">
+            <div className="absolute inset-0 z-[1] overflow-hidden bg-[#807D52]">
               <Image
                 src={room.coverImage!}
                 alt={`Обложка зала ${room.title}`}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
-                priority={false}
+                priority={slug === 'fin-small' || slug === 'fin'}
+                unoptimized={slug === 'fin-small'}
               />
             </div>
             

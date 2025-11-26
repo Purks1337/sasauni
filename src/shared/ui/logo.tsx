@@ -14,7 +14,6 @@ export function Logo({ href = '/', className }: LogoProps) {
       height={44}
       width={75}
       className={className}
-      style={{ width: '75px', height: '44px' }}
       priority
     />
   );

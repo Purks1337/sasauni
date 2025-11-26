@@ -39,7 +39,8 @@ export default function HomePage() {
     <div className="bg-[#F9F3D4] relative">
       <main className='pb-24'>
         {/* Hero Section */}
-        <div className="relative min-h-screen">
+        {/* Added overflow-hidden to prevent horizontal scroll from large SVG */}
+        <div className="relative min-h-screen overflow-hidden">
           {/* Background Slideshow - always 100% X and Y, always behind Hero */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
             <div className="relative w-full h-full">
@@ -97,16 +98,16 @@ export default function HomePage() {
             <Header />
 
             {/* Main Content - Hero Section */}
-            <div className="flex flex-col items-center justify-center text-center flex-grow px-16 pt-32 pb-20 gap-8">
+            <div className="flex flex-col items-center justify-center text-center flex-grow px-0 lg:px-16 pt-20 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20 gap-6 sm:gap-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="flex flex-col items-center w-full gap-[10px] relative"
+                className="flex flex-col items-center w-full gap-[10px] relative px-2"
               >
-                {/* Blurred Ellipse Background */}
+                {/* Blurred Ellipse Background - Visible on all screens now */}
                 <svg
-                  className="absolute pointer-events-none z-0"
+                  className="absolute pointer-events-none z-0 block"
                   style={{
                     width: '1582px',
                     height: '1022px',
@@ -133,11 +134,12 @@ export default function HomePage() {
                 {/* Heading Container */}
                 <div className="flex flex-col items-center w-full gap-4 relative z-10">
                   {/* Heading Wrapper */}
-                  <div className="flex flex-col items-center gap-1">
-                    <h1 className="text-[32px] font-light text-white leading-[1.2] tracking-[0.006em]">
+                  <div className="flex flex-col items-center gap-1 w-full">
+                    <h1 className="text-2xl sm:text-3xl lg:text-[32px] font-light text-white leading-[1.2] tracking-[0.006em]">
                       Оздоровительный центр
                     </h1>
-                    <div className="relative w-[750px] h-[115px]">
+                    {/* Logo Image - Mobile: 100% width with 8px padding, Desktop: 750px */}
+                    <div className="relative w-full px-2 sm:px-0 sm:w-[750px] aspect-[750/115]">
                       <Image
                         src="/images/1001.svg"
                         alt="1000 и 1 ночь"
@@ -148,12 +150,12 @@ export default function HomePage() {
                     </div>
                   </div>
                   <p 
-                    className="text-[32px] font-normal text-[#F9F3D4] leading-[150%] tracking-[0.006em] text-center"
+                    className="text-xl sm:text-2xl lg:text-[32px] font-normal text-[#F9F3D4] leading-[150%] tracking-[0.006em] text-center px-2"
                     style={{
                       zIndex: 2,
                     }}
                   >
-                    Погрузитесь в атмосферу спокойствия и роскоши<br />
+                    Погрузитесь в атмосферу спокойствия и роскоши<br className="hidden sm:block" />
                     в банном комплексе «1000 и 1 ночь».
                   </p>
                 </div>
@@ -164,11 +166,11 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
-                className="flex flex-col sm:flex-row items-center justify-center w-full gap-2 sm:gap-2.5 px-4"
+                className="flex flex-col sm:flex-row items-center justify-center w-full gap-3 sm:gap-2.5 px-4"
               >
                 <a 
                   href="tel:+79089086755" 
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#F9F3D4] text-[#323B12] rounded-lg px-6 py-3 text-[32px] font-bold leading-[1.2] transition-all duration-300 ease-out hover:opacity-90 hover:shadow-lg hover:scale-105 active:scale-100 relative z-10"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#F9F3D4] text-[#323B12] rounded-lg px-6 py-4 sm:px-6 sm:py-3 text-lg sm:text-xl lg:text-[32px] font-bold leading-[1.2] transition-all duration-300 ease-out hover:opacity-90 hover:shadow-lg hover:scale-105 active:scale-100 relative z-10"
                 >
                   <LocalPhoneIcon className="w-6 h-6 flex-shrink-0" style={{ fill: '#323B12' }} />
                   <span>+7 908 908 67 55</span>
@@ -176,7 +178,7 @@ export default function HomePage() {
                 <a 
                   href="#map"
                   onClick={handleScrollToMap}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#F9F3D4] text-[#323B12] rounded-lg px-6 py-3 text-[32px] font-bold leading-[1.2] transition-all duration-300 ease-out hover:opacity-90 hover:shadow-lg hover:scale-105 active:scale-100 cursor-pointer relative z-10"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#F9F3D4] text-[#323B12] rounded-lg px-6 py-4 sm:px-6 sm:py-3 text-lg sm:text-xl lg:text-[32px] font-bold leading-[1.2] transition-all duration-300 ease-out hover:opacity-90 hover:shadow-lg hover:scale-105 active:scale-100 cursor-pointer relative z-10"
                 >
                   <LocalLocationIcon className="w-6 h-6 flex-shrink-0" style={{ fill: '#323B12' }} />
                   <span className="text-center">Екатеринбург, ул. Готвальда, 12а</span>
@@ -188,9 +190,9 @@ export default function HomePage() {
 
         {/* Halls Container Section */}
         <section id="rooms" className="relative bg-[#F8F3D7] w-full z-[1]">
-          <div className="flex flex-col rounded-xl w-full px-16 py-8 sm:py-12 gap-2">
+          <div className="flex flex-col rounded-xl w-full px-2 lg:px-16 py-8 sm:py-12 gap-2">
             {/* First row: fin, oasis, turkey (3 cards equal width) */}
-            <div className="flex flex-col sm:flex-row flex-1 w-full gap-2 min-h-[273px]">
+            <div className="flex flex-col lg:flex-row flex-1 w-full gap-2 min-h-[200px] sm:min-h-[250px] lg:min-h-[273px]">
               {(['fin', 'fin-small', 'turkey'] as RoomSlug[]).map((slug) => (
                 <div key={slug} className="flex-1 min-w-0">
                   <HallCard slug={slug} room={roomsBySlug[slug]} />
@@ -198,7 +200,7 @@ export default function HomePage() {
               ))}
             </div>
             {/* Second row: apparts and new (50/50 width) */}
-            <div className="flex flex-col sm:flex-row flex-1 w-full gap-2 min-h-[273px]">
+            <div className="flex flex-col lg:flex-row flex-1 w-full gap-2 min-h-[200px] sm:min-h-[250px] lg:min-h-[273px]">
               <div className="flex-1 min-w-0">
                 <HallCard slug="apps" room={roomsBySlug['apps']} />
               </div>
