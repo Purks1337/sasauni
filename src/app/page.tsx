@@ -27,11 +27,10 @@ export default function HomePage() {
   };
 
   const heroSlideshowImages = [
-    '/images/main-bg.jpg',
-    '/images/hall-covers/hall-cover-apparts.jpg',
-    '/images/hall-covers/hall-cover-fin.jpg',
-    '/images/hall-covers/hall-cover-oasis.jpg',
-    '/images/hall-covers/hall-cover-turkey.jpg',
+    '/images/main-bg-slideshow/main-bg-01.webp',
+    '/images/main-bg-slideshow/main-bg-02.webp',
+    '/images/main-bg-slideshow/main-bg-03.webp',
+    '/images/main-bg-slideshow/main-bg-04.webp',
   ];
 
   const { currentIndex } = useSlideshow({ images: heroSlideshowImages, intervalMs: 5000 });
@@ -86,8 +85,12 @@ export default function HomePage() {
           </div>
           
           {/* Overlay filters */}
-          <div className="absolute inset-0 pointer-events-none bg-[rgba(249,243,212,0.8)] z-[1]" />
-          <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-[rgba(249,243,212,0)] to-[#F9F3D4] z-[2]" />
+          <div 
+            className="absolute inset-0 pointer-events-none z-[2]"
+            style={{
+              background: 'linear-gradient(180deg, rgba(249, 243, 212, 0) 70%, #F9F3D4 100%)',
+            }}
+          />
           
           {/* Foreground Content Layer */}
           <div className="relative flex flex-col min-h-screen z-10">
@@ -99,23 +102,28 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="flex flex-col items-center w-full gap-2.5"
+                className="flex flex-col items-center w-full gap-2.5 relative"
               >
+                {/* Blurred Ellipse Background */}
+                <div 
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0"
+                  style={{
+                    width: '922px',
+                    height: '362px',
+                    background: '#120D08',
+                    filter: 'blur(165px)',
+                  }}
+                />
+                
                 {/* Heading Container */}
-                <div className="flex flex-col items-center w-full gap-4">
-                  <h1 className="text-2xl sm:text-3xl lg:text-[32px] font-light text-[#626155] leading-[1.2] tracking-[0.006em]">
+                <div className="flex flex-col items-center w-full gap-4 relative z-10">
+                  <h1 className="text-[32px] font-light text-white leading-[1.2] tracking-[0.006em]">
                     Оздоровительный центр
                   </h1>
-                  <div className="relative w-full lg:w-[500px] aspect-[500/46]">
-                    <Image
-                      src="/images/1001.svg"
-                      alt="1000 и 1 ночь"
-                      fill
-                      className="object-contain"
-                      priority
-                    />
-                  </div>
-                  <p className="w-full max-w-[408px] text-base sm:text-lg lg:text-[20px] font-normal text-[#59584D] leading-[1.5] tracking-[0.006em] px-4">
+                  <span className="text-[96px] font-normal text-white leading-[1.2] tracking-[0.006em] font-decorative">
+                    1000 и 1 ночь
+                  </span>
+                  <p className="w-full max-w-[408px] text-[32px] font-normal text-white leading-[1.5] tracking-[0.006em] px-4">
                     Погрузитесь в атмосферу спокойствия и роскоши в банном комплексе «1000 и 1 ночь».
                   </p>
                 </div>
@@ -130,7 +138,7 @@ export default function HomePage() {
               >
                 <a 
                   href="tel:+79089086755" 
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#323B12] text-[#D9D5A6] rounded-lg px-4 sm:px-6 py-3 sm:py-[18px] text-base sm:text-lg lg:text-[20px] font-medium leading-[1.2] transition-all duration-300 ease-out hover:bg-[#3d4720] hover:shadow-lg hover:scale-105 active:scale-100"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#323B12] text-[#D9D5A6] rounded-lg px-4 sm:px-6 py-3 sm:py-[18px] text-[32px] font-medium leading-[1.2] transition-all duration-300 ease-out hover:bg-[#3d4720] hover:shadow-lg hover:scale-105 active:scale-100"
                 >
                   <LocalPhoneIcon className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" style={{ fill: '#FFFFFF' }} />
                   <span>+7 908 908 67 55</span>
@@ -138,7 +146,7 @@ export default function HomePage() {
                 <a 
                   href="#map"
                   onClick={handleScrollToMap}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#E1B45D] text-[#323B12] rounded-lg px-4 sm:px-6 py-3 sm:py-[18px] text-base sm:text-lg lg:text-[20px] font-medium leading-[1.2] transition-all duration-300 ease-out hover:bg-[#d4a04a] hover:shadow-lg hover:scale-105 active:scale-100 cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#E1B45D] text-[#323B12] rounded-lg px-4 sm:px-6 py-3 sm:py-[18px] text-[32px] font-medium leading-[1.2] transition-all duration-300 ease-out hover:bg-[#d4a04a] hover:shadow-lg hover:scale-105 active:scale-100 cursor-pointer"
                 >
                   <LocalLocationIcon className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" style={{ fill: '#FFFFFF' }} />
                   <span className="text-center">Екатеринбург, ул. Готвальда, 12а</span>

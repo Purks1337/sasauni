@@ -74,7 +74,7 @@ export const roomsBySlug: Record<RoomSlug, RoomInfo> = {
     capacityText: '10 человек (макс. 20 человек, доплата 300₽/час за человека свыше 6)',
     featureIds: ['finnishSauna', 'pool', 'karaoke', 'tv', 'waterfall', 'bucket', 'relaxZone', 'billiard'],
     imagePaths: finImages,
-    coverImage: '/images/hall-covers/hall-cover-fin.jpg',
+    coverImage: '/images/hall-covers/hall-cover-fin.webp',
   },
   'fin-small': {
     ...commonData,
@@ -87,7 +87,7 @@ export const roomsBySlug: Record<RoomSlug, RoomInfo> = {
     capacityText: '6 человек (макс. 10 человек, доплата 300₽/час за человека свыше 6)',
     featureIds: ['finnishSauna', 'pool', 'tv', 'karaoke', 'massage', 'bucket', 'relaxZone', 'massageApparatus'],
     imagePaths: finSmallImages,
-    coverImage: '/images/hall-covers/hall-cover-oasis.jpg',
+    coverImage: '/images/hall-covers/hall-cover-oasis.webp',
   },
   'turkey': {
     ...commonData,
@@ -100,7 +100,7 @@ export const roomsBySlug: Record<RoomSlug, RoomInfo> = {
     capacityText: '10 человек (макс. 20 человек, доплата 300₽/час за человека свыше 6)',
     featureIds: ['finnishSauna', 'tv', 'karaoke', 'massage', 'massageApparatus', 'wifi', 'turkeySauna', 'uziSpa', 'hydroMassage', 'bucket', 'relaxZone', 'billiard'],
     imagePaths: turkeyImages,
-    coverImage: '/images/hall-covers/hall-cover-turkey.jpg',
+    coverImage: '/images/hall-covers/hall-cover-turkey.webp',
   },
   'apps': {
     ...commonData,
@@ -113,7 +113,7 @@ export const roomsBySlug: Record<RoomSlug, RoomInfo> = {
     capacityText: '2 человека',
     featureIds: ['finnishSauna', 'tv', 'karaoke', `privateSetting` ],
     imagePaths: appsImages,
-    coverImage: '/images/hall-covers/hall-cover-apparts.jpg',
+    coverImage: '/images/hall-covers/hall-cover-apparts.webp',
     width: 'wide',
   },
   'new-hall': {
