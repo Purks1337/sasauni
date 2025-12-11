@@ -78,7 +78,7 @@ export function Header({ bookingPhone = 'tel:+79089086755' }: HeaderProps) {
             {/* Compact padding/text on LG, Full on XL */}
             <a 
               href={bookingPhone} 
-              className="flex justify-center items-center bg-[#F8F3D7] text-[#323B12] rounded-xl px-4 py-2 xl:px-6 xl:py-3 hover:opacity-90 transition-opacity"
+              className="flex justify-center items-center bg-[#F8F3D7] text-[#323B12] rounded-md px-4 py-2 xl:px-6 xl:py-3 hover:opacity-90 transition-all hover:bg-[#f8e99e] hover:scale-102"
             >
               <span className="text-[14px] xl:text-[20px] font-medium leading-[1.2] uppercase whitespace-nowrap">
                 Забронировать

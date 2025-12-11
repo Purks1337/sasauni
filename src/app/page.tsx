@@ -86,12 +86,6 @@ export default function HomePage() {
           </div>
           
           {/* Overlay filters */}
-          <div 
-            className="absolute inset-0 pointer-events-none z-[2]"
-            style={{
-              background: 'linear-gradient(180deg, rgba(249, 243, 212, 0) 70%, #F9F3D4 100%)',
-            }}
-          />
           
           {/* Foreground Content Layer */}
           <div className="relative flex flex-col min-h-screen z-10">
@@ -170,7 +164,7 @@ export default function HomePage() {
               >
                 <a 
                   href="tel:+79089086755" 
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#F9F3D4] text-[#323B12] rounded-lg px-6 py-4 sm:px-6 sm:py-3 text-lg sm:text-xl lg:text-[32px] font-bold leading-[1.2] transition-all duration-300 ease-out hover:opacity-90 hover:shadow-lg hover:scale-105 active:scale-100 relative z-10"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#F9F3D4] text-[#323B12] rounded-lg px-6 py-4 sm:px-6 sm:py-3 text-lg sm:text-xl lg:text-[32px] font-bold leading-[1.2] transition-all duration-300 ease-out hover:shadow-lg hover:scale-102 active:scale-100 relative z-10 hover:bg-[#f8e99e]"
                 >
                   <LocalPhoneIcon className="w-6 h-6 flex-shrink-0" style={{ fill: '#323B12' }} />
                   <span>+7 908 908 67 55</span>
@@ -178,7 +172,7 @@ export default function HomePage() {
                 <a 
                   href="#map"
                   onClick={handleScrollToMap}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#F9F3D4] text-[#323B12] rounded-lg px-6 py-4 sm:px-6 sm:py-3 text-lg sm:text-xl lg:text-[32px] font-bold leading-[1.2] transition-all duration-300 ease-out hover:opacity-90 hover:shadow-lg hover:scale-105 active:scale-100 cursor-pointer relative z-10"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#F9F3D4] text-[#323B12] rounded-lg px-6 py-4 sm:px-6 sm:py-3 text-lg sm:text-xl lg:text-[32px] font-bold leading-[1.2] transition-all duration-300 ease-out hover:shadow-lg hover:scale-102 active:scale-100 cursor-pointer relative z-10 hover:bg-[#f8e99e]"
                 >
                   <LocalLocationIcon className="w-6 h-6 flex-shrink-0" style={{ fill: '#323B12' }} />
                   <span className="text-center">Екатеринбург, ул. Готвальда, 12а</span>
