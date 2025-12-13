@@ -27,44 +27,51 @@ export default function HomePage() {
   };
 
   const heroSlideshowImages = [
-    '/images/main-bg-slideshow/main-bg-01.webp',
-    '/images/main-bg-slideshow/main-bg-02.webp',
-    '/images/main-bg-slideshow/main-bg-03.webp',
-    '/images/main-bg-slideshow/main-bg-04.webp',
+    '/images/main-bg-slideshow/main-bg-01.webp?v=new',
+    '/images/main-bg-slideshow/main-bg-02.webp?v=new',
+    '/images/main-bg-slideshow/main-bg-03.webp?v=new',
+    '/images/main-bg-slideshow/main-bg-04.webp?v=new',
   ];
 
-  const { currentIndex } = useSlideshow({ images: heroSlideshowImages, intervalMs: 5000 });
+  // Using 6000ms interval for switching
+  const { currentIndex, prevIndex } = useSlideshow({ images: heroSlideshowImages, intervalMs: 6000 });
 
   return (
     <div className="bg-[#F9F3D4] relative">
       <main className='pb-24'>
         {/* Hero Section */}
-        {/* Added overflow-hidden to prevent horizontal scroll from large SVG */}
         <div className="relative min-h-screen overflow-hidden">
-          {/* Background Slideshow - always 100% X and Y, always behind Hero */}
+          {/* Background Slideshow */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
             <div className="relative w-full h-full">
               {heroSlideshowImages.map((src, index) => {
                 const isActive = index === currentIndex;
+                const isPrev = index === prevIndex;
+                // Keep animating if it's active OR if it's the one currently fading out
+                const shouldAnimate = isActive || isPrev;
+
                 return (
                   <div
                     key={src}
-                    className="absolute inset-0 transition-opacity"
+                    className="absolute inset-0"
                     style={{
                       opacity: isActive ? 1 : 0,
-                      transitionDuration: `${SLIDESHOW_CONFIG.crossfadeMs}ms`,
-                      transitionTimingFunction: SLIDESHOW_CONFIG.fadeEase,
+                      zIndex: isActive ? 1 : 0,
+                      // Smooth transition for opacity
+                      transition: `opacity ${SLIDESHOW_CONFIG.crossfadeMs}ms ${SLIDESHOW_CONFIG.fadeEase}`,
                       willChange: 'opacity',
                     }}
                   >
                     <div
-                      className={`absolute inset-0 ${isActive ? 'zoom-animate' : ''}`}
+                      className={`absolute inset-0 ${shouldAnimate ? 'zoom-animate' : ''}`}
                       style={
                         {
-                          '--zoom-from': SLIDESHOW_CONFIG.zoomFrom,
-                          '--zoom-to': SLIDESHOW_CONFIG.zoomTo,
-                          '--zoom-duration': '5000ms',
-                          '--zoom-ease': SLIDESHOW_CONFIG.zoomEase,
+                          '--zoom-from': '1.15', // Slightly larger start for more drama
+                          '--zoom-to': '1.0',
+                          // Crucial: Duration is much longer than interval (20s vs 6s).
+                          // This ensures the image is still moving when the crossfade happens.
+                          '--zoom-duration': '20000ms', 
+                          '--zoom-ease': 'linear',
                           willChange: 'transform',
                         } as CSSProperties
                       }
@@ -75,7 +82,7 @@ export default function HomePage() {
                         fill
                         sizes="100vw"
                         priority={index === 0}
-                        quality={70}
+                        quality={80}
                         className="object-cover object-center"
                       />
                     </div>
@@ -85,11 +92,9 @@ export default function HomePage() {
             </div>
           </div>
           
-          {/* Overlay filters */}
-          
           {/* Foreground Content Layer */}
           <div className="relative flex flex-col min-h-screen z-10">
-            <Header />
+            <Header variant="home" />
 
             {/* Main Content - Hero Section */}
             <div className="flex flex-col items-center justify-center text-center flex-grow px-0 lg:px-16 pt-20 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20 gap-6 sm:gap-8">
@@ -99,7 +104,7 @@ export default function HomePage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="flex flex-col items-center w-full gap-[10px] relative px-2"
               >
-                {/* Blurred Ellipse Background - Visible on all screens now */}
+                {/* Blurred Ellipse Background */}
                 <svg
                   className="absolute pointer-events-none z-0 block"
                   style={{
@@ -127,12 +132,10 @@ export default function HomePage() {
                 
                 {/* Heading Container */}
                 <div className="flex flex-col items-center w-full gap-4 relative z-10">
-                  {/* Heading Wrapper */}
                   <div className="flex flex-col items-center gap-1 w-full">
                     <h1 className="text-2xl sm:text-3xl lg:text-[32px] font-light text-white leading-[1.2] tracking-[0.006em]">
                       Оздоровительный центр
                     </h1>
-                    {/* Logo Image - Mobile: 100% width with 8px padding, Desktop: 750px */}
                     <div className="relative w-full px-2 sm:px-0 sm:w-[750px] aspect-[750/115]">
                       <Image
                         src="/images/1001.svg"
@@ -145,9 +148,7 @@ export default function HomePage() {
                   </div>
                   <p 
                     className="text-xl sm:text-2xl lg:text-[32px] font-normal text-[#F9F3D4] leading-[150%] tracking-[0.006em] text-center px-2"
-                    style={{
-                      zIndex: 2,
-                    }}
+                    style={{ zIndex: 2 }}
                   >
                     Погрузитесь в атмосферу спокойствия и роскоши<br className="hidden sm:block" />
                     в банном комплексе «1000 и 1 ночь».
@@ -185,7 +186,6 @@ export default function HomePage() {
         {/* Halls Container Section */}
         <section id="rooms" className="relative bg-[#F8F3D7] w-full z-[1]">
           <div className="flex flex-col rounded-xl w-full px-2 lg:px-16 py-8 sm:py-12 gap-2">
-            {/* First row: fin, oasis, turkey (3 cards equal width) */}
             <div className="flex flex-col lg:flex-row flex-1 w-full gap-2 min-h-[200px] sm:min-h-[250px] lg:min-h-[273px]">
               {(['fin', 'fin-small', 'turkey'] as RoomSlug[]).map((slug) => (
                 <div key={slug} className="flex-1 min-w-0">
@@ -193,7 +193,6 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
-            {/* Second row: apparts and new (50/50 width) */}
             <div className="flex flex-col lg:flex-row flex-1 w-full gap-2 min-h-[200px] sm:min-h-[250px] lg:min-h-[273px]">
               <div className="flex-1 min-w-0">
                 <HallCard slug="apps" room={roomsBySlug['apps']} />

@@ -10,10 +10,12 @@ interface UseSlideshowOptions {
  */
 export function useSlideshow({ images, intervalMs }: UseSlideshowOptions) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [prevIndex, setPrevIndex] = useState(-1);
 
   // Preload images to avoid decode jank during crossfade
   useEffect(() => {
     setCurrentIndex(0);
+    setPrevIndex(-1);
     images?.forEach((src) => {
       const img = new window.Image();
       img.src = src;
@@ -26,7 +28,10 @@ export function useSlideshow({ images, intervalMs }: UseSlideshowOptions) {
     if (!images || images.length < 2) return;
 
     const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      setCurrentIndex((prev) => {
+        setPrevIndex(prev); // Store the index that is about to fade out
+        return (prev + 1) % images.length;
+      });
     }, intervalMs);
 
     return () => clearInterval(timer);
@@ -34,7 +39,7 @@ export function useSlideshow({ images, intervalMs }: UseSlideshowOptions) {
 
   return {
     currentIndex,
+    prevIndex,
     totalImages: images?.length || 0,
   };
 }
-

@@ -12,10 +12,10 @@ interface RoomSlideshowProps {
 /**
  * RoomSlideshow
  * Cross-fading background slideshow for room pages.
- * Uses CSS Transitions for crossfade and CSS Animations for zoom for optimal performance.
+ * Updated to support continuous zoom animation during crossfade.
  */
-export function RoomSlideshow({ images, intervalMs = 5000 }: RoomSlideshowProps) {
-  const { currentIndex } = useSlideshow({ images, intervalMs });
+export function RoomSlideshow({ images, intervalMs = 6000 }: RoomSlideshowProps) {
+  const { currentIndex, prevIndex } = useSlideshow({ images, intervalMs });
 
   if (!images || images.length === 0) {
     return null;
@@ -26,24 +26,29 @@ export function RoomSlideshow({ images, intervalMs = 5000 }: RoomSlideshowProps)
       <div className="relative w-full h-full">
         {images.map((src, index) => {
           const isActive = index === currentIndex;
+          const isPrev = index === prevIndex;
+          // Animate if active OR if fading out (prev)
+          const shouldAnimate = isActive || isPrev;
+
           return (
             <div
               key={src}
-              className="absolute inset-0 transition-opacity"
+              className="absolute inset-0"
               style={{
+                zIndex: isActive ? 1 : 0,
                 opacity: isActive ? 1 : 0,
-                transitionDuration: `${SLIDESHOW_CONFIG.crossfadeMs}ms`,
-                transitionTimingFunction: SLIDESHOW_CONFIG.fadeEase,
-                willChange: 'opacity',
+                transition: `opacity ${SLIDESHOW_CONFIG.crossfadeMs}ms ${SLIDESHOW_CONFIG.fadeEase}`,
+                willChange: 'opacity, z-index',
               }}
             >
               <div
-                className={`absolute inset-0 ${isActive ? 'zoom-animate' : ''}`}
+                className={`absolute inset-0 ${shouldAnimate ? 'zoom-animate' : ''}`}
                 style={
                   {
                     '--zoom-from': SLIDESHOW_CONFIG.zoomFrom,
                     '--zoom-to': SLIDESHOW_CONFIG.zoomTo,
-                    '--zoom-duration': `${intervalMs}ms`,
+                    // Use a much longer duration than interval to keep motion continuous
+                    '--zoom-duration': '20000ms',
                     '--zoom-ease': SLIDESHOW_CONFIG.zoomEase,
                     willChange: 'transform',
                   } as CSSProperties
@@ -55,14 +60,14 @@ export function RoomSlideshow({ images, intervalMs = 5000 }: RoomSlideshowProps)
                   fill
                   sizes="100vw"
                   priority={index === 0}
-                  quality={70}
+                  quality={80}
                   className="object-cover object-center"
                 />
               </div>
             </div>
           );
         })}
-        {/* Overlays as per Figma specs - Solid black overlay removed */}
+        {/* Overlays */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent pointer-events-none" />
       </div>
     </div>

@@ -110,7 +110,7 @@ export function RoomView({ room, slug }: RoomViewProps) {
       >
         <div className="flex w-full flex-col min-[1140px]:flex-row min-[1140px]:gap-x-12 xl:gap-x-16">
           {/* Left Column */}
-          <div className="min-[1140px]:w-[40%] xl:w-[426px] flex-shrink-0 space-y-6 sm:space-y-8 flex flex-col order-1 min-[1140px]:order-none">
+          <div className="min-[1140px]:w-[48%] xl:w-[600px] flex-shrink-0 space-y-6 sm:space-y-8 flex flex-col order-1 min-[1140px]:order-none">
             <div className="space-y-3 order-1">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[64px] font-medium text-[#1A1E08] leading-tight">
                 {room.title}
@@ -215,7 +215,7 @@ export function RoomView({ room, slug }: RoomViewProps) {
               <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#323b12]">{room.price}</p>
             </div>
             
-            <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-[#323b12] order-4">
+            <div className="space-y-3 sm:space-y-4 text-lg sm:text-lg text-[#323b12] order-4">
               <div className="flex items-start gap-2">
                 <SteamTypeIcon className="mt-0.5 sm:mt-1 flex-shrink-0 text-[#1A1E08] w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="#1A1E08" />
                 <span>Тип парной: {room.steamType}</span>
@@ -356,8 +356,8 @@ export function RoomView({ room, slug }: RoomViewProps) {
             </div>
             
             <div className="space-y-3">
-              <p className="text-lg sm:text-xl font-medium text-[#1A1E08]">Описание:</p>
-              <p className="text-base sm:text-lg text-[#323b12] leading-relaxed">
+              <p className="text-xl sm:text-xl font-medium text-[#1A1E08]">Описание:</p>
+              <p className="text-lg sm:text-lg text-[#323b12] leading-relaxed">
                 {room.description}
               </p>
             </div>
