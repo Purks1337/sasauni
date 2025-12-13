@@ -12,7 +12,7 @@ interface RoomSlideshowProps {
 /**
  * RoomSlideshow
  * Cross-fading background slideshow for room pages.
- * Updated to support continuous zoom animation during crossfade.
+ * Updated: New slide appears instantly behind, Old slide fades out on top.
  */
 export function RoomSlideshow({ images, intervalMs = 6000 }: RoomSlideshowProps) {
   const { currentIndex, prevIndex } = useSlideshow({ images, intervalMs });
@@ -27,7 +27,6 @@ export function RoomSlideshow({ images, intervalMs = 6000 }: RoomSlideshowProps)
         {images.map((src, index) => {
           const isActive = index === currentIndex;
           const isPrev = index === prevIndex;
-          // Animate if active OR if fading out (prev)
           const shouldAnimate = isActive || isPrev;
 
           return (
@@ -35,9 +34,13 @@ export function RoomSlideshow({ images, intervalMs = 6000 }: RoomSlideshowProps)
               key={src}
               className="absolute inset-0"
               style={{
-                zIndex: isActive ? 1 : 0,
+                // Ensure Prev stays ON TOP (z:2) and fades out
+                // Active stays BELOW (z:1) and is instantly opaque
+                zIndex: isPrev ? 2 : (isActive ? 1 : 0),
                 opacity: isActive ? 1 : 0,
-                transition: `opacity ${SLIDESHOW_CONFIG.crossfadeMs}ms ${SLIDESHOW_CONFIG.fadeEase}`,
+                transition: isPrev 
+                  ? `opacity ${SLIDESHOW_CONFIG.crossfadeMs}ms ${SLIDESHOW_CONFIG.fadeEase}` 
+                  : 'none',
                 willChange: 'opacity, z-index',
               }}
             >
@@ -47,7 +50,6 @@ export function RoomSlideshow({ images, intervalMs = 6000 }: RoomSlideshowProps)
                   {
                     '--zoom-from': SLIDESHOW_CONFIG.zoomFrom,
                     '--zoom-to': SLIDESHOW_CONFIG.zoomTo,
-                    // Use a much longer duration than interval to keep motion continuous
                     '--zoom-duration': '20000ms',
                     '--zoom-ease': SLIDESHOW_CONFIG.zoomEase,
                     willChange: 'transform',

@@ -33,7 +33,7 @@ export default function HomePage() {
     '/images/main-bg-slideshow/main-bg-04.webp?v=new',
   ];
 
-  // Using 6000ms interval for switching
+  // 6000ms interval
   const { currentIndex, prevIndex } = useSlideshow({ images: heroSlideshowImages, intervalMs: 6000 });
 
   return (
@@ -47,7 +47,6 @@ export default function HomePage() {
               {heroSlideshowImages.map((src, index) => {
                 const isActive = index === currentIndex;
                 const isPrev = index === prevIndex;
-                // Keep animating if it's active OR if it's the one currently fading out
                 const shouldAnimate = isActive || isPrev;
 
                 return (
@@ -55,21 +54,24 @@ export default function HomePage() {
                     key={src}
                     className="absolute inset-0"
                     style={{
-                      opacity: isActive ? 1 : 0,
-                      zIndex: isActive ? 1 : 0,
-                      // Smooth transition for opacity
-                      transition: `opacity ${SLIDESHOW_CONFIG.crossfadeMs}ms ${SLIDESHOW_CONFIG.fadeEase}`,
-                      willChange: 'opacity',
+                      // LOGIC:
+                      // If Prev: Z-Index 2 (Top), Opacity goes to 0 (Fade Out).
+                      // If Active: Z-Index 1 (Bottom), Opacity is 1 (Instant Show).
+                      // This ensures the Active image is visible BEHIND the Prev image while Prev fades out.
+                      zIndex: isPrev ? 2 : (isActive ? 1 : 0),
+                      opacity: isActive ? 1 : 0, 
+                      transition: isPrev 
+                        ? `opacity ${SLIDESHOW_CONFIG.crossfadeMs}ms ${SLIDESHOW_CONFIG.fadeEase}` 
+                        : 'none', // IMPORTANT: No transition for appearing, only for disappearing
+                      willChange: 'opacity, z-index',
                     }}
                   >
                     <div
                       className={`absolute inset-0 ${shouldAnimate ? 'zoom-animate' : ''}`}
                       style={
                         {
-                          '--zoom-from': '1.15', // Slightly larger start for more drama
+                          '--zoom-from': '1.15',
                           '--zoom-to': '1.0',
-                          // Crucial: Duration is much longer than interval (20s vs 6s).
-                          // This ensures the image is still moving when the crossfade happens.
                           '--zoom-duration': '20000ms', 
                           '--zoom-ease': 'linear',
                           willChange: 'transform',
