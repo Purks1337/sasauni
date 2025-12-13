@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { CSSProperties } from 'react';
 import { useSlideshow } from '../model/useSlideshow';
-import { SLIDESHOW_CONFIG } from '@/shared/config/ui';
+import { SLIDESHOW_CONFIG, SLIDESHOW_INTERVAL_MS } from '@/shared/config/ui';
 
 interface RoomSlideshowProps {
   images: string[];
@@ -12,9 +12,9 @@ interface RoomSlideshowProps {
 /**
  * RoomSlideshow
  * Cross-fading background slideshow for room pages.
- * Updated: New slide appears instantly behind, Old slide fades out on top.
+ * Updated to use global interval constant and quality 100.
  */
-export function RoomSlideshow({ images, intervalMs = 6000 }: RoomSlideshowProps) {
+export function RoomSlideshow({ images, intervalMs = SLIDESHOW_INTERVAL_MS }: RoomSlideshowProps) {
   const { currentIndex, prevIndex } = useSlideshow({ images, intervalMs });
 
   if (!images || images.length === 0) {
@@ -34,8 +34,6 @@ export function RoomSlideshow({ images, intervalMs = 6000 }: RoomSlideshowProps)
               key={src}
               className="absolute inset-0"
               style={{
-                // Ensure Prev stays ON TOP (z:2) and fades out
-                // Active stays BELOW (z:1) and is instantly opaque
                 zIndex: isPrev ? 2 : (isActive ? 1 : 0),
                 opacity: isActive ? 1 : 0,
                 transition: isPrev 
@@ -50,7 +48,7 @@ export function RoomSlideshow({ images, intervalMs = 6000 }: RoomSlideshowProps)
                   {
                     '--zoom-from': SLIDESHOW_CONFIG.zoomFrom,
                     '--zoom-to': SLIDESHOW_CONFIG.zoomTo,
-                    '--zoom-duration': '20000ms',
+                    '--zoom-duration': '24000ms',
                     '--zoom-ease': SLIDESHOW_CONFIG.zoomEase,
                     willChange: 'transform',
                   } as CSSProperties
@@ -62,7 +60,7 @@ export function RoomSlideshow({ images, intervalMs = 6000 }: RoomSlideshowProps)
                   fill
                   sizes="100vw"
                   priority={index === 0}
-                  quality={80}
+                  quality={100}
                   className="object-cover object-center"
                 />
               </div>

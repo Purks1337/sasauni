@@ -6,7 +6,7 @@ import { useSlideshow } from '@/features/room-slideshow';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import type { SVGProps } from 'react';
-import { SLIDESHOW_CONFIG } from '@/shared/config/ui';
+import { SLIDESHOW_CONFIG, SLIDESHOW_INTERVAL_MS } from '@/shared/config/ui';
 import type { CSSProperties } from 'react';
 
 // --- Local Icon Components (as per Closed Context rule) ---
@@ -33,8 +33,8 @@ export default function HomePage() {
     '/images/main-bg-slideshow/main-bg-04.webp?v=new',
   ];
 
-  // 6000ms interval
-  const { currentIndex, prevIndex } = useSlideshow({ images: heroSlideshowImages, intervalMs: 6000 });
+  // Using exact constant for 8 seconds
+  const { currentIndex, prevIndex } = useSlideshow({ images: heroSlideshowImages, intervalMs: SLIDESHOW_INTERVAL_MS });
 
   return (
     <div className="bg-[#F9F3D4] relative">
@@ -54,15 +54,13 @@ export default function HomePage() {
                     key={src}
                     className="absolute inset-0"
                     style={{
-                      // LOGIC:
-                      // If Prev: Z-Index 2 (Top), Opacity goes to 0 (Fade Out).
-                      // If Active: Z-Index 1 (Bottom), Opacity is 1 (Instant Show).
-                      // This ensures the Active image is visible BEHIND the Prev image while Prev fades out.
+                      // LOGIC: New slide is instantly visible (opacity 1) but behind (z-index 1).
+                      // Old slide stays on top (z-index 2) and fades out (opacity 0).
                       zIndex: isPrev ? 2 : (isActive ? 1 : 0),
                       opacity: isActive ? 1 : 0, 
                       transition: isPrev 
                         ? `opacity ${SLIDESHOW_CONFIG.crossfadeMs}ms ${SLIDESHOW_CONFIG.fadeEase}` 
-                        : 'none', // IMPORTANT: No transition for appearing, only for disappearing
+                        : 'none',
                       willChange: 'opacity, z-index',
                     }}
                   >
@@ -70,10 +68,11 @@ export default function HomePage() {
                       className={`absolute inset-0 ${shouldAnimate ? 'zoom-animate' : ''}`}
                       style={
                         {
-                          '--zoom-from': '1.15',
-                          '--zoom-to': '1.0',
-                          '--zoom-duration': '20000ms', 
-                          '--zoom-ease': 'linear',
+                          '--zoom-from': SLIDESHOW_CONFIG.zoomFrom,
+                          '--zoom-to': SLIDESHOW_CONFIG.zoomTo,
+                          // Duration is 3x interval to ensure linear motion never stops during visibility
+                          '--zoom-duration': '24000ms', 
+                          '--zoom-ease': SLIDESHOW_CONFIG.zoomEase,
                           willChange: 'transform',
                         } as CSSProperties
                       }
@@ -84,7 +83,7 @@ export default function HomePage() {
                         fill
                         sizes="100vw"
                         priority={index === 0}
-                        quality={80}
+                        quality={100}
                         className="object-cover object-center"
                       />
                     </div>
@@ -114,7 +113,7 @@ export default function HomePage() {
                     height: '1022px',
                     left: 'calc(50% - 1582px / 2)',
                     top: 'calc(50% - 1022px / 2 + 0.5px)',
-                    opacity: 0.85,
+                    opacity: 0.45,
                   }}
                   viewBox="0 0 1582 1022"
                   fill="none"
@@ -135,7 +134,7 @@ export default function HomePage() {
                 {/* Heading Container */}
                 <div className="flex flex-col items-center w-full gap-4 relative z-10">
                   <div className="flex flex-col items-center gap-1 w-full">
-                    <h1 className="text-2xl sm:text-3xl lg:text-[32px] font-light text-white leading-[1.2] tracking-[0.006em]">
+                    <h1 className="text-2xl sm:text-3xl lg:text-[24px] font-light text-white leading-[1.2] tracking-[0.006em]">
                       Оздоровительный центр
                     </h1>
                     <div className="relative w-full px-2 sm:px-0 sm:w-[750px] aspect-[750/115]">
@@ -149,7 +148,7 @@ export default function HomePage() {
                     </div>
                   </div>
                   <p 
-                    className="text-xl sm:text-2xl lg:text-[32px] font-normal text-[#F9F3D4] leading-[150%] tracking-[0.006em] text-center px-2"
+                    className="text-xl sm:text-2xl lg:text-[24px] font-normal text-[#F9F3D4] leading-[150%] tracking-[0.006em] text-center px-2"
                     style={{ zIndex: 2 }}
                   >
                     Погрузитесь в атмосферу спокойствия и роскоши<br className="hidden sm:block" />
@@ -167,7 +166,7 @@ export default function HomePage() {
               >
                 <a 
                   href="tel:+79089086755" 
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#F9F3D4] text-[#323B12] rounded-lg px-6 py-4 sm:px-6 sm:py-3 text-lg sm:text-xl lg:text-[32px] font-bold leading-[1.2] transition-all duration-300 ease-out hover:shadow-lg hover:scale-102 active:scale-100 relative z-10 hover:bg-[#f8e99e]"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#F9F3D4] text-[#323B12] rounded-lg px-6 py-4 sm:px-6 sm:py-3 text-lg sm:text-xl lg:text-[24px] font-bold leading-[1.2] transition-all duration-300 ease-out hover:shadow-lg hover:scale-102 active:scale-100 relative z-10 hover:bg-[#f8e99e]"
                 >
                   <LocalPhoneIcon className="w-6 h-6 flex-shrink-0" style={{ fill: '#323B12' }} />
                   <span>+7 908 908 67 55</span>
@@ -175,7 +174,7 @@ export default function HomePage() {
                 <a 
                   href="#map"
                   onClick={handleScrollToMap}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#F9F3D4] text-[#323B12] rounded-lg px-6 py-4 sm:px-6 sm:py-3 text-lg sm:text-xl lg:text-[32px] font-bold leading-[1.2] transition-all duration-300 ease-out hover:shadow-lg hover:scale-102 active:scale-100 cursor-pointer relative z-10 hover:bg-[#f8e99e]"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#F9F3D4] text-[#323B12] rounded-lg px-6 py-4 sm:px-6 sm:py-3 text-lg sm:text-xl lg:text-[24px] font-bold leading-[1.2] transition-all duration-300 ease-out hover:shadow-lg hover:scale-102 active:scale-100 cursor-pointer relative z-10 hover:bg-[#f8e99e]"
                 >
                   <LocalLocationIcon className="w-6 h-6 flex-shrink-0" style={{ fill: '#323B12' }} />
                   <span className="text-center">Екатеринбург, ул. Готвальда, 12а</span>
