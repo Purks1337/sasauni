@@ -184,21 +184,24 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Halls Container Section */}
+        {/* Halls Container Section - 2 Columns Grid */}
         <section id="rooms" className="relative bg-[#F8F3D7] w-full z-[1]">
           <div className="flex flex-col rounded-xl w-full px-2 lg:px-16 py-8 sm:py-12 gap-2">
-            <div className="flex flex-col lg:flex-row flex-1 w-full gap-2 min-h-[200px] sm:min-h-[250px] lg:min-h-[273px]">
-              {(['fin', 'fin-small', 'turkey'] as RoomSlug[]).map((slug) => (
-                <div key={slug} className="flex-1 min-w-0">
-                  <HallCard slug={slug} room={roomsBySlug[slug]} />
-                </div>
-              ))}
-            </div>
-            <div className="flex flex-col lg:flex-row flex-1 w-full gap-2 min-h-[200px] sm:min-h-[250px] lg:min-h-[273px]">
-              <div className="flex-1 min-w-0">
+            <div className="grid grid-cols-1 lg:grid-cols-2 w-full gap-2">
+              <div className="min-h-[200px] sm:min-h-[250px] lg:min-h-[273px]">
+                <HallCard slug="fin" room={roomsBySlug['fin']} />
+              </div>
+              <div className="min-h-[200px] sm:min-h-[250px] lg:min-h-[273px]">
+                <HallCard slug="fin-small" room={roomsBySlug['fin-small']} />
+              </div>
+              <div className="min-h-[200px] sm:min-h-[250px] lg:min-h-[273px]">
+                <HallCard slug="turkey" room={roomsBySlug['turkey']} />
+              </div>
+              <div className="min-h-[200px] sm:min-h-[250px] lg:min-h-[273px]">
                 <HallCard slug="apps" room={roomsBySlug['apps']} />
               </div>
-              <div className="flex-1 min-w-0">
+              {/* Last item spans full width on large screens to maintain symmetry */}
+              <div className="min-h-[200px] sm:min-h-[250px] lg:min-h-[273px] lg:col-span-2">
                 <HallCard slug="new-hall" room={roomsBySlug['new-hall']} />
               </div>
             </div>
