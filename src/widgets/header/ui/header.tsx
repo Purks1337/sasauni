@@ -1,7 +1,7 @@
 "use client";
 import Link from 'next/link';
 import { Logo } from '@/shared/ui/logo';
-import { WhatsappIcon, TelegramIcon, TwoGisIcon } from '@/shared/ui/icons';
+import { WhatsappIcon, TelegramIcon, TwoGisIcon, PhoneIcon } from '@/shared/ui/icons';
 import { MobileMenu } from './mobile-menu';
 import { useEffect, useState } from 'react';
 import { cn } from '@/shared/lib/utils';
@@ -130,8 +130,9 @@ export function Header({
             {/* Booking Button */}
             <a 
               href={bookingPhone} 
-              className="flex justify-center items-center bg-[#F8F3D7] text-[#323B12] rounded-md px-4 py-2 xl:px-6 xl:py-3 hover:opacity-90 transition-all hover:bg-[#f8e99e] hover:scale-102"
+              className="flex justify-center items-center gap-2 bg-[#F8F3D7] text-[#323B12] rounded-md px-4 py-2 xl:px-6 xl:py-3 hover:opacity-90 transition-all hover:bg-[#f8e99e] hover:scale-102"
             >
+              <PhoneIcon className="w-4 h-4 xl:w-5 xl:h-5 fill-current" />
               <span className="text-[14px] xl:text-[20px] font-medium leading-[1.2] uppercase whitespace-nowrap">
                 Забронировать
               </span>
