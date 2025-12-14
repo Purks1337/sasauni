@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { createPortal } from 'react-dom';
 import { useHeader } from '../model/useHeader';
+import { TwoGisIcon } from '@/shared/ui/icons';
 
 /**
  * MobileMenu
@@ -66,6 +67,9 @@ export function MobileMenu() {
                   </a>
                   <a href="https://t.me/79089086755" className="inline-flex p-3 rounded-lg bg-[rgba(248,243,215,0.2)] hover:bg-[rgba(248,243,215,0.3)] transition-colors" onClick={closeMenu} aria-label="Telegram">
                     <Image src="/images/header-icons/telegram.svg" alt="Telegram" width={24} height={24} />
+                  </a>
+                  <a href="https://2gis.ru/ekaterinburg/search/Готвальда%2012а" className="inline-flex p-3 rounded-lg bg-[rgba(248,243,215,0.2)] hover:bg-[rgba(248,243,215,0.3)] transition-colors text-[#F8F3D7]" onClick={closeMenu} aria-label="2GIS">
+                    <TwoGisIcon className="w-6 h-6 fill-current" />
                   </a>
                 </div>
               </div>

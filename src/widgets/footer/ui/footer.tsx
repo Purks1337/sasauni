@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Logo } from '@/shared/ui/logo';
-import { WhatsappIcon, TelegramIcon, PhoneIcon } from '@/shared/ui/icons';
+import { WhatsappIcon, TelegramIcon, PhoneIcon, TwoGisIcon } from '@/shared/ui/icons';
 
 /**
  * Footer
@@ -37,7 +37,7 @@ export function Footer() {
             <ul className="space-y-3">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-sm hover:text-[color:var(--accent)] transition-colors duration-200">
+                  <Link href={link.href} className="text-md hover:text-[color:var(--accent)] transition-colors duration-200">
                     {link.label}
                   </Link>
                 </li>
@@ -48,7 +48,7 @@ export function Footer() {
           {/* Contacts */}
           <div className="md:col-span-4 lg:col-span-3 text-center md:text-left">
             <h6 className="text-[#1A1E08] font-medium mb-4">Контакты</h6>
-            <ul className="space-y-3 text-sm">
+            <ul className="space-y-3 text-md">
               <li>
                 <a href="tel:+79089086755" className="flex items-center justify-center md:justify-start gap-2 hover:text-[color:var(--accent)] transition-colors duration-200">
                   <PhoneIcon className="w-4 h-4" />
@@ -79,6 +79,9 @@ export function Footer() {
               <a href="https://t.me/79089086755" aria-label="Telegram" className="inline-flex p-2 rounded-lg bg-[#E2D2A9] hover:bg-[#e1b45d] transition-colors">
                 <TelegramIcon className="w-5 h-5 text-[#1A1E08]" />
               </a>
+              <a href="https://2gis.ru/ekaterinburg/search/Готвальда%2012а" aria-label="2GIS" className="inline-flex p-2 rounded-lg bg-[#E2D2A9] hover:bg-[#e1b45d] transition-colors">
+                <TwoGisIcon className="w-5 h-5 text-[#1A1E08]" />
+              </a>
             </div>
           </div>
 
@@ -92,4 +95,3 @@ export function Footer() {
     </footer>
   );
 }
-

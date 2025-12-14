@@ -1,7 +1,7 @@
 "use client";
 import Link from 'next/link';
 import { Logo } from '@/shared/ui/logo';
-import { WhatsappIcon, TelegramIcon } from '@/shared/ui/icons';
+import { WhatsappIcon, TelegramIcon, TwoGisIcon } from '@/shared/ui/icons';
 import { MobileMenu } from './mobile-menu';
 import { useEffect, useState } from 'react';
 import { cn } from '@/shared/lib/utils';
@@ -102,6 +102,8 @@ export function Header({
                 href="https://t.me/79089086755" 
                 aria-label="Telegram" 
                 className="block hover:opacity-70 transition-opacity"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <TelegramIcon className="w-[24px] h-[24px] xl:w-[28px] xl:h-[28px] fill-current" />
               </a>
@@ -109,8 +111,19 @@ export function Header({
                 href="https://wa.me/79089086755" 
                 aria-label="WhatsApp" 
                 className="block hover:opacity-70 transition-opacity"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <WhatsappIcon className="w-[24px] h-[24px] xl:w-[28px] xl:h-[28px] fill-current" />
+              </a>
+              <a 
+                href="https://2gis.ru/ekaterinburg/search/Готвальда%2012а" 
+                aria-label="2GIS" 
+                className="block hover:opacity-70 transition-opacity"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <TwoGisIcon className="w-[24px] h-[24px] xl:w-[28px] xl:h-[28px] fill-current" />
               </a>
             </div>
 
