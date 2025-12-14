@@ -33,7 +33,6 @@ export default function HomePage() {
     '/images/main-bg-slideshow/main-bg-04.webp?v=new',
   ];
 
-  // Using exact constant for 8 seconds
   const { currentIndex, prevIndex } = useSlideshow({ images: heroSlideshowImages, intervalMs: SLIDESHOW_INTERVAL_MS });
 
   return (
@@ -41,7 +40,7 @@ export default function HomePage() {
       <main className='pb-24'>
         {/* Hero Section */}
         <div className="relative min-h-screen overflow-hidden">
-          {/* Background Slideshow */}
+          {/* Background Slideshow (Full Width) */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
             <div className="relative w-full h-full">
               {heroSlideshowImages.map((src, index) => {
@@ -54,8 +53,6 @@ export default function HomePage() {
                     key={src}
                     className="absolute inset-0"
                     style={{
-                      // LOGIC: New slide is instantly visible (opacity 1) but behind (z-index 1).
-                      // Old slide stays on top (z-index 2) and fades out (opacity 0).
                       zIndex: isPrev ? 2 : (isActive ? 1 : 0),
                       opacity: isActive ? 1 : 0, 
                       transition: isPrev 
@@ -70,7 +67,6 @@ export default function HomePage() {
                         {
                           '--zoom-from': SLIDESHOW_CONFIG.zoomFrom,
                           '--zoom-to': SLIDESHOW_CONFIG.zoomTo,
-                          // Duration is 3x interval to ensure linear motion never stops during visibility
                           '--zoom-duration': '24000ms', 
                           '--zoom-ease': SLIDESHOW_CONFIG.zoomEase,
                           willChange: 'transform',
@@ -97,8 +93,9 @@ export default function HomePage() {
           <div className="relative flex flex-col min-h-screen z-10">
             <Header variant="home" />
 
-            {/* Main Content - Hero Section */}
-            <div className="flex flex-col items-center justify-center text-center flex-grow px-0 lg:px-16 pt-20 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20 gap-6 sm:gap-8">
+            {/* Main Content - Hero Section (Constrained Width) */}
+            {/* Added max-w-[1468px] and mx-auto to match Header alignment */}
+            <div className="w-full max-w-[1468px] mx-auto flex flex-col items-center justify-center text-center flex-grow px-2 sm:px-8 lg:px-8 xl:px-16 pt-20 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20 gap-6 sm:gap-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -172,8 +169,7 @@ export default function HomePage() {
                   <span>+7 908 908 67 55</span>
                 </a>
                 <a 
-                  href="#map"
-                  onClick={handleScrollToMap}
+                  href="https://yandex.ru/maps/-/CLvp7Dn-"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#F9F3D4] text-[#323B12] rounded-lg px-6 py-4 sm:px-6 sm:py-3 text-lg sm:text-xl lg:text-[24px] font-bold leading-[1.2] transition-all duration-300 ease-out hover:shadow-lg hover:scale-102 active:scale-100 cursor-pointer relative z-10 hover:bg-[#f8e99e]"
                 >
                   <LocalLocationIcon className="w-6 h-6 flex-shrink-0" style={{ fill: '#323B12' }} />
@@ -186,7 +182,8 @@ export default function HomePage() {
 
         {/* Halls Container Section - 2 Columns Grid */}
         <section id="rooms" className="relative bg-[#F8F3D7] w-full z-[1]">
-          <div className="flex flex-col rounded-xl w-full px-2 lg:px-16 py-8 sm:py-12 gap-2">
+          {/* Added max-w-[1468px] and mx-auto to match Header alignment */}
+          <div className="w-full max-w-[1468px] mx-auto flex flex-col rounded-xl px-2 sm:px-8 lg:px-8 xl:px-16 py-8 sm:py-12 gap-2">
             <div className="grid grid-cols-1 lg:grid-cols-2 w-full gap-2">
               <div className="min-h-[200px] sm:min-h-[250px] lg:min-h-[273px]">
                 <HallCard slug="fin" room={roomsBySlug['fin']} />
