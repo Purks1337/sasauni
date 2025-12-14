@@ -28,7 +28,7 @@ export function MobileMenu() {
 
       {mounted && isMenuOpen && createPortal(
         <div className="lg:hidden fixed inset-0 z-[110] bg-[rgba(50,59,18,0.7)] backdrop-blur-[10px] flex items-center justify-center p-4">
-          <div className="flex flex-col items-center justify-center gap-8 sm:gap-10 w-full max-w-md">
+          <div className="flex flex-col items-center justify-center gap-14 sm:gap-10 w-full max-w-md">
             {/* Close button */}
             <button
               type="button"
@@ -41,22 +41,22 @@ export function MobileMenu() {
             </button>
 
             {/* Navigation */}
-            <div className="flex flex-col items-center gap-4 sm:gap-5">
-              <p className="text-[#F8F3D7] text-sm font-medium uppercase tracking-wider">Навигация</p>
-              <div className="flex flex-col items-center gap-3 sm:gap-4">
-                <Link href="/" className="text-[#F8F3D7] text-lg sm:text-xl hover:text-[color:var(--accent)] transition-colors" onClick={closeMenu}>Главная</Link>
-                <Link href="/rooms/fin" className="text-[#F8F3D7] text-lg sm:text-xl hover:text-[color:var(--accent)] transition-colors" onClick={closeMenu}>Финский зал</Link>
-                <Link href="/rooms/fin-small" className="text-[#F8F3D7] text-lg sm:text-xl hover:text-[color:var(--accent)] transition-colors" onClick={closeMenu}>Зал «Оазис»</Link>
-                <Link href="/rooms/turkey" className="text-[#F8F3D7] text-lg sm:text-xl hover:text-[color:var(--accent)] transition-colors" onClick={closeMenu}>Турецкий зал</Link>
-                <Link href="/rooms/apps" className="text-[#F8F3D7] text-lg sm:text-xl hover:text-[color:var(--accent)] transition-colors" onClick={closeMenu}>Аппартаменты</Link>
-                <Link href="/rooms/new-hall" className="text-[#F8F3D7] text-lg sm:text-xl hover:text-[color:var(--accent)] transition-colors" onClick={closeMenu}>Новый зал</Link>
+            <div className="flex flex-col items-center gap-8">
+              <p className="text-[#F8F3D7] text-xl font-bold uppercase tracking-wider">Навигация</p>
+              <div className="flex flex-col items-center gap-8">
+                <Link href="/" className="text-[#F8F3D7] text-xl sm:text-xl hover:text-[color:var(--accent)] transition-colors" onClick={closeMenu}>Главная</Link>
+                <Link href="/rooms/fin" className="text-[#F8F3D7] text-xl sm:text-xl hover:text-[color:var(--accent)] transition-colors" onClick={closeMenu}>Финский зал</Link>
+                <Link href="/rooms/fin-small" className="text-[#F8F3D7] text-xl sm:text-xl hover:text-[color:var(--accent)] transition-colors" onClick={closeMenu}>Зал «Оазис»</Link>
+                <Link href="/rooms/turkey" className="text-[#F8F3D7] text-xl sm:text-xl hover:text-[color:var(--accent)] transition-colors" onClick={closeMenu}>Турецкий зал</Link>
+                <Link href="/rooms/apps" className="text-[#F8F3D7] text-xl sm:text-xl hover:text-[color:var(--accent)] transition-colors" onClick={closeMenu}>Аппартаменты</Link>
+                <Link href="/rooms/new-hall" className="text-[#F8F3D7] text-xl sm:text-xl hover:text-[color:var(--accent)] transition-colors" onClick={closeMenu}>Новый зал</Link>
               </div>
             </div>
 
             {/* Contacts */}
-            <div className="flex flex-col items-center gap-4 sm:gap-5">
-              <p className="text-[#F8F3D7] text-sm font-medium uppercase tracking-wider">Контакты</p>
-              <div className="flex flex-col items-center gap-3 sm:gap-4">
+            <div className="flex flex-col items-center gap-8">
+              <p className="text-[#F8F3D7] text-xl font-bold uppercase tracking-wider">Контакты</p>
+              <div className="flex flex-col items-center gap-8">
                 <a href="tel:+79089086755" className="flex items-center gap-2 text-[#F8F3D7] text-lg sm:text-xl hover:text-[color:var(--accent)] transition-colors" onClick={closeMenu}>
                   <Image src="/images/phone-icon.svg" alt="Phone" width={20} height={20} className="filter brightness-0 invert" />
                   <span>+7 908 908 67 55</span>
