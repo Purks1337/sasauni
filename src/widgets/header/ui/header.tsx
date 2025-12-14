@@ -117,7 +117,7 @@ export function Header({
                 <WhatsappIcon className="w-[24px] h-[24px] xl:w-[28px] xl:h-[28px] fill-current" />
               </a>
               <a 
-                href="https://2gis.ru/ekaterinburg/search/Готвальда%2012а" 
+                href="https://go.2gis.com/4z7w4" 
                 aria-label="2GIS" 
                 className="block hover:opacity-70 transition-opacity"
                 target="_blank"

@@ -137,7 +137,7 @@ export function Footer() {
                 <a href="https://t.me/79089086755" aria-label="Telegram" className="inline-flex p-2 rounded-lg bg-[#E2D2A9] hover:bg-[#e1b45d] transition-colors">
                   <TelegramIcon className="w-5 h-5 text-[#1A1E08]" />
                 </a>
-                <a href="https://2gis.ru/ekaterinburg/search/Готвальда%2012а" aria-label="2GIS" className="inline-flex p-2 rounded-lg bg-[#E2D2A9] hover:bg-[#e1b45d] transition-colors">
+                <a href="https://go.2gis.com/4z7w4" aria-label="2GIS" className="inline-flex p-2 rounded-lg bg-[#E2D2A9] hover:bg-[#e1b45d] transition-colors">
                   <TwoGisIcon className="w-5 h-5 text-[#1A1E08]" />
                 </a>
               </div>
