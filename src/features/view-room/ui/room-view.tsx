@@ -78,7 +78,7 @@ export function RoomView({ room, slug }: RoomViewProps) {
     }, 5000); // 5 seconds per slide
 
     return () => clearInterval(interval);
-  }, [isAutoPlayPaused, images.length, paginate]);
+  }, [isAutoPlayPaused, images, paginate]);
 
   const handleInteraction = () => {
     setIsAutoPlayPaused(true);
