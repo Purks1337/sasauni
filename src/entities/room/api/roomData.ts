@@ -71,7 +71,7 @@ export const roomsBySlug: Record<RoomSlug, RoomInfo> = {
     capacityText: '10 человек (макс. 20 человек, доплата 300₽/час за человека свыше 6)',
     featureIds: ['finnishSauna', 'pool', 'karaoke', 'tv', 'waterfall', 'bucket', 'relaxZone', 'billiard'],
     imagePaths: finImages,
-    coverImage: '/images/hall-covers/hall-cover-fin.webp',
+    coverImage: '/images/hall-covers/hall-cover-oasis.webp',
   },
   'fin-small': {
     ...commonData,
@@ -84,7 +84,7 @@ export const roomsBySlug: Record<RoomSlug, RoomInfo> = {
     capacityText: '6 человек (макс. 10 человек, доплата 300₽/час за человека свыше 6)',
     featureIds: ['finnishSauna', 'pool', 'tv', 'karaoke', 'massage', 'bucket', 'relaxZone', 'massageApparatus'],
     imagePaths: finSmallImages,
-    coverImage: '/images/hall-covers/hall-cover-oasis.webp',
+    coverImage: '/images/hall-covers/hall-cover-fin.webp',
   },
   'turkey': {
     ...commonData,
