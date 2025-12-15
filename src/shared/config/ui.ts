@@ -10,11 +10,11 @@ export const SLIDESHOW_INTERVAL_MS = 8000;
 export const SLIDESHOW_CONFIG = {
   // Duration of the crossfade transition (fade out).
   // 2000ms gives a smooth transition without stealing too much time from the 8s visibility.
-  crossfadeMs: 2000,
+  crossfadeMs: 1000,
   // Starting scale for the zoom animation.
-  zoomFrom: 1.5,
+  zoomFrom: 1.0,
   // Ending scale for the zoom animation.
-  zoomTo: 1.0,
+  zoomTo: 1.2,
   // CSS timing function for the zoom animation.
   zoomEase: 'linear', 
   // CSS timing function for the crossfade.
