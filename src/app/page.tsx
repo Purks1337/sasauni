@@ -209,10 +209,11 @@ export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const heroSlideshowImages = [
-    '/images/main-bg-slideshow/main-bg-01.webp?v=new',
-    '/images/main-bg-slideshow/main-bg-02.webp?v=new',
-    '/images/main-bg-slideshow/main-bg-03.webp?v=new',
-    '/images/main-bg-slideshow/main-bg-04.webp?v=new',
+    '/images/main-bg-slideshow/main-bg-01.webp?v=update-1',
+    '/images/main-bg-slideshow/main-bg-02.webp?v=update-1',
+    '/images/main-bg-slideshow/main-bg-03.webp?v=update-1',
+    '/images/main-bg-slideshow/main-bg-04.webp?v=update-1',
+    '/images/main-bg-slideshow/main-bg-05.webp?v=update-1',
   ];
 
   const { currentIndex, prevIndex } = useSlideshow({ images: heroSlideshowImages, intervalMs: SLIDESHOW_INTERVAL_MS });
