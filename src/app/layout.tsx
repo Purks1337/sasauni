@@ -22,6 +22,7 @@ const literatureDecor = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://xn--1001-35dg7dxb.site'),
   title: '1001 ночь - Оздоровительный центр',
   description: 'Оздоровительный центр в Екатеринбурге. Уникальные залы для отдыха и релаксации.',
   keywords: ['оздоровительный центр', 'сауна', 'баня', 'финская парная', 'бассейн', 'Екатеринбург', 'отдых'],
