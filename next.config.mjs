@@ -3,8 +3,6 @@ const nextConfig = {
   // 1. Включаем режим статического экспорта
   output: 'export',
   
-  basePath: '/sasauni',
-
   // 2. Отключаем оптимизацию картинок (сервера нет, сжимать некому)
   images: {
     unoptimized: true, 
