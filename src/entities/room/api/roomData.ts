@@ -49,7 +49,22 @@ const appsImages: string[] = [
   '/images/apps/apps-3.webp?v=update-1',
 ];
 
-const newHallImages: string[] = [];
+const graciaImages: string[] = [
+  '/images/gracia/17.webp',
+  '/images/gracia/5.webp',
+  '/images/gracia/8.webp',
+  '/images/gracia/9.webp',
+  '/images/gracia/12.webp',
+  '/images/gracia/13.webp',
+  '/images/gracia/14.webp',
+  '/images/gracia/15.webp',
+  '/images/gracia/16.webp',
+  '/images/gracia/20.webp',
+  '/images/gracia/21.webp',
+  '/images/gracia/24.webp',
+  '/images/gracia/25.webp',
+  '/images/gracia/36.webp',
+];
 
 const commonData = {
   address: 'Екатеринбург, Готвальда 12а',
@@ -115,16 +130,15 @@ export const roomsBySlug: Record<RoomSlug, RoomInfo> = {
   },
   'new-hall': {
     ...commonData,
-    title: 'Новый зал',
-    description:
-      'Дорогие гости, этот зал находится в разработке и скоро откроется. Забронировать и занять своё время вы можете уже сейчас, позвонив нам',
+    title: 'Грация',
+    description: '',
     capacity: 8,
-    price: 'скоро открытие',
-    steamType: 'Уточняется',
-    capacityText: 'Уточняется',
+    price: '3000₽ / час',
+    steamType: '',
+    capacityText: '',
     featureIds: [],
-    imagePaths: newHallImages,
-    status: 'coming-soon',
+    imagePaths: graciaImages,
+    coverImage: '/images/gracia/17.webp',
   },
 };
 

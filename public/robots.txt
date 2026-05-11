@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /_next/
+Disallow: /404
+
+Host: https://xn--1001-35dg7dxb.site
+Sitemap: https://xn--1001-35dg7dxb.site/sitemap.xml

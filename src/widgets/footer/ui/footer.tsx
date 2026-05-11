@@ -71,7 +71,7 @@ export function Footer() {
     { href: '/rooms/fin-small', label: 'Зал «Оазис»' },
     { href: '/rooms/turkey', label: 'Турецкий зал' },
     { href: '/rooms/apps', label: 'Апартаменты' },
-    { href: '/rooms/new-hall', label: 'Новый зал' },
+    { href: '/rooms/new-hall', label: 'Грация' },
   ];
 
   return (

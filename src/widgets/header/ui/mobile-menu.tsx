@@ -49,7 +49,7 @@ export function MobileMenu() {
                 <Link href="/rooms/fin-small" className="text-[#F8F3D7] text-xl sm:text-xl hover:text-[color:var(--accent)] transition-colors" onClick={closeMenu}>Зал «Оазис»</Link>
                 <Link href="/rooms/turkey" className="text-[#F8F3D7] text-xl sm:text-xl hover:text-[color:var(--accent)] transition-colors" onClick={closeMenu}>Турецкий зал</Link>
                 <Link href="/rooms/apps" className="text-[#F8F3D7] text-xl sm:text-xl hover:text-[color:var(--accent)] transition-colors" onClick={closeMenu}>Аппартаменты</Link>
-                <Link href="/rooms/new-hall" className="text-[#F8F3D7] text-xl sm:text-xl hover:text-[color:var(--accent)] transition-colors" onClick={closeMenu}>Новый зал</Link>
+                <Link href="/rooms/new-hall" className="text-[#F8F3D7] text-xl sm:text-xl hover:text-[color:var(--accent)] transition-colors" onClick={closeMenu}>Грация</Link>
               </div>
             </div>
 

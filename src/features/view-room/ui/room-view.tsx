@@ -238,10 +238,12 @@ export function RoomView({ room, slug }: RoomViewProps) {
             </div>
             
             <div className="space-y-3 sm:space-y-4 text-xl sm:text-xl text-[#323b12] order-4">
-              <div className="flex items-start gap-2">
-                <SteamTypeIcon className="mt-0.5 sm:mt-1 flex-shrink-0 text-[#1A1E08] w-6 h-6" fill="#1A1E08" />
-                <span>Тип парной: {room.steamType}</span>
-              </div>
+              {room.steamType ? (
+                <div className="flex items-start gap-2">
+                  <SteamTypeIcon className="mt-0.5 sm:mt-1 flex-shrink-0 text-[#1A1E08] w-6 h-6" fill="#1A1E08" />
+                  <span>Тип парной: {room.steamType}</span>
+                </div>
+              ) : null}
               <div className="flex items-start gap-2">
                 <WorkHoursIcon className="mt-0.5 sm:mt-1 flex-shrink-0 text-[#1A1E08] w-6 h-6" fill="#1A1E08" />
                 <span>График работы: {room.workHours}</span>
@@ -250,26 +252,30 @@ export function RoomView({ room, slug }: RoomViewProps) {
                 <LocationIcon className="mt-0.5 sm:mt-1 flex-shrink-0 text-[#1A1E08] w-6 h-6" />
                 <span>{room.fullAddress}</span>
               </div>
-              <div className="flex items-start gap-2">
-                <UserIcon className="mt-0.5 sm:mt-1 flex-shrink-0 text-[#1A1E08] w-6 h-6" />
-                <span>Вместимость: {room.capacityText}</span>
-              </div>
+              {room.capacityText ? (
+                <div className="flex items-start gap-2">
+                  <UserIcon className="mt-0.5 sm:mt-1 flex-shrink-0 text-[#1A1E08] w-6 h-6" />
+                  <span>Вместимость: {room.capacityText}</span>
+                </div>
+              ) : null}
               <div className="flex items-start gap-2">
                 <PhoneIcon className="mt-0.5 sm:mt-1 flex-shrink-0 text-[#1A1E08] w-6 h-6" />
                 <a href={room.phone} className="hover:text-[color:var(--accent)] transition-colors break-all">{formattedPhone}</a>
               </div>
             </div>
 
-            <div className="space-y-3 order-5">
-              <p className="text-2xl sm:text-3xl font-medium text-[#1A1E08]">Особенности:</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
-                {room.featureIds.map((fid) => {
-                  const spec = featuresById[fid];
-                  if (!spec) return null;
-                  return <FeaturePill key={fid} icon={spec.icon} label={spec.label} />;
-                })}
+            {room.featureIds.length > 0 ? (
+              <div className="space-y-3 order-5">
+                <p className="text-2xl sm:text-3xl font-medium text-[#1A1E08]">Особенности:</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
+                  {room.featureIds.map((fid) => {
+                    const spec = featuresById[fid];
+                    if (!spec) return null;
+                    return <FeaturePill key={fid} icon={spec.icon} label={spec.label} />;
+                  })}
+                </div>
               </div>
-            </div>
+            ) : null}
             
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 order-6">
               <a href={room.phone} className="flex-1 whitespace-nowrap inline-flex items-center justify-center bg-[#e1b45d] hover:bg-[#d4a04a] text-[#1a1e08] rounded-lg px-4 sm:px-6 py-2.5 sm:py-3 text-lg sm:text-xl font-medium transition-colors">
@@ -377,12 +383,14 @@ export function RoomView({ room, slug }: RoomViewProps) {
               )}
             </div>
             
-            <div className="space-y-3">
-              <p className="text-2xl sm:text-3xl font-medium text-[#1A1E08]">Описание:</p>
-              <p className="text-xl sm:text-xl text-[#323b12] leading-relaxed">
-                {room.description}
-              </p>
-            </div>
+            {room.description.trim() ? (
+              <div className="space-y-3">
+                <p className="text-2xl sm:text-3xl font-medium text-[#1A1E08]">Описание:</p>
+                <p className="text-xl sm:text-xl text-[#323b12] leading-relaxed">
+                  {room.description}
+                </p>
+              </div>
+            ) : null}
 
             <div id="map" className="space-y-3">
               <p className="text-2xl sm:text-3xl font-medium text-[#1A1E08]">Как добраться:</p>

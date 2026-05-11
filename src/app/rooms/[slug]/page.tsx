@@ -12,7 +12,9 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
   const { slug } = await params;
   const room = roomsBySlug[slug];
   const title = `${room.title} — 1000 и 1 ночь`;
-  const description = room.description;
+  const description =
+    room.description.trim() ||
+    `${room.title} — банный комплекс «1000 и 1 ночь», Екатеринбург.`;
   const images = room.imagePaths.length > 0 ? [{ url: room.imagePaths[0] }] : [];
   return {
     title,

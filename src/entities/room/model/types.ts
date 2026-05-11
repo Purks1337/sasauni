@@ -20,5 +20,5 @@ export interface RoomInfo {
   mapLink: string; // URL for Yandex Maps
   coverImage?: string; // Cover image from hall-covers/ folder for main page cards
   width?: 'normal' | 'wide'; // Card width on main page (for apparts)
-  status?: 'active' | 'coming-soon'; // For "Новый зал"
+  status?: 'active' | 'coming-soon';
 }

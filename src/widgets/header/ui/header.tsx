@@ -89,7 +89,7 @@ export function Header({
               Аппартаменты
             </Link>
             <Link href="/rooms/new-hall" className="text-[15px] xl:text-[20px] font-medium leading-[1.2] hover:opacity-70 transition-opacity whitespace-nowrap">
-              Новый зал
+              Грация
             </Link>
           </nav>
 
